@@ -30,7 +30,7 @@ When creating a transformer model, we have the following <code>layers</code> ava
 - TokenAndPositionEmbedding layer
 - MLMMaskGenerator layer
 - MLMHead layer
-- StartEndPacker layer
+- [<code>StartEndPacker</code>](https://keras.io/api/keras_nlp/layers/start_end_packer/) layer
 - MultiSegmentPacker layer
 
 ### Metrics
