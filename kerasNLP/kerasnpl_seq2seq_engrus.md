@@ -243,23 +243,48 @@ decoder_inputs = keras.Input(shape=(None,),
 encoded_seq_inputs = keras.Input(shape=(None,cfg.EMBED_DIM),
                                  name="decoder_state_inputs")
 
-x = keras_nlp.layers.TokenAndPositionEmbedding(vocabulary_size=cfg.FL_VOCAB_SIZE,
-                                               sequence_length=cfg.MAX_SEQUENCE_LENGTH,
-                                               embedding_dim=cfg.EMBED_DIM,
-                                               mask_zero=True)(decoder_inputs)
+x = TokenAndPositionEmbedding(vocabulary_size=cfg.FL_VOCAB_SIZE,
+                              sequence_length=cfg.MAX_SEQUENCE_LENGTH,
+                              embedding_dim=cfg.EMBED_DIM,
+                              mask_zero=True)(decoder_inputs)
 
-x = keras_nlp.layers.TransformerDecoder(intermediate_dim=cfg.INTERMEDIATE_DIM, 
-                                        num_heads=cfg.NUM_HEADS)(decoder_sequence=x, 
-                                                                 encoder_sequence=encoded_seq_inputs)
+x = TransformerDecoder(intermediate_dim=cfg.INTERMEDIATE_DIM,
+                       num_heads=cfg.NUM_HEADS)(decoder_sequence=x,
+                                                encoder_sequence=encoded_seq_inputs)
+                       
 x = keras.layers.Dropout(0.5)(x)
 decoder_outputs = keras.layers.Dense(cfg.FL_VOCAB_SIZE, activation="softmax")(x)
 decoder = keras.Model([decoder_inputs,encoded_seq_inputs],decoder_outputs)
 decoder_outputs = decoder([decoder_inputs, encoder_outputs])
 
-transformer = keras.Model(
-    [encoder_inputs, decoder_inputs],
-    decoder_outputs,
-    name="transformer")
+transformer = keras.Model([encoder_inputs, decoder_inputs],
+                          decoder_outputs,
+                          name="transformer")
 
 transformer.summary()
+```
+
+```
+Model: "transformer"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ encoder_inputs (InputLayer)    [(None, None)]       0           []                               
+                                                                                                  
+ token_and_position_embedding (  (None, None, 256)   3850240     ['encoder_inputs[0][0]']         
+ TokenAndPositionEmbedding)                                                                       
+                                                                                                  
+ decoder_inputs (InputLayer)    [(None, None)]       0           []                               
+                                                                                                  
+ transformer_encoder (Transform  (None, None, 256)   1315072     ['token_and_position_embedding[0]
+ erEncoder)                                                      [0]']                            
+                                                                                                  
+ model_1 (Functional)           (None, None, 15000)  10203288    ['decoder_inputs[0][0]',         
+                                                                  'transformer_encoder[0][0]']    
+                                                                                                  
+==================================================================================================
+Total params: 15,368,600
+Trainable params: 15,368,600
+Non-trainable params: 0
+__________________________________________________________________________________________________
 ```
