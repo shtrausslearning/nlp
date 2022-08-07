@@ -12,7 +12,7 @@
 
 For <code>tokenisation</code>, we have the following options, calling from (<code>keras_nlp.tokenizers</code>)
 
-- Tokenizer base class
+- [<code>Tokenizer</code>](https://keras.io/api/keras_nlp/tokenizers/tokenizer/) base class
 - [<code>WordPieceTokenizer</code>](https://keras.io/api/keras_nlp/tokenizers/word_piece_tokenizer/)
 - SentencePieceTokenizer
 - ByteTokenizer
