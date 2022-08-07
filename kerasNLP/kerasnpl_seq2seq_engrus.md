@@ -160,3 +160,106 @@ English Tokens:  ['about', 'here', 'there', 'has', 'going', 'tell', 'will', 'one
 Russian Tokens:  ['мы', 'меня', 'он', 'как', 'тому', 'все', 'бы', 'тебе', 'сказал', 'чтобы']
 ```
 
+### 4 | Create dataset
+
+```python
+from keras_nlp.layers import StartEndPacker
+
+def preprocess_batch(eng, fl):
+    
+    batch_size = tf.shape(fl)[0]
+
+    eng = eng_tokeniser(eng)
+    fl = fl_tokeniser(fl)
+
+    # Pad `eng` to `MAX_SEQUENCE_LENGTH`.
+    eng_start_end_packer = StartEndPacker(sequence_length=cfg.MAX_SEQUENCE_LENGTH, # padding
+                                          pad_value=eng_tokeniser.token_to_id("[PAD]"))
+    eng = eng_start_end_packer(eng)
+
+    # Add special tokens (`"[START]"` and `"[END]"`) to `spa` and pad it as well.
+    fl_start_end_packer = StartEndPacker(sequence_length=cfg.MAX_SEQUENCE_LENGTH + 1,
+                                         start_value=fl_tokeniser.token_to_id("[START]"),
+                                         end_value=fl_tokeniser.token_to_id("[END]"),
+                                         pad_value=fl_tokeniser.token_to_id("[PAD]"))
+    fl = fl_start_end_packer(fl)
+
+    return ({"encoder_inputs": eng,"decoder_inputs": fl[:, :-1]},
+            fl[:, 1:])
+
+
+def make_dataset(pairs):
+
+    eng_texts, fl_texts = zip(*pairs) # unzip tuple pair
+    eng_texts = list(eng_texts) # tuple to list
+    fl_texts = list(fl_texts)  # tuple to list
+
+    dataset = tf.data.Dataset.from_tensor_slices((eng_texts, fl_texts))
+    dataset = dataset.batch(cfg.BATCH_SIZE)
+    dataset = dataset.map(preprocess_batch, 
+                          num_parallel_calls=tf.data.AUTOTUNE)
+    return dataset.shuffle(2048).prefetch(16).cache()
+
+train_ds = make_dataset(train_pairs)
+val_ds = make_dataset(val_pairs)
+
+print(f'training dataset: {len(train_ds)}')
+print(f'validation dataset: {len(val_ds)}')
+```
+
+```
+training dataset: 4863
+validation dataset: 1042
+```
+
+
+### 5 | Create Transformer Model
+
+```python
+from keras_nlp.layers import TokenAndPositionEmbedding, TransformerEncoder
+
+
+# Encoder
+encoder_inputs = keras.Input(shape=(None,), 
+                             dtype="int64",
+                             name="encoder_inputs")
+
+x = TokenAndPositionEmbedding(vocabulary_size=cfg.ENG_VOCAB_SIZE,
+                              sequence_length=cfg.MAX_SEQUENCE_LENGTH,
+                              embedding_dim=cfg.EMBED_DIM,
+                              mask_zero=True)(encoder_inputs)
+
+encoder_outputs = TransformerEncoder(intermediate_dim=cfg.INTERMEDIATE_DIM, 
+                                     num_heads=cfg.NUM_HEADS)(inputs=x)
+                                     
+encoder = keras.Model(encoder_inputs, 
+                      encoder_outputs)
+
+# Decoder
+decoder_inputs = keras.Input(shape=(None,),
+                             dtype="int64", 
+                             name="decoder_inputs")
+                             
+encoded_seq_inputs = keras.Input(shape=(None,cfg.EMBED_DIM),
+                                 name="decoder_state_inputs")
+
+x = keras_nlp.layers.TokenAndPositionEmbedding(vocabulary_size=cfg.FL_VOCAB_SIZE,
+                                               sequence_length=cfg.MAX_SEQUENCE_LENGTH,
+                                               embedding_dim=cfg.EMBED_DIM,
+                                               mask_zero=True)(decoder_inputs)
+
+x = keras_nlp.layers.TransformerDecoder(intermediate_dim=cfg.INTERMEDIATE_DIM, 
+                                        num_heads=cfg.NUM_HEADS)(decoder_sequence=x, 
+                                                                 encoder_sequence=encoded_seq_inputs)
+x = keras.layers.Dropout(0.5)(x)
+decoder_outputs = keras.layers.Dense(cfg.FL_VOCAB_SIZE, activation="softmax")(x)
+decoder = keras.Model([decoder_inputs,encoded_seq_inputs],decoder_outputs)
+decoder_outputs = decoder([decoder_inputs, encoder_outputs])
+
+transformer = keras.Model(
+    [encoder_inputs, decoder_inputs],
+    decoder_outputs,
+    name="transformer")
+
+transformer.summary()
+```
