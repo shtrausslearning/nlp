@@ -97,8 +97,8 @@ print(f"{len(test_pairs)} test pairs")
 
 Creating tokenised data:
 
-- <code>train_word_piece</code> creates a vocabulary using <code>bert_vocab_from_dataset</code>
-- <code>WordPieceTokenizer</code> takes in the vacabulary dictionary & tokenises the two language pair arrays
+- <code>train_word_piece</code> creates a **vocabulary** using <code>bert_vocab_from_dataset</code>
+- <code>WordPieceTokenizer</code> takes in the **vacabulary** dictionary & tokenises the two language pair arrays
 
 ```python
 
@@ -140,16 +140,23 @@ def tokenise(train_pairs):
     print(f'Vocab length {len(fl_vocab)}')
 
     print("English Tokens: ", eng_vocab[100:110])
-    print("Spanish Tokens: ", fl_vocab[100:110])
+    print("Russian Tokens: ", fl_vocab[100:110])
 
     # Tokeniser
     eng_tokeniser = WordPieceTokenizer(vocabulary=eng_vocab, 
-                                    lowercase=False)
+                                       lowercase=False)
     fl_tokeniser = WordPieceTokenizer(vocabulary=fl_vocab,
-                                    lowercase=False)
+                                      lowercase=False)
 
     return eng_tokeniser, fl_tokeniser
 
 eng_tokeniser, fl_tokeniser = tokenise(train_pairs)
+```
+
+```
+Vocab length 5779
+Vocab length 12600
+English Tokens:  ['about', 'here', 'there', 'has', 'going', 'tell', 'will', 'one', 'told', 'who']
+Russian Tokens:  ['мы', 'меня', 'он', 'как', 'тому', 'все', 'бы', 'тебе', 'сказал', 'чтобы']
 ```
 
