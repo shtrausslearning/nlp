@@ -20,7 +20,7 @@ For <code>tokenisation</code>, we have the following options, calling from (<cod
 
 ### Layers
 
-When creating a transformer model, we have the following <code>layers</code> available to us from (<code>keras_nlp.layers</code>
+When creating a transformer model, we have the following <code>layers</code> available to us from (<code>keras_nlp.layers</code>)
 
 - TransformerEncoder layer
 - TransformerDecoder layer
