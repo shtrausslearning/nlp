@@ -13,12 +13,14 @@
 For <code>tokenisation</code>, we have the following options, calling from (<code>keras_nlp.tokenizers</code>)
 
 - Tokenizer base class
-- WordPieceTokenizer (used in the example below)
+- [<code>WordPieceTokenizer</code>](https://keras.io/api/keras_nlp/tokenizers/word_piece_tokenizer/)
 - SentencePieceTokenizer
 - ByteTokenizer
 - UnicodeCharacterTokenizer
 
 ### Layers
+
+When creating a transformer model, we have the following <code>layers</code> available to us from (<code>keras_nlp.layers</code>
 
 - TransformerEncoder layer
 - TransformerDecoder layer
