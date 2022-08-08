@@ -589,6 +589,15 @@ def evaluate_vectoriser(vectoriser):
 
 #### 6.3 | Сравнение способов представления текста
 
+Для решения задачи, рассмотрим разные подходы
+
+- `CountVectorizer`
+- `TfidfVectorizer`
+- `TfidfVectorizer` + `tokenizer=tokenize_with_razdel`
+- `TfidfVectorizer` + `lemmatize_with_pymorphy(tokenize_with_razdel(text)`
+- `TfidfVectorizer` + `tokenizer` + `stop_words`
+- `TfidfVectorizer` + `tokenizer` + `stop_words` + `ngram_range`
+
 #### Подход 1 : `CountVectorizer`
 
 ```python
@@ -681,7 +690,7 @@ evaluate_vectorizer(tfidf_vectorizer)
 weighted avg       0.87      0.87      0.87       794
 ```
 
-#### Подход 5 : `TfidfVectorizer` + `tokenizer` + `stop_words` + `ngram_range`
+#### Подход 6 : `TfidfVectorizer` + `tokenizer` + `stop_words` + `ngram_range`
 
 ```python
 tfidf_vectorizer = TfidfVectorizer(
