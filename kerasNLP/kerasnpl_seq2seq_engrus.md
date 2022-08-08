@@ -220,6 +220,8 @@ from keras_nlp.layers import TokenAndPositionEmbedding, TransformerEncoder
 
 
 # Encoder
+
+# input to encoder model
 encoder_inputs = keras.Input(shape=(None,), 
                              dtype="int64",
                              name="encoder_inputs")
@@ -229,19 +231,21 @@ x = TokenAndPositionEmbedding(vocabulary_size=cfg.ENG_VOCAB_SIZE,
                               embedding_dim=cfg.EMBED_DIM,
                               mask_zero=True)(encoder_inputs)
 
+# Create single transformer encoder layer
 encoder_outputs = TransformerEncoder(intermediate_dim=cfg.INTERMEDIATE_DIM, 
                                      num_heads=cfg.NUM_HEADS)(inputs=x)
                                      
-encoder = keras.Model(encoder_inputs, 
-                      encoder_outputs)
+encoder = keras.Model(encoder_inputs, encoder_outputs)
 
 # Decoder
+
+encoded_seq_inputs = keras.Input(shape=(None,cfg.EMBED_DIM),
+                                 name="decoder_state_inputs")
+
+# input into decoder model
 decoder_inputs = keras.Input(shape=(None,),
                              dtype="int64", 
                              name="decoder_inputs")
-                             
-encoded_seq_inputs = keras.Input(shape=(None,cfg.EMBED_DIM),
-                                 name="decoder_state_inputs")
 
 x = TokenAndPositionEmbedding(vocabulary_size=cfg.FL_VOCAB_SIZE,
                               sequence_length=cfg.MAX_SEQUENCE_LENGTH,
@@ -254,6 +258,7 @@ x = TransformerDecoder(intermediate_dim=cfg.INTERMEDIATE_DIM,
                        
 x = keras.layers.Dropout(0.5)(x)
 decoder_outputs = keras.layers.Dense(cfg.FL_VOCAB_SIZE, activation="softmax")(x)
+
 decoder = keras.Model([decoder_inputs,encoded_seq_inputs],decoder_outputs)
 decoder_outputs = decoder([decoder_inputs, encoder_outputs])
 
@@ -288,3 +293,5 @@ Trainable params: 15,368,600
 Non-trainable params: 0
 __________________________________________________________________________________________________
 ```
+
+
