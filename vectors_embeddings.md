@@ -40,7 +40,7 @@ text
 
 ### 2 | Удаление неинформативных символов
 
-- Regular Expression <code>ARE</code> можно использовать для этой задачи
+- Regular Expression <code>RE</code> можно использовать для этой задачи
 
 ```python
 import re
@@ -105,6 +105,7 @@ text.split()
  ```
 
 #### 3.2 | Модуль <code>pymorphy2</code>
+
 - В библиотеке для морфологического анализа для русского языка <code>pymorphy2</code>
 - Простая вспомогательная функция <code>simple_word_tokenize</code> для **токенизации**
 
