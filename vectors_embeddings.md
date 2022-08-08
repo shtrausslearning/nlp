@@ -559,7 +559,7 @@ train.head()
 |---:|:---------|:----------------------------------------------------------------------------------------------------------------------------------------------|
 |  0 | positive | эти розы для прекрасной мамочки)))=_=]]                                                                                                       |
 |  1 | negative | И да, у меня в этом году серьезные проблемы со сном и режимом.                                                                                |
-|  2 | positive | ♥Обожаю людей, которые заставляют меня смеяться.©♥                                                                                            |
+|  2 | positive | Обожаю людей, которые заставляют меня смеяться.©                                                                                           |
 |  3 | negative | Вчера нашла в почтовом ящике пустую упаковку из-под жвачки и использованный презерватив в упаковке. Могли бы хоть "резинку" не портить, гады. |
 |  4 | positive | очень долгожданный и хороший день был)                                                                                                        |
 ```
@@ -622,6 +622,8 @@ def evaluate_vectoriser(vectoriser):
 #### Подход 1 : `CountVectorizer`
 
 ```python
+from sklearn.feature_extraction.text import CountVectorizer
+
 evaluate_vectorizer(CountVectorizer(min_df=2));
 ```
 
@@ -639,6 +641,8 @@ weighted avg       0.80      0.80      0.80       794
 #### Подход 2 : `TfidfVectorizer`
   
 ```python
+from sklearn.feature_extraction.text import TfidfVectorize
+
 evaluate_vectoriser(TfidfVectorizer(min_df=2));
 ```
 
