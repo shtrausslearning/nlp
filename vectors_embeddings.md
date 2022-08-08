@@ -393,14 +393,18 @@ lemmatize_with_mystem('бегал бежал ')
 
 #### 5 | Представление Текста
 
-- Как можно использовать токенизированные тексты в задачах NLP?
-- Какие варианты представления текста можете назвать?
-  - Label Encoder
-  - One-Hot Encoder 
-  - Bag-of-Words
-  - TF-IDF
+Зададим себе вопрос:
 
-#### **Label Encoder**
+- Как можно использовать токенизированные тексты в задачах NLP?
+
+Какие варианты представления текста можете назвать?
+
+- Label Encoder
+- One-Hot Encoder 
+- Bag-of-Words
+- TF-IDF
+
+#### `Label Encoder`
 
 ```python
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
@@ -415,7 +419,7 @@ corpus_encoded = label_encoder.fit_transform(words)
 array([0, 2, 1])
 ```
 
-#### **One-Hot Encoding (OHE)**
+#### `One-Hot Encoding` (OHE)
 
 ```python
 onehot_encoder = OneHotEncoder(sparse=False)
@@ -428,7 +432,7 @@ array([[1., 0., 0.],
        [0., 1., 0.]])
 ```
 
-#### **Bag of Words**
+#### `Bag of Words`
 
 - 4 текста, **один набор слов**, посчитаем количество слов в текстах <code>CountVectorizer</code>
 
@@ -474,7 +478,7 @@ vectorizer.vocabulary_
  'васька': 0}
 ```
 
-#### **TF-IDF**
+#### `TF-IDF`
 
 - **Term Frequency**  $tf(w,d)$ - сколько раз слово $w$ встретилось в документе $d$
 - **Document Frequency** $df(w)$ - сколько документов содержат слово $w$
