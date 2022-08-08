@@ -104,10 +104,21 @@ text.split()
  '01.01.2050.']
  ```
 
-#### 3.2 | Модуль <code>pymorphy2</code>
+#### 3.2 | Модуль **pymorphy2**
 
 - В библиотеке для морфологического анализа для русского языка <code>pymorphy2</code>
 - Простая вспомогательная функция <code>simple_word_tokenize</code> для **токенизации**
+
+```python
+GROUPING_SPACE_REGEX = re.compile(r'([^\w_-]|[+])', re.UNICODE)
+
+def simple_word_tokenize(text, _split=GROUPING_SPACE_REGEX.split):
+    """
+    Split text into tokens. Don't split by a hyphen.
+    Preserve punctuation, but not whitespaces.
+    """
+    return [t for t in _split(text) if t and not t.isspace()]
+```
 
 ```python
 from pymorphy2.tokenizers import simple_word_tokenize
@@ -139,14 +150,14 @@ simple_word_tokenize(text)
  '.']
  ```
  
-#### 3.3 | Модуль <code>ntlk</code>
+#### 3.3 | Модуль **ntlk**
 - Более сложной метод <code>токенизации</code> представлен в <code>nltk</code> (общего NLP)
 - Используем метод <code>sent_tokenize</code>
 
 ```python
 from nltk import sent_tokenize, word_tokenize, wordpunct_tokenize
 
-sentences=sent_tokenize(text)
+sentences = sent_tokenize(text)
 ```
 
 ```python
@@ -191,7 +202,7 @@ sentences=sent_tokenize(text)
  ['До', '01', '.', '01', '.', '2050', '.']]
  ```
  
-#### 3.4 | Модуль <code>razdel</code>
+#### 3.4 | Модуль **razdel**
 - Для русского языка также есть новая специализированная библиотека <code>razdel</code>
  
  ```python
