@@ -22,16 +22,16 @@ For <code>tokenisation</code>, we have the following options, calling from (<cod
 
 When creating a transformer model, we have the following <code>layers</code> available to us from (<code>keras_nlp.layers</code>)
 
-- TransformerEncoder layer
-- TransformerDecoder layer
-- FNetEncoder layer
-- PositionEmbedding layer
-- SinePositionEncoding layer
-- TokenAndPositionEmbedding layer
-- MLMMaskGenerator layer
-- MLMHead layer
-- [<code>StartEndPacker</code>](https://keras.io/api/keras_nlp/layers/start_end_packer/) layer
-- MultiSegmentPacker layer
+- [<code>TransformerEncoder</code>](https://keras.io/api/keras_nlp/layers/transformer_encoder/)
+- [<code>TransformerDecoder</code>](https://keras.io/api/keras_nlp/layers/transformer_decoder/)
+- FNetEncoder
+- PositionEmbedding
+- SinePositionEncoding
+- TokenAndPositionEmbedding
+- MLMMaskGenerator
+- MLMHead
+- [<code>StartEndPacker</code>](https://keras.io/api/keras_nlp/layers/start_end_packer/)
+- MultiSegmentPacker
 
 ### Metrics
 
