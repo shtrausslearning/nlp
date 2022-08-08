@@ -527,14 +527,19 @@ idf_vectorizer.vocabulary_
 
 ### 6 | Классификация
 
-#### 6.1| Загрузка тренировочных и тестовых данных
+- Мы применим методы **предобработки** и **представления текста** на примере анализа тональности текста
+- В качестве данных, используем датасет твитов. Всего в данных 2 класса, позитив и негативное мнение
+
+#### 6.1 | Загрузка тренировочных и тестовых данных
+
+- Данные загружены в папку [<code>data/embeddings/</code>](https://github.com/shtrausslearning/nlp/tree/main/data/embeddings)
 
 ```python
 
 import pandas as pd
 
-train = pd.read_csv('../input/lecture-5-embeddings/train.csv')
-test = pd.read_csv('../input/lecture-5-embeddings/test.csv')
+train = pd.read_csv('kaggle/input/embeddings/train.csv')
+test = pd.read_csv('kaggle/input/embeddings/test.csv')
 train.head()
 
 ```
@@ -593,7 +598,7 @@ def evaluate_vectoriser(vectoriser):
 
 #### 6.3 | Сравнение способов представления текста
 
-Для решения задачи, рассмотрим разные подходы
+Для решения задачи, рассмотрим разные подходы:
 
 - `CountVectorizer`
 - `TfidfVectorizer`
