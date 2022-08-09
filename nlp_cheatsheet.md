@@ -53,3 +53,86 @@ split_sentences(paragraph)
 from gensim.utils import tokenize
 list(tokenize(paragraph))
 ```
+
+### 2 | Feature Generation
+
+#### 2.1 | Bag of Words
+
+- Bag of Words model is used to preprocess the text by converting it into a bag of words, which keeps a count of the total occurrences of most frequently used words
+- counters = List of stences after pre processing like tokenization, stemming/lemmatization, stopwords
+
+```python
+from sklearn.feature_extraction.text import CountVectorizer
+cv = CountVectorizer(max_features = 1500)
+X = cv.fit_transform(counters).toarray()
+```
+
+#### 2.2 | TF-IDF features
+
+Term Frequency-Inverse Document Frequency (TF-IDF):
+
+- Numerical statistic that is intended to reflect **how important a word is** to a document in a collection or corpus
+- `T.F`  No of rep of words in setence/No of words in sentence
+- `IDF` No of sentences / No of sentences containing words
+
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+cv = TfidfVectorizer()
+X = cv.fit_transform(counters).toarray()
+```
+
+N-gram Language Model:  An N-gram is a sequence of N tokens (or words)
+
+- `1-gram` (or unigram) is a one-word sequence.the unigrams would simply be: “I”, “love”, “reading”, “blogs”, “about”, “data”, “science”, “on”, “Analytics”, “Vidhya”
+- `2-gram` (or bigram) is a two-word sequence of words, like “I love”, “love reading”, or “Analytics Vidhya”
+- `3-gram` (or trigram) is a three-word sequence of words like “I love reading”, “about data science” or “on Analytics Vidhya”
+
+### 3 | Stemming & Lemmatisation
+
+### 3.1 | Stemming
+
+- From `stemming` we will process of getting the root form of a word 
+- We would create the stem words by removing the prefix of suffix of a word
+- So, stemming a word may not result in actual words
+
+```python
+paragraph = ""
+```
+
+#### NLTK module
+
+```python
+from nltk.stem import PorterStemmer
+from nltk import sent_tokenize
+from nltk import word_tokenize
+stem = PorterStemmer()
+
+sentence = sent_tokenize(paragraph)[1]
+words = word_tokenize(sentence)
+[stem.stem(word) for word in words]
+```
+
+### 3.2 | Lemmatization
+
+- `Lemmatization` do the same, only diff is that lemmatization ensures that root word belongs to the language
+
+#### NLTK module 
+
+```python
+from nltk.stem import WordNetLemmatizer
+lemma = WordNetLemmatizer()
+
+sentence = sent_tokenize(paragraph)[1]
+words = word_tokenize(sentence)
+[lemma.lemmatize(word) for word in words]
+```
+
+#### SpaCy module
+
+```python
+import spacy as spac
+sp = spac.load('en_core_web_sm')
+ch = sp(u'warning warned')
+for x in ch:
+    print(ch.lemma_)
+```
