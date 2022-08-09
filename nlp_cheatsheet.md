@@ -6,12 +6,15 @@
   - If the text is split into words using some separation technique it is called `word tokenization`
   - For sentences is called `sentence tokenization`
 
+```python
+paragraph = "write paragaraph here to convert into tokens."
+```
+
 #### 1.1 | NLTK module
 
 ```python
 import nltk
 nltk.download('punkt')
-paragraph = "write paragaraph here to convert into tokens."
 
 sentences = nltk.sent_tokenize(paragraph)
 
