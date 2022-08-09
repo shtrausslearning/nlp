@@ -21,7 +21,7 @@ print(stem_eng,stem_rus)
 run бежа
 ```
 
-#### 2 | Lemmatisation
+### 2 | Lemmatisation
 
 Change words to a **starting morphological form** (using dictionary & grammar of the language)
 
