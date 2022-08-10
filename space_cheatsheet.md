@@ -1,4 +1,6 @@
 
+### SpaCy NLP library operations
+
 Refernce library [`SpaCy`](https://spacy.io)
 
 ```python
@@ -7,51 +9,57 @@ import spacy
 # statistical model 
 nlp = spacy.load("en_core_web_sm")
 
-# load strings
+# load 
 doc = nlp('Are you afraid of something?')
 
 tokens = [token.text for token in doc]
-print(tokens)
-```
+print(f'Tokens (.text): {tokens}\n')
 
-```python
-# Parts of Speech
 pos = [token.pos_ for token in doc] # Parts of speech
 posf = [token.tag_ for token in doc] # Parts of speech
-print(pos,'\n',posf)
-```
+print(f'POS: {pos}',f'\n',f'POSF: {posf}\n')
 
-```python
 # Syntactic dependencies
 depl = [token.dep_ for token in doc] # dependency labels
 sht = [token.head.text for token in doc] # Syntactic head token (governor)
-print(depl,'\n',sht)
-```
+print(f'Syntatic dependencies: {depl}','\n',f'{sht}\n')
 
-```python
 # Named Entities
 doc = nlp("Larry Page founded Google")
 ne = [(ent.text, ent.label_) for ent in doc.ents] # Text and label of named entity span
-print(ne)
-```
+print(f'Named entities: {ne}\n')
 
-```python
 # Sentences
 doc = nlp("This a sentence. This is another one.")
 sents = [sent.text for sent in doc.sents]
-print(sents)
-```
+print(f'Sentences: {sents}\n')
 
-```python
 # Base Noun phrases
 doc = nlp("I have a red car")
 bn = [chunk.text for chunk in doc.noun_chunks] # doc.noun_chunks is a generator that yields spans
-print(bn)
-```
+print(f'Base noun phrases: {bn}\n')
 
-```python
 # Label Explanations
 le1 = spacy.explain("RB") # 'adverb'
 le2 = spacy.explain("GPE") # 'Countries, cities, states'
-print(le1,le2)
+print(f'Label explanations: {le1},{le2}')
 ```
+
+```
+Tokens (.text): ['Are', 'you', 'afraid', 'of', 'something', '?']
+
+POS: ['AUX', 'PRON', 'ADJ', 'ADP', 'PRON', 'PUNCT'] 
+ POSF: ['VBP', 'PRP', 'JJ', 'IN', 'NN', '.']
+
+Syntatic dependencies: ['ROOT', 'nsubj', 'acomp', 'prep', 'pobj', 'punct'] 
+ ['Are', 'Are', 'Are', 'afraid', 'of', 'Are']
+
+Named entities: [('Larry Page', 'PERSON')]
+
+Sentences: ['This a sentence.', 'This is another one.']
+
+Base noun phrases: ['I', 'a red car']
+
+Label explanations: adverb,Countries, cities, states
+```
+
