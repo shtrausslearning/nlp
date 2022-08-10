@@ -13,12 +13,41 @@ paragraph = "write paragaraph here to convert into tokens."
 #### 1.1 | NLTK module
 
 ```python
-import nltk
+import nltk.tokenize from sent_tokenize, word_tokenize
+
 nltk.download('punkt')
 
 sentences = nltk.sent_tokenize(paragraph)
-
 words = nltk.word_tokenize(paragraph)
+```
+  
+```python
+from nltk.tokenize import TreebankWordTokenizer
+
+tokenizer = TreebankWordTokenizer()
+tokenizer.tokenize(text)
+```
+
+```python
+from nltk.tokenize import PunktWordTokenizer
+  
+tokenizer = PunktWordTokenizer()
+tokenizer.tokenize("Let's see how it's working.")
+```
+
+```python
+from nltk.tokenize import WordPunctTokenizer
+  
+tokenizer = WordPunctTokenizer()
+tokenizer.tokenize("Let's see how it's working.")
+```
+
+```python
+from nltk.tokenize import RegexpTokenizer
+  
+tokenizer = RegexpTokenizer("[\w']+")
+text = "Let's see how it's working."
+tokenizer.tokenize(text)
 ```
 
 #### 1.2 | SpaCy module
