@@ -13,7 +13,9 @@ Upon defining `nlp()`, we have access to:
 - `.tag_` : Fine-grained `POS` tags
 - `.dep_` : Dependency labels
 - `.head.text` : Syntactic head token (governor)
-- `.ents` (`.text`,`.label`) tuple
+- `.ents` (`.text`,`.label`) Named Entities
+- `.noun_chunks` Base noun phrases
+- `.sents` Sentences
 
 ```python
 import spacy
