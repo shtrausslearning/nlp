@@ -1,7 +1,7 @@
 
 ![](https://i.imgur.com/rRZBFnz.png)
 
-### 1 | Defining `model` & input `string`
+### 1 | Defining statistical model & input
 
 Load statistical model [`.load(model)`](https://spacy.io/usage/models)
 
@@ -24,6 +24,7 @@ Upon defining `nlp()`, we have access to:
 - `.sents` Sentences
 - `.pos_` : Coarse-grained `POS` tags
 - `.tag_` : Fine-grained `POS` tags
+- `.lemma_` : lemmatised tokens
 - `.dep_` : Dependency labels
 - `.head.text` : Syntactic head token (governor)
 - `.ents` (`.text`,`.label`) Named Entities
@@ -38,7 +39,10 @@ Upon defining `nlp()`, we have access to:
 # [(ent.text, ent.label_) for ent in doc.ents]
 # [sent.text for sent in doc.sents]
 # [chunk.text for chunk in doc.noun_chunks]
+# [token.lemma_ for token in doc]
 ```
+
+The content of the output actually depends on the `pipeline` content
 
 ### 3 | Pipeline Content
 
@@ -68,28 +72,99 @@ print(nlp.pipeline)
   ('attribute_ruler', <spacy.pipeline.attributeruler.AttributeRuler object at 0x7fab0100d280>), 
   ('lemmatizer', <spacy.lang.en.lemmatizer.EnglishLemmatizer object at 0x7fab01005230>), 
   ('ner', <spacy.pipeline.ner.EntityRecognizer object at 0x7fab2908eed0>)]
- ```
+```
  
- #### 3.2 | Built-in pipeline components
- 
- - `tagger` Assign part-of-speech-tags
- - `parser` Assign dependency labels
- - `ner` Assign named entities
- - `entity_linker` Assign knowledge base IDs to named entities. Should be added after the entity recognizer
- - `entity_ruler` Assign named entities based on pattern rules and dictionaries
- - `textcat` Assign text categories: exactly one category is predicted per document
- - `textcat_multilabel` Assign text categories in a multi-label setting: zero, one or more labels per document
- - `lemmatizer` Assign base forms to words using rules and lookups
- - `trainable_lemmatizer` Assign base forms to words
- - `morphologizer` Assign morphological features and coarse-grained POS tags
- - `attribute_ruler` Assign token attribute mappings and rule-based exceptions
- - `senter` Assign sentence boundaries
- - `sentencizer` Add rule-based sentence segmentation without the dependency parse
- - `tok2vec` Assign token-to-vector embeddings
- - `transformer` Assign the tokens and outputs of a transformer model
- 
- 
+#### 3.2 | Built-in pipeline components
 
+Depending on the `pipeline`, the content can slightly vary
+ 
+- `tagger` Assign part-of-speech-tags
+- `parser` Assign dependency labels
+- `ner` Assign named entities
+- `entity_linker` Assign knowledge base IDs to named entities. Should be added after the entity recognizer
+- `entity_ruler` Assign named entities based on pattern rules and dictionaries
+- `textcat` Assign text categories: exactly one category is predicted per document
+- `textcat_multilabel` Assign text categories in a multi-label setting: zero, one or more labels per document
+- `lemmatizer` Assign base forms to words using rules and lookups
+- `trainable_lemmatizer` Assign base forms to words
+- `morphologizer` Assign morphological features and coarse-grained POS tags
+- `attribute_ruler` Assign token attribute mappings and rule-based exceptions
+- `senter` Assign sentence boundaries
+- `sentencizer` Add rule-based sentence segmentation without the dependency parse
+- `tok2vec` Assign token-to-vector embeddings
+- `transformer` Assign the tokens and outputs of a transformer model
+ 
+#### 3.3 | Partially loading components
+ 
+- If we don't want to load all components in the `pipeline`, we can remove them when activating the `str` special function
+- For example, if we didn't want to load the `parser` & `ner` components of the `pipeline`
+ 
+```python
+doc = nlp(doc, disable=['parser', 'ner'])
+```
+
+#### 3.4 | Incorporating SpaCy pipeline in text cleaning 
+
+Typicaly we would have more than one string which we want to process, let's look at an example of how we can implement the `SpaCy` pipeline
+
+- We will utilise `SpaCy` to tokenise `corpus` & utilise the `tokenised` & `lammatised` words (which we can access from `.lemma_`
+- We will also utilise `nltk`, which contains a `list` of so called `stop words`, which we will remove
+- We will also utilise `string`, which contains a `list` of punctuations, anything in this list we will also remove
+
+```python
+
+# list of strings (our input corpus)
+corpus = ['Evidently someone with the authority to make decisions has arrived.',
+          'I think I smell the stench of your cologne, Agent Cooper.',
+          'Smells like hubris.']
+
+import spacy
+
+# get english stopwords
+from nltk.corpus import stopwords
+stopwords = stopwords.words('english')
+
+# get punctuations
+import string
+punctuations = string.punctuation
+
+# Define function to cleanup text by removing personal pronouns, stopwords, and puncuation
+def cleanup_text(docs, verbose=False):
+    texts = []
+    for ii,doc in enumerate(docs):
+    
+        if(ii % 1000 == 0 and verbose):
+            print(f"Processed {ii+1} out of {len(docs)} documents.")
+        
+        # Load statistical model
+        nlp = spacy.load("en_core_web_sm",
+                         disable=['parser', 'ner'])
+        doc = nlp(doc)
+        
+        # choose tokens which are not pronouns (pos_)
+        tokens = [tok.lemma_.lower().strip() for tok in doc if tok.pos_ != 'PRON'] 
+
+        # choose tokens which are not punctuations (token) 
+        tokens = [tok for tok in tokens if tok not in stopwords and tok not in punctuations]
+
+        tokens = ' '.join(tokens)
+        texts.append(tokens)
+        
+    return texts
+
+print(f'unprocessed: \n{corpus}')
+
+processed = cleanup_text(corpus)
+print(f'\nprocessed: \n{processed}')
+```
+
+```
+unprocessed: 
+['Evidently someone with the authority to make decisions has arrived.', 'I think I smell the stench of your cologne, Agent Cooper.', 'Smells like hubris.']
+
+processed: 
+['evidently authority make decision arrive', 'think smell stench cologne agent cooper', 'smell like hubris']
+```
 
 ### 4 | Examples
 
