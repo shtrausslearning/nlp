@@ -1,7 +1,7 @@
 
-### [`SpaCy`](https://spacy.io) NLP library operations
+## [`SpaCy`](https://spacy.io) NLP library 
 
-#### 1 | Defining `model` & input `string`
+### 1 | Defining `model` & input `string`
 
 Load statistical model `.load(model)`
 
@@ -16,6 +16,7 @@ Define string `nlp(string)`
 ```python
 doc = nlp('input string')
 ```
+### 2 | Pipeline Output
 
 Upon defining `nlp()`, we have access to:
 
@@ -39,17 +40,36 @@ Upon defining `nlp()`, we have access to:
 # [chunk.text for chunk in doc.noun_chunks]
 ```
 
-### Pipeline
+### 3 | Pipeline Content
 
 - Each model has a preloaded `pipeline` of NLP operations 
-- Upon activating the `str` special method these pipelines are activated
+- Upon activating the `str` special method, these pipelines are activated
+- We can visualise the pipeline step using `.pipe_names` & contents with `.pipeline`
 
 ```python
 nlp = spacy.load("en_core_web_sm")
-doc = nlp('Are you afraid of something?')
+print(nlp.pipe_names)
 ```
 
-#### Examples
+```
+['tok2vec', 'morphologizer', 'parser', 'attribute_ruler', 'lemmatizer', 'ner']
+```
+
+```python
+print(nlp.pipeline)
+```
+
+```
+ [('tok2vec', <spacy.pipeline.tok2vec.Tok2Vec object at 0x7fab27982670>), 
+  ('tagger', <spacy.pipeline.tagger.Tagger object at 0x7fab2fe42130>), 
+  ('parser', <spacy.pipeline.dep_parser.DependencyParser object at 0x7fab290957d0>), 
+  ('attribute_ruler', <spacy.pipeline.attributeruler.AttributeRuler object at 0x7fab0100d280>), 
+  ('lemmatizer', <spacy.lang.en.lemmatizer.EnglishLemmatizer object at 0x7fab01005230>), 
+  ('ner', <spacy.pipeline.ner.EntityRecognizer object at 0x7fab2908eed0>)]
+ ```
+
+
+### 4 | Examples
 
 ```python
 import spacy
