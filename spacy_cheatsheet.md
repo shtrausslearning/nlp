@@ -107,9 +107,12 @@ doc = nlp(doc, disable=['parser', 'ner'])
 
 Let's look at an example of how we can implement the `SpaCy` pipeline
 
-- We will utilise `SpaCy` to tokenise `corpus` & utilise the `tokenised` & `lammatised` words (which we can access from `.lemma_`
+- We will utilise `SpaCy` to tokenise `corpus` & utilise the `tokenised` & `lammatised` words (which we can access from `.lemma_`)
+
+We need some extra libraries:
+
 - We will also utilise `nltk`, which contains a `list` of so called `stop words`, which we will remove
-- We will also utilise `string`, which contains a `list` of punctuations, anything in this list we will also remove
+- We will also utilise `string`, which contains a `list` of **punctuations**, anything in this list we will also remove
 
 ```python
 
