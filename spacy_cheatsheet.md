@@ -41,7 +41,13 @@ Upon defining `nlp()`, we have access to:
 
 ### Pipeline
 
-Each model has a preloaded `pipeline` of NLP operations upon 
+- Each model has a preloaded `pipeline` of NLP operations 
+- Upon activating the `str` special method these pipelines are activated
+
+```python
+nlp = spacy.load("en_core_web_sm")
+doc = nlp('Are you afraid of something?')
+```
 
 #### Examples
 
