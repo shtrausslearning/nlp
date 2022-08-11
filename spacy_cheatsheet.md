@@ -1,7 +1,5 @@
 
-## SpaCy NLP library 
-
-[`SpaCy`](https://spacy.io)
+![](https://i.imgur.com/rRZBFnz.png)
 
 ### 1 | Defining `model` & input `string`
 
