@@ -105,7 +105,7 @@ doc = nlp(doc, disable=['parser', 'ner'])
 
 #### 3.4 | Incorporating SpaCy pipeline in text cleaning 
 
-Typicaly we would have more than one string which we want to process, let's look at an example of how we can implement the `SpaCy` pipeline
+Let's look at an example of how we can implement the `SpaCy` pipeline
 
 - We will utilise `SpaCy` to tokenise `corpus` & utilise the `tokenised` & `lammatised` words (which we can access from `.lemma_`
 - We will also utilise `nltk`, which contains a `list` of so called `stop words`, which we will remove
