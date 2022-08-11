@@ -1,9 +1,11 @@
 
-## [`SpaCy`](https://spacy.io) NLP library 
+## SpaCy NLP library 
+
+[`SpaCy`](https://spacy.io)
 
 ### 1 | Defining `model` & input `string`
 
-Load statistical model `.load(model)`
+Load statistical model [`.load(model)`](https://spacy.io/usage/models)
 
 ```python
 # nlp = spacy.load("ru_core_news_sm")
@@ -42,6 +44,8 @@ Upon defining `nlp()`, we have access to:
 
 ### 3 | Pipeline Content
 
+#### 3.1 | Check pipeline content
+
 - Each model has a preloaded `pipeline` of NLP operations 
 - Upon activating the `str` special method, these pipelines are activated
 - We can visualise the pipeline step using `.pipe_names` & contents with `.pipeline`
@@ -67,6 +71,26 @@ print(nlp.pipeline)
   ('lemmatizer', <spacy.lang.en.lemmatizer.EnglishLemmatizer object at 0x7fab01005230>), 
   ('ner', <spacy.pipeline.ner.EntityRecognizer object at 0x7fab2908eed0>)]
  ```
+ 
+ #### 3.2 | Built-in pipeline components
+ 
+ - `tagger` Assign part-of-speech-tags
+ - `parser` Assign dependency labels
+ - `ner` Assign named entities
+ - `entity_linker` Assign knowledge base IDs to named entities. Should be added after the entity recognizer
+ - `entity_ruler` Assign named entities based on pattern rules and dictionaries
+ - `textcat` Assign text categories: exactly one category is predicted per document
+ - `textcat_multilabel` Assign text categories in a multi-label setting: zero, one or more labels per document
+ - `lemmatizer` Assign base forms to words using rules and lookups
+ - `trainable_lemmatizer` Assign base forms to words
+ - `morphologizer` Assign morphological features and coarse-grained POS tags
+ - `attribute_ruler` Assign token attribute mappings and rule-based exceptions
+ - `senter` Assign sentence boundaries
+ - `sentencizer` Add rule-based sentence segmentation without the dependency parse
+ - `tok2vec` Assign token-to-vector embeddings
+ - `transformer` Assign the tokens and outputs of a transformer model
+ 
+ 
 
 
 ### 4 | Examples
