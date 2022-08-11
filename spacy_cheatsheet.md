@@ -1,9 +1,18 @@
 
 ### SpaCy NLP library operations
 
+#### 1 | Defining `model` & `
+
 Refernce library [`SpaCy`](https://spacy.io)
 
-- load model `.load(model)`
+- load statistical model `.load(model)`
+
+```python
+# nlp = spacy.load("ru_core_news_sm")
+nlp = spacy.load("ru_core_news_lg")
+# nlp = spacy.load('en_core_web_sm')
+```
+
 - define string `nlp(string)`
 
 Upon defining `nlp()`, we have access to:
@@ -16,6 +25,21 @@ Upon defining `nlp()`, we have access to:
 - `.ents` (`.text`,`.label`) Named Entities
 - `.noun_chunks` Base noun phrases
 - `.sents` Sentences
+
+```python
+# [token.text for token in doc]
+[token.pos_ for token in doc]
+# [token.tag_ for token in doc]
+# [token.dep_ for token in doc]
+# [token.head.text for token in doc]
+# [(ent.text, ent.label_) for ent in doc.ents]
+# [sent.text for sent in doc.sents]
+# [chunk.text for chunk in doc.noun_chunks]
+```
+
+### Pipeline
+
+Each model has a preloaded `pipeline` of NLP operations
 
 ```python
 import spacy
