@@ -323,13 +323,14 @@ doc = nlp(text)
  '.']
 ```
  
-### 4. Приведение слов к нормальной форме (стемминг/лемматизация)
+### 4. Приведение слов к нормальной форме
 
-#### 4.1 Stemming
+#### 4.1 | Stemming (стемминг)
 
-- <code>Стемминг</code> - это нормализация слова путём отбрасывания окончания по правилам языка
-  - Такая нормализация хорошо подходит для языков с небольшим разнообразием словоформ, (английского)
-  - В модуле <code>nltk</code> есть несколько реализаций стеммеров:
+Стемминг` - это `нормализация` слова путём отбрасывания **окончания** по правилам языка
+
+- Такая нормализация хорошо подходит для языков с небольшим разнообразием словоформ, (английского)
+- В модуле <code>nltk</code> есть несколько реализаций стеммеров:
     - Porter stemmer
     - Snowball stemmer
     - Lancaster stemmer
@@ -343,8 +344,9 @@ SnowballStemmer(language='english').stem('running')
 'run'
 ```
   
-- Для Hусского языка этот подход не очень подходит, поскольку в русском есть:
-  - **падежные формы**, **время у глаголов** и т.д.
+Для Русского языка этот подход не очень подходит, поскольку в русском есть:
+  
+- **падежные формы**, **время у глаголов** и т.д.
     
 ```python
 SnowballStemmer(language='russian').stem('бежать')
@@ -354,12 +356,12 @@ SnowballStemmer(language='russian').stem('бежать')
 'бежа'
 ```
 
-#### 4.2 | Lemmatisation
+#### 4.2 | Lemmatisation (лемматизация)
    
 <code>Лемматизация</code> - приведение слов к начальной **морфологической форме** (с помощью **словаря** и **грамматики** языка)
 
  - Самый простой подход к лемматизации <code>словарный</code>.
- - Здесь не учитывается контекст слова, поэтому для омонимов такой подход работает не всегда.
+ - Здесь **не учитывается контекст**, поэтому для омонимов такой подход не всегда работает
  - Такой подход применяет библиотека <code>pymorphy2</code>
 
 ```
@@ -375,13 +377,13 @@ pymorphy.parse('бежал')
 ```
 
 ```python
-def lemmatize_with_pymorphy(tokens):
+def lemPymorphy(tokens):
     lemms = [pymorphy.parse(token)[0].normal_form for token in tokens]
     return lemms
 ```
 
 ```python
-lemmatize_with_pymorphy(['бегут', 'бежал', 'бежите'])
+lemPymorphy(['бегут', 'бежал', 'бежите'])
 ```
 
 ```
@@ -397,7 +399,7 @@ pymorphy.normal_forms('на заводе стали увидел виды ста
 ```
 
 ```python
-lemmatize_with_pymorphy(['на', 'заводе', 'стали', 'увидел', 'виды', 'стали'])
+lemPymorphy(['на', 'заводе', 'стали', 'увидел', 'виды', 'стали'])
 ```
 
 ```
@@ -414,6 +416,8 @@ pymorphy.parse('директора')
  Parse(word='директора', tag=OpencorporaTag('NOUN,anim,masc sing,accs'), normal_form='директор', score=0.163265, methods_stack=((DictionaryAnalyzer(), 'директора', 837, 3),))]
  ```
  
+ Более продвинутый подход
+ 
  - Модуль от Яндекса `mystem3` обходит это ограничение и **рассматривает контекст слова**, используя статистику и правила
 
 ```python
@@ -421,12 +425,11 @@ from pymystem3 import Mystem
 
 mystem = Mystem()
 
-def lemmatize_with_mystem(text):
+def lemMystem(text):
     lemms=[token for token in mystem.lemmatize(text) if token!=' '][:-1]
-    
     return  lemms
     
-lemmatize_with_mystem('бегал бежал ')
+lemMystem('бегал бежал ')
 ```
 
 ```
@@ -443,7 +446,7 @@ lemmatize_with_mystem('бегал бежал ')
 
 #### 5 | Представление Текста
 
-Варианты представления текста можете назвать?
+Варианты представления текста
 
 - Label Encoder
 - One-Hot Encoder 
@@ -452,7 +455,7 @@ lemmatize_with_mystem('бегал бежал ')
 
 #### 5.1 | **Label Encoder**
 
-Самый простой подход, используется с `padding` при подготовки матрицы
+Самый простой подход, используется с `padding` при подготовки 2D матрицы 
 
 ```python
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
@@ -576,7 +579,8 @@ idf_vectorizer.vocabulary_
 ### 6 | Классификация
 
 - Мы применим методы **предобработки** и **представления текста** на примере анализа тональности текста
-- В качестве данных, используем датасет твитов. Всего в данных 2 класса, позитив и негативное мнение
+- В качестве данных, используем датасет твитов.
+- Всего в данных 2 класса, позитив и негативное мнение
 
 #### 6.1 | Загрузка тренировочных и тестовых данных
 
@@ -629,6 +633,8 @@ from sklearn.metrics import classification_report
 # Создание модели классификации
 def evaluate_vectoriser(vectoriser):
 
+    # vectoriser (sklearn)
+
     # Preprocess
     train_vectors = vectoriser.fit_transform(train['text'])
     test_vectors = vectoriser.transform(test['text'])
@@ -652,7 +658,7 @@ def evaluate_vectoriser(vectoriser):
 - `CountVectorizer`
 - `TfidfVectorizer`
 - `TfidfVectorizer` + `tokenizer=tokenize_with_razdel`
-- `TfidfVectorizer` + `lemmatize_with_pymorphy(tokenize_with_razdel(text)`
+- `TfidfVectorizer` + `lemPymorphy(tokenize_with_razdel(text)`
 - `TfidfVectorizer` + `tokenizer` + `stop_words`
 - `TfidfVectorizer` + `tokenizer` + `stop_words` + `ngram_range`
 
