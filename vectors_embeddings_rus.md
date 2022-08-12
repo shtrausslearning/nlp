@@ -666,6 +666,8 @@ def evaluate_vectoriser(vectoriser):
 
 #### Подход 1 : `CountVectorizer`
 
+- `min_df`, а так же `max_df` можно добавить чтобы определить граничные термины 
+
 ```python
 from sklearn.feature_extraction.text import CountVectorizer
 
