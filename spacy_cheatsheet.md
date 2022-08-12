@@ -30,7 +30,7 @@ Upon defining `nlp()`, we have access to:
 - `.ents` (`.text`,`.label`) Named Entities
 - `.noun_chunks` Base noun phrases
 
-#### Tokenised text
+#### 2.1 | Tokenised text
 
 ```python
 [token.text for token in doc]
@@ -50,7 +50,7 @@ Upon defining `nlp()`, we have access to:
  '.']
  ```
  
- #### Lemmatised text
+ #### 2.2 | Lemmatised text
 
 ```python
 [token.lemma_ for token in doc]
@@ -70,7 +70,9 @@ Upon defining `nlp()`, we have access to:
  '.']
  ```
  
- #### Parts-of-Speech (POS)
+ #### 2.3 | Parts-of-Speech (POS)
+ 
+ - We have access to `coarser` and `finer` methods
 
 ```python
 # coarse pos tags
@@ -100,7 +102,7 @@ Upon defining `nlp()`, we have access to:
 ['RB', 'NN', 'IN', 'DT', 'NN', 'TO', 'VB', 'NNS', 'VBZ', 'VBN', '.']
 ```
 
-#### Syntatic dependencies
+#### 2.3 | Syntatic dependencies
 
 ```python
 # dependeny labels
@@ -140,7 +142,7 @@ Upon defining `nlp()`, we have access to:
  'someone']
 ```
 
-#### Named Entities
+#### 2.5 | Named Entities
  
  ```python
  # Named Entities
@@ -151,7 +153,7 @@ Upon defining `nlp()`, we have access to:
 []
 ```
 
-#### Sentences
+#### 2.6 | Sentences
 
 ```python
 [sent.text for sent in doc.sents]
@@ -161,7 +163,7 @@ Upon defining `nlp()`, we have access to:
 ['Evidently someone with the authority to make decisions has arrived.']
 ```
 
-#### Base noun phrases
+#### 2.7 | Base noun phrases
 
 ```python
 [chunk.text for chunk in doc.noun_chunks]
@@ -296,4 +298,68 @@ unprocessed:
 
 processed: 
 ['evidently authority make decision arrive', 'think smell stench cologne agent cooper', 'smell like hubris']
+```
+
+### 3 | Spanning
+
+Like strings, `spanning` is referred to selecting tokenised `text`, we can also use `:` to select multiple
+
+```python
+import spacy
+nlp = spacy.load('en_core_web_sm')
+doc = nlp('I like cats too.')
+doc[1]
+```
+
+```
+like
+```
+
+### 4 | Similarity & Word Vectors
+
+#### 4.1 | Similarity
+
+We can also use `SpaCy` to check the similarity between two input `strings` & compare them
+
+```python
+doc1 = nlp('I like cats too')
+doc2 = nlp('I prefer cats over dogs')
+doc3 = nlp('Tom and John went to the library')
+
+print(doc1.similarity(doc2))
+print(doc1.similarity(doc3))
+```
+
+```
+0.585439442022622     
+-0.012077887409129722
+```
+
+#### 4.2 | Word Vectors
+
+Select one of the `tokenised` words, and visualise the `vector` form
+
+```python
+print(doc1[2].vector) # word vector
+print(f'normalised {doc1.vector_norm}') # enter sentence normalised value
+```
+
+```
+[ 0.67897564  0.12110139 -0.6604409   0.0776536  -1.9418607   0.6940666
+  1.19576     0.6619939   0.50233465  0.05248592 -0.19295473  1.2842398
+  0.723488    0.64765275 -0.46113864 -0.12381127  0.31568098  0.5463978
+ -1.376126   -0.2555286   0.6541349  -0.71979237 -0.14713815  0.79841524
+ -0.9361088  -0.14297551  1.2247958   0.5354835  -0.5443332  -0.42707154
+  0.55424935  0.8715273  -0.25182363 -1.5841036  -0.14750908 -0.65078586
+ -0.17169908 -0.5729357  -0.13728389 -0.1380899   0.12419317 -0.25010562
+  0.06765506  0.1825014  -0.6063776  -0.7749779   1.1444601   0.5669737
+ -1.0870733  -0.39480096 -0.3147017  -0.10073815 -1.1867158  -1.7028933
+  0.72262895  0.49310595  0.600273    0.16741765  0.57921666 -1.0983374
+ -0.5445302  -1.3918273  -0.4013725   2.2526665   1.0592192  -0.45277885
+ -0.6982554  -0.31604335  0.6993128   0.4112054  -0.02864948  0.13155304
+ -0.77090514 -0.19796075 -0.30412257  1.1847382  -0.0515812  -0.14376783
+  0.39952287  0.81643397  1.226792   -0.323776   -0.27826166 -1.7565243
+ -0.2628545   0.1729832  -0.6630485  -0.49979892 -0.40806353 -1.7938248
+ -0.56411684 -0.5260589   0.8754898   2.4937406   0.05924536 -1.4038779 ]
+normalised 4.218990020889313
 ```
