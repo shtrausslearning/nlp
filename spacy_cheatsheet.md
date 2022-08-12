@@ -14,32 +14,155 @@ nlp = spacy.load("ru_core_news_lg")
 Define string `nlp(string)`
 
 ```python
-doc = nlp('input string')
+doc = nlp('Evidently someone with the authority to make decisions has arrived.')
 ```
 ### 2 | Pipeline Output
 
 Upon defining `nlp()`, we have access to:
 
 - `.text` : Tokens
-- `.sents` Sentences
-- `.pos_` : Coarse-grained `POS` tags
-- `.tag_` : Fine-grained `POS` tags
 - `.lemma_` : lemmatised tokens
+- `.sents` Sentences
+- `.pos_` : Coarse `POS` tags
+- `.tag_` : Fine `POS` tags
 - `.dep_` : Dependency labels
-- `.head.text` : Syntactic head token (governor)
+- `.head.text` : Syntactic head token
 - `.ents` (`.text`,`.label`) Named Entities
 - `.noun_chunks` Base noun phrases
 
+#### Tokenised text
+
 ```python
-# [token.text for token in doc]
+[token.text for token in doc]
+```
+
+```
+['Evidently',
+ 'someone',
+ 'with',
+ 'the',
+ 'authority',
+ 'to',
+ 'make',
+ 'decisions',
+ 'has',
+ 'arrived',
+ '.']
+ ```
+ 
+ #### Lemmatised text
+
+```python
+[token.lemma_ for token in doc]
+```
+
+```
+['evidently',
+ 'someone',
+ 'with',
+ 'the',
+ 'authority',
+ 'to',
+ 'make',
+ 'decision',
+ 'have',
+ 'arrive',
+ '.']
+ ```
+ 
+ #### Parts-of-Speech (POS)
+
+```python
 [token.pos_ for token in doc]
-# [token.tag_ for token in doc]
+```
+
+```
+['ADV',
+ 'PRON',
+ 'ADP',
+ 'DET',
+ 'NOUN',
+ 'PART',
+ 'VERB',
+ 'NOUN',
+ 'AUX',
+ 'VERB',
+ 'PUNCT']
+```
+
+```python
+[token.tag_ for token in doc]
+```
+
+```
+['RB', 'NN', 'IN', 'DT', 'NN', 'TO', 'VB', 'NNS', 'VBZ', 'VBN', '.']
+```
+
+#### Syntatic dependencies
+
+```python
 # [token.dep_ for token in doc]
-# [token.head.text for token in doc]
-# [(ent.text, ent.label_) for ent in doc.ents]
-# [sent.text for sent in doc.sents]
-# [chunk.text for chunk in doc.noun_chunks]
-# [token.lemma_ for token in doc]
+```
+
+```
+['advmod',
+ 'ROOT',
+ 'prep',
+ 'det',
+ 'pobj',
+ 'aux',
+ 'acl',
+ 'nsubj',
+ 'aux',
+ 'ccomp',
+ 'punct']
+```
+
+```python
+[token.head.text for token in doc]
+```
+
+```
+['someone',
+ 'someone',
+ 'someone',
+ 'authority',
+ 'with',
+ 'make',
+ 'authority',
+ 'arrived',
+ 'arrived',
+ 'make',
+ 'someone']
+```
+
+#### Named Entities
+ 
+ ```python
+ # Named Entities
+ [(ent.text, ent.label_) for ent in doc.ents]
+```
+ 
+```
+[]
+```
+
+#### Syntax iterators
+
+```python
+[sent.text for sent in doc.sents]
+```
+
+```
+['Evidently someone with the authority to make decisions has arrived.']
+```
+
+```python
+[chunk.text for chunk in doc.noun_chunks]
+```
+
+```
+['Evidently someone', 'the authority', 'decisions']
 ```
 
 The content of the output actually depends on the `pipeline` content
