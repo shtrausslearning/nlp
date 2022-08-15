@@ -1,5 +1,5 @@
 
-![](https://i.imgur.com/rRZBFnz.png)
+
 
 ### 1 | Defining statistical model & input
 
