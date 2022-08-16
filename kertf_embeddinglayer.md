@@ -1,4 +1,6 @@
+## Keras/Tensorflow Embedding Layer usage
 
+Together with `GloVe` pretrained weights
 
 ### 1 | Word Embedding
 
@@ -149,7 +151,7 @@ for word, i in c.items():
 		embedding_matrix[i] = embedding_vector
 ```
 
-### 4 | Define a Model
+### 5 | Define a Model
 
 Binary classification model w/ `embedding` layer
 
