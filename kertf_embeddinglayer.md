@@ -14,7 +14,7 @@
 - It was trained on a dataset of one billion tokens (words) with a vocabulary of 400 thousand words. 
 - There are a few different embedding vector sizes, including 50, 100, 200 and 300 dimensions.
 
-We can check the format in the file `glove.6B.100d.txt`
+We can check the format in the file `glove.6B.100d.txt`, for each word we have a **vector representation**:
 
 ```
 the 0.418 0.24968 -0.41242 0.1217 0.34527 -0.044457 -0.49688 -0.17862 -0.00066023 -0.6566 0.27843 -0.14767 -0.55677 0.14658 -0.0095095 0.011658 0.10204 -0.12792 -0.8443 -0.12181 -0.016801 -0.33279 -0.1552 -0.23131 -0.19181 -1.8823 -0.76746 0.099051 -0.42125 -0.19526 4.0071 -0.18594 -0.52287 -0.31681 0.00059213 0.0074449 0.17778 -0.15897 0.012041 -0.054223 -0.29871 -0.15749 -0.34758 -0.045637 -0.44251 0.18785 0.0027849 -0.18411 -0.11514 -0.78581
@@ -25,8 +25,9 @@ to 0.68047 -0.039263 0.30186 -0.17792 0.42962 0.032246 -0.41376 0.13228 -0.29847
 and 0.26818 0.14346 -0.27877 0.016257 0.11384 0.69923 -0.51332 -0.47368 -0.33075 -0.13834 0.2702 0.30938 -0.45012 -0.4127 -0.09932 0.038085 0.029749 0.10076 -0.25058 -0.51818 0.34558 0.44922 0.48791 -0.080866 -0.10121 -1.3777 -0.10866 -0.23201 0.012839 -0.46508 3.8463 0.31362 0.13643 -0.52244 0.3302 0.33707 -0.35601 0.32431 0.12041 0.3512 -0.069043 0.36885 0.25168 -0.24517 0.25381 0.1367 -0.31178 -0.6321 -0.25028 -0.38097
 ```
 
+Load the whole `GloVe` embeddings into memory
+
 ```python
-# load the whole GloVe embedding into memory
 embeddings_index = {}
 
 f = open('glove.6B.100d.txt')
@@ -35,6 +36,7 @@ for line in f:
 	word = values[0]
 	coefs = np.asarray(values[1:], dtype='float32')
 	embeddings_index[word] = coefs
+
 f.close()
 print(f'Loaded {len(embeddings_index)} word vectors.')
 ```
