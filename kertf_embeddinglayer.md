@@ -184,5 +184,45 @@ print(model.summary())
 ```
 
 ```
+odel: "sequential_2"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ embedding_5 (Embedding)     (None, 4, 8)              120       
+                                                                 
+ flatten_2 (Flatten)         (None, 32)                0         
+                                                                 
+ dense_2 (Dense)             (None, 1)                 33        
+                                                                 
+=================================================================
+Total params: 153
+Trainable params: 153
+Non-trainable params: 0
+_________________________________________________________________
+```
 
+### 6 | Compile & Train the model
+
+```
+# compile the model
+model.compile(optimizer='adam', 
+              loss='binary_crossentropy', 
+              metrics=['accuracy'])
+
+# fit the model
+model.fit(padded_docs, labels,
+          epochs=50,
+          verbose=0)
+
+# evaluate the model
+loss, accuracy = model.evaluate(padded_docs, 
+                                labels,
+                                verbose=0)
+
+# training accuracy                     
+print(f'Accuracy: {accuracy*100:.5f}')
+```
+
+```
+Accuracy: 90.00000
 ```
