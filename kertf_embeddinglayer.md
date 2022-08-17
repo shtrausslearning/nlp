@@ -1,6 +1,6 @@
 ## Keras/Tensorflow Embedding Layer usage
 
-Together with `GloVe` pretrained weights
+Together with `GloVe` embedding vector weights
 
 ### 1 | Word Embedding
 
