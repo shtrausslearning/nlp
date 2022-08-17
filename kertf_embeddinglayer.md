@@ -205,7 +205,7 @@ _________________________________________________________________
 
 Let's train the **binary classifier**, using `loss` binary_crossentropy & `optimiser` adam & evaluate on the same dataset
 
-```
+```python
 # compile the model
 model.compile(optimizer='adam', 
               loss='binary_crossentropy', 
