@@ -159,7 +159,7 @@ Binary classification model w/ `embedding` layer
 # Define the model
 model = Sequential()
 
-# Use GloVe weights (non trainable)
+# Use GloVe weights (frozen, non trainable)
 emb_layer = Embedding(input_dim=vocab_size,         # Input into embedding layer
                       output_dim = 100,             # Output out of embedding layer
                       weights=[embedding_matrix],   # Custom weights
