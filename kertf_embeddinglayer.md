@@ -151,7 +151,7 @@ for word, i in c.items():
 		embedding_matrix[i] = embedding_vector
 ```
 
-### 5 | Define a Model
+### 5 | Define a Model & compile it
 
 Create a binary classification model w/ `embedding` layer using the predefined weights `embedding_matrix`
 
@@ -201,16 +201,11 @@ Non-trainable params: 0
 _________________________________________________________________
 ```
 
-### 6 | Compile & Train the model
+### 6 | Train the model
 
 Let's train the **binary classifier**, using `loss` binary_crossentropy & `optimiser` adam & evaluate on the same dataset
 
 ```python
-# compile the model
-model.compile(optimizer='adam', 
-              loss='binary_crossentropy', 
-              metrics=['accuracy'])
-
 # fit the model
 model.fit(padded_docs, labels,
           epochs=50,
