@@ -203,6 +203,8 @@ _________________________________________________________________
 
 ### 6 | Compile & Train the model
 
+Let's train the **binary classifier**, using `loss` binary_crossentropy & `optimiser` adam & evaluate on the same dataset
+
 ```
 # compile the model
 model.compile(optimizer='adam', 
