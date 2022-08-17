@@ -73,9 +73,10 @@ Upon defining `nlp()`, we have access to:
  #### 2.3 | Parts-of-Speech (POS)
  
  - We have access to `coarser` and `finer` methods
+ - `POS` tagging is used to assign tags to words, such as `nouns`, `verbs` etc
 
 ```python
-# coarse pos tags
+# coarse POS tags
 [token.pos_ for token in doc]
 ```
 
@@ -94,7 +95,7 @@ Upon defining `nlp()`, we have access to:
 ```
 
 ```python
-# fine pos tags
+# fine POS tags
 [token.tag_ for token in doc]
 ```
 
