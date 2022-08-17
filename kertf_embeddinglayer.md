@@ -138,7 +138,7 @@ padded documents:
 
 ### 4 | Find Overlap between dictionary & `GloVe` vocabulay
 
-Find the embedding vectors in `GloVe` for each of the words in our dictionary `tokeniser.word_index`
+Find the **embedding vectors** in `GloVe` for each of the words in our dictionary `tokeniser.word_index`
 
 ```python
 # Create a weight matrix for words in training docs
@@ -153,7 +153,7 @@ for word, i in c.items():
 
 ### 5 | Define a Model
 
-Binary classification model w/ `embedding` layer
+Create a binary classification model w/ `embedding` layer using the predefined weights `embedding_matrix`
 
 ```python
 # Define the model
@@ -168,11 +168,11 @@ emb_layer = Embedding(input_dim=vocab_size,         # Input into embedding layer
 
 # Trainable Embedding Layer
 # emb_layer = Embedding(input_dim=vocab_size,output_dim = 8, 
-# 					            input_length=max_length,trainable=True)
+					            input_length=max_length,trainable=True)
 
-model.add(emb_layer)
-model.add(Flatten())
-model.add(Dense(1, activation='sigmoid'))
+model.add(emb_layer) # embedding layer
+model.add(Flatten()) # flatten embedding layer
+model.add(Dense(1, activation='sigmoid')) # binary classification 
 
 # compile the model
 model.compile(optimizer='adam',
