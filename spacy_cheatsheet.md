@@ -338,7 +338,8 @@ print(doc1.similarity(doc3))
 
 #### 4.2 | Word Vectors
 
-Select one of the `tokenised` words, and visualise the `vector` form
+- Words can be represented in **vector** format, `SpaCy`
+- Select one of the `tokenised` words, and visualise the `vector` form
 
 ```python
 print(doc1[2].vector) # word vector
