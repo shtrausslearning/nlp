@@ -338,7 +338,7 @@ print(doc1.similarity(doc3))
 
 #### 4.2 | Word Vectors
 
-- Words can be represented in **vector** format, `SpaCy`
+- Words can be represented in **vector** format, which should allow us to capture `semantic` and `syntatic` similarity 
 - Select one of the `tokenised` words, and visualise the `vector` form
 
 ```python
