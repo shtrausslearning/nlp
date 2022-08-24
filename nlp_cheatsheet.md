@@ -12,13 +12,31 @@ paragraph = "write paragaraph here to convert into tokens."
 
 #### 1.1 | NLTK module
 
+`NLTK` module has a few `tokenisers`
+
+- `sent_tokenize`, `word_tokenize`
+- `TreebankWordTokenizer`
+- `WordPunctTokenizer`
+- `RegexpTokenizer`
+
 ```python
-import nltk.tokenize from sent_tokenize, word_tokenize
+import nltk
+from nltk.tokenize import sent_tokenize, word_tokenize
+
+paragraph = "write paragaraph here to convert into tokens."
 
 nltk.download('punkt')
 
 sentences = nltk.sent_tokenize(paragraph)
 words = nltk.word_tokenize(paragraph)
+
+print(sentences)
+print(words)
+```
+
+```
+['write paragaraph here to convert into tokens.']
+['write', 'paragaraph', 'here', 'to', 'convert', 'into', 'tokens', '.']
 ```
   
 ```python
@@ -28,11 +46,8 @@ tokenizer = TreebankWordTokenizer()
 tokenizer.tokenize(text)
 ```
 
-```python
-from nltk.tokenize import PunktWordTokenizer
-  
-tokenizer = PunktWordTokenizer()
-tokenizer.tokenize("Let's see how it's working.")
+```
+['write', 'paragaraph', 'here', 'to', 'convert', 'into', 'tokens', '.']
 ```
 
 ```python
@@ -40,6 +55,10 @@ from nltk.tokenize import WordPunctTokenizer
   
 tokenizer = WordPunctTokenizer()
 tokenizer.tokenize("Let's see how it's working.")
+```
+
+```
+['Let', "'", 's', 'see', 'how', 'it', "'", 's', 'working', '.']
 ```
 
 ```python
@@ -50,7 +69,13 @@ text = "Let's see how it's working."
 tokenizer.tokenize(text)
 ```
 
+```
+["Let's", 'see', 'how', "it's", 'working']
+```
+
 #### 1.2 | SpaCy module
+
+We can use `SpaCy`'s `English()` module & add a `sentencizer` to the existing pipeline
 
 ```python
 from spacy.lang.en import English
@@ -64,6 +89,25 @@ doc = nlp(paragraph)
 nlp = English()
 doc = nlp(paragraph)
 [word for word in doc]
+```
+
+We can load other models eg. `en_core_web_sm`, which already contains a `sentencizer` in the pipeline
+
+```python
+import spacy
+
+nlp = spacy.load("en_core_web_sm")
+doc = nlp(text)
+    
+tokens = [token.text for token in doc]
+sentences = [token.text for token in doc.sents]
+print(tokens)
+print(sentences)
+```
+
+```
+['Let', "'s", 'see', 'how', 'it', "'s", 'working', '.']
+["Let's see how it's working."]
 ```
 
 #### 1.3 | Keras/TF module
