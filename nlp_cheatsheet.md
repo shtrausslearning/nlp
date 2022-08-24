@@ -129,7 +129,7 @@ list(tokenize(paragraph))
 
 ### 2 | Feature Generation
 
-#### 2.1 | Bag of Words
+#### 2.1 | Bag of Words `BOW`
 
 - Bag of Words model is used to preprocess the text by converting it into a bag of words, which keeps a count of the total occurrences of most frequently used words
 - counters = List of stences after pre processing like tokenization, stemming/lemmatization, stopwords
@@ -140,9 +140,18 @@ cv = CountVectorizer(max_features = 1500)
 X = cv.fit_transform(counters).toarray()
 ```
 
-#### 2.2 | TF-IDF features
+#### 2.2 | BOW `ngrams`
 
-Term Frequency-Inverse Document Frequency (TF-IDF):
+N-gram Language Model:  An N-gram is a sequence of N tokens (or words)
+
+- `1-gram` (or unigram) is a one-word sequence.the unigrams would simply be: “I”, “love”, “reading”, “blogs”, “about”, “data”, “science”, “on”, “Analytics”, “Vidhya”
+- `2-gram` (or bigram) is a two-word sequence of words, like “I love”, “love reading”, or “Analytics Vidhya”
+- `3-gram` (or trigram) is a three-word sequence of words like “I love reading”, “about data science” or “on Analytics Vidhya”
+
+
+#### 2.3 | TF-IDF features
+
+Term Frequency-Inverse Document Frequency `TF-IDF`
 
 - Numerical statistic that is intended to reflect **how important a word is** to a document in a collection or corpus
 - `T.F`  No of rep of words in setence/No of words in sentence
@@ -153,12 +162,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 cv = TfidfVectorizer()
 X = cv.fit_transform(counters).toarray()
 ```
-
-N-gram Language Model:  An N-gram is a sequence of N tokens (or words)
-
-- `1-gram` (or unigram) is a one-word sequence.the unigrams would simply be: “I”, “love”, “reading”, “blogs”, “about”, “data”, “science”, “on”, “Analytics”, “Vidhya”
-- `2-gram` (or bigram) is a two-word sequence of words, like “I love”, “love reading”, or “Analytics Vidhya”
-- `3-gram` (or trigram) is a three-word sequence of words like “I love reading”, “about data science” or “on Analytics Vidhya”
 
 ### 3 | Stemming & Lemmatisation
 
