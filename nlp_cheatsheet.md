@@ -169,9 +169,55 @@ print(tokens)
 
 ## 2 | Feature Generation
 
-There are various way to generate **features** from `text` for **machine learning** application that the model will be able to interpret
+- There are various way to generate **features** from `text` for **machine learning** application that the model will be able to interpret
+- **Feature matrices** which have both `numeric` and `categorical` features, depending on the model need to be converted to numerical form
 
-### 2.1 | Bag of Words (BoW)
+### 2.1 | Label Encoder 
+
+```python
+from sklearn.preprocessing import LabelEncoder
+
+paragraph = "write paragaraph here to convert into tokens."
+lst_paragraph = paragraph.split(' ')
+
+label_encoder = LabelEncoder()
+corpus_encoded = label_encoder.fit_transform(lst_paragraph)
+corpus_encoded
+```
+
+```
+array([6, 3, 1, 4, 0, 2, 5])
+```
+
+### 2.2 | One Hot Encoder (OHE)
+
+`OHE` works on both `numerical` & `string` features 
+
+```python
+from sklearn.preprocessing import OneHotEncoder
+import numpy as np
+
+paragraph = "write paragaraph here to convert into tokens."
+lst_paragraph = paragraph.split(' ')
+np_paragraph = np.array(lst_paragraph)
+print(np_paragraph)
+
+onehot_encoder = OneHotEncoder(sparse=False)
+onehot_encoder.fit_transform(np_paragraph[:,None])
+```
+
+```
+['write' 'paragaraph' 'here' 'to' 'convert' 'into' 'tokens.']
+array([[0., 0., 0., 0., 0., 0., 1.],
+       [0., 0., 0., 1., 0., 0., 0.],
+       [0., 1., 0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 1., 0., 0.],
+       [1., 0., 0., 0., 0., 0., 0.],
+       [0., 0., 1., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0., 1., 0.]])
+```
+
+### 2.3 | Bag of Words (BoW)
 
 - Bag of Words model is used to preprocess the text by converting it into a bag of words, which keeps a count of the total occurrences of most frequently used words
 - counters = List of stences after pre processing like tokenization, stemming/lemmatization, stopwords
@@ -182,7 +228,7 @@ cv = CountVectorizer(max_features = 1500)
 X = cv.fit_transform(counters).toarray()
 ```
 
-### 2.2 | BoW ngrams
+### 2.4 | BoW ngrams
 
 N-gram Language Model:  An N-gram is a sequence of N tokens (or words)
 
@@ -191,7 +237,7 @@ N-gram Language Model:  An N-gram is a sequence of N tokens (or words)
 - `3-gram` (trigram) is a three-word sequence of words like “I love reading”, “about data science” or “on Analytics Vidhya”
 
 
-### 2.3 | TF-IDF features
+### 2.5 | TF-IDF features
 
 Term Frequency-Inverse Document Frequency `TF-IDF`
 
