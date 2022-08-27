@@ -1,7 +1,7 @@
 
 ### 1 | Tokenisation
 
-- Tokenization breaks the raw text into words, sentences called tokens
+- `Tokenization` breaks the raw text into words, sentences called tokens
 - These tokens help in understanding the context or developing the model for the NLP
   - If the text is split into words using some separation technique it is called `word tokenization`
   - For sentences is called `sentence tokenization`
@@ -114,7 +114,14 @@ print(sentences)
 
 ```python
 from keras.preprocessing.text import text_to_word_sequence
+
+paragraph = "write paragaraph here to convert into tokens."
+
 text_to_word_sequence(paragraph)
+```
+
+```
+['write', 'paragaraph', 'here', 'to', 'convert', 'into', 'tokens']
 ```
 
 #### 1.4 | Gensim module
@@ -127,7 +134,39 @@ from gensim.utils import tokenize
 list(tokenize(paragraph))
 ```
 
+#### 1.5 | Pymorphy2 module
+
+```python
+from pymorphy2.tokenizers import simple_word_tokenize 
+paragraph = "write paragaraph here to convert into tokens."
+simple_word_tokenize(paragraph)
+```
+
+```
+['write', 'paragaraph', 'here', 'to', 'convert', 'into', 'tokens', '.']
+```
+
+#### 1.6 | Razdel
+
+```python
+import razdel
+
+paragraph = "write paragaraph here to convert into tokens."
+
+sentences = [sentence.text for sentence in razdel.sentenize(paragraph)]
+tokens = [ [token.text for token in razdel.tokenize(sentence)] for sentence in sentences ]
+print(sentences)
+print(tokens)
+```
+
+```
+['write paragaraph here to convert into tokens.']
+[['write', 'paragaraph', 'here', 'to', 'convert', 'into', 'tokens', '.']]
+```
+
 ### 2 | Feature Generation
+
+**Feature generation** from text is an important step in NLP applications involving the use of Machine Learning
 
 #### 2.1 | Bag of Words `BOW`
 
