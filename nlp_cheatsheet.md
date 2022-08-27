@@ -1,16 +1,14 @@
 
-### 1 | Tokenisation
+## 1 | Tokenisation
 
-- `Tokenization` breaks the raw text into words, sentences called tokens
+There are quite a few modules besides `.split()` that we can use to tokenise & proprocess text
+
+- `Tokenization` breaks the raw text into words, sentences called `tokens`
 - These tokens help in understanding the context or developing the model for the NLP
   - If the text is split into words using some separation technique it is called `word tokenization`
   - For sentences is called `sentence tokenization`
 
-```python
-paragraph = "write paragaraph here to convert into tokens."
-```
-
-#### 1.1 | NLTK module
+### 1.1 | NLTK module
 
 `NLTK` module has a few `tokenisers`
 
@@ -73,7 +71,7 @@ tokenizer.tokenize(text)
 ["Let's", 'see', 'how', "it's", 'working']
 ```
 
-#### 1.2 | SpaCy module
+### 1.2 | SpaCy module
 
 We can use `SpaCy`'s `English()` module & add a `sentencizer` to the existing pipeline
 
@@ -110,7 +108,7 @@ print(sentences)
 ["Let's see how it's working."]
 ```
 
-#### 1.3 | Keras/TF module
+### 1.3 | Keras/TF module
 
 ```python
 from keras.preprocessing.text import text_to_word_sequence
@@ -124,17 +122,20 @@ text_to_word_sequence(paragraph)
 ['write', 'paragaraph', 'here', 'to', 'convert', 'into', 'tokens']
 ```
 
-#### 1.4 | Gensim module
+### 1.4 | Gensim module
 
 ```python
-from gensim.summarization.textcleaner import split_sentences
-split_sentences(paragraph)
-
 from gensim.utils import tokenize
+
+paragraph = "write paragaraph here to convert into tokens."
 list(tokenize(paragraph))
 ```
 
-#### 1.5 | Pymorphy2 module
+```
+['write', 'paragaraph', 'here', 'to', 'convert', 'into', 'tokens']
+```
+
+### 1.5 | Pymorphy2 module
 
 ```python
 from pymorphy2.tokenizers import simple_word_tokenize 
@@ -146,7 +147,7 @@ simple_word_tokenize(paragraph)
 ['write', 'paragaraph', 'here', 'to', 'convert', 'into', 'tokens', '.']
 ```
 
-#### 1.6 | Razdel
+### 1.6 | Razdel
 
 ```python
 import razdel
@@ -164,11 +165,13 @@ print(tokens)
 [['write', 'paragaraph', 'here', 'to', 'convert', 'into', 'tokens', '.']]
 ```
 
-### 2 | Feature Generation
+<br>
 
-**Feature generation** from text is an important step in NLP applications involving the use of Machine Learning
+## 2 | Feature Generation
 
-#### 2.1 | Bag of Words `BOW`
+There are various way to generate **features** from `text` for **machine learning** application that the model will be able to interpret
+
+### 2.1 | Bag of Words (BoW)
 
 - Bag of Words model is used to preprocess the text by converting it into a bag of words, which keeps a count of the total occurrences of most frequently used words
 - counters = List of stences after pre processing like tokenization, stemming/lemmatization, stopwords
@@ -179,20 +182,21 @@ cv = CountVectorizer(max_features = 1500)
 X = cv.fit_transform(counters).toarray()
 ```
 
-#### 2.2 | BOW `ngrams`
+### 2.2 | BoW ngrams
 
 N-gram Language Model:  An N-gram is a sequence of N tokens (or words)
 
-- `1-gram` (or unigram) is a one-word sequence.the unigrams would simply be: “I”, “love”, “reading”, “blogs”, “about”, “data”, “science”, “on”, “Analytics”, “Vidhya”
-- `2-gram` (or bigram) is a two-word sequence of words, like “I love”, “love reading”, or “Analytics Vidhya”
-- `3-gram` (or trigram) is a three-word sequence of words like “I love reading”, “about data science” or “on Analytics Vidhya”
+- `1-gram` (unigram) is a one-word sequence.the unigrams would simply be: “I”, “love”, “reading”, “blogs”, “about”, “data”, “science”, “on”, “Analytics”, “Vidhya”
+- `2-gram` (bigram) is a two-word sequence of words, like “I love”, “love reading”, or “Analytics Vidhya”
+- `3-gram` (trigram) is a three-word sequence of words like “I love reading”, “about data science” or “on Analytics Vidhya”
 
 
-#### 2.3 | TF-IDF features
+### 2.3 | TF-IDF features
 
 Term Frequency-Inverse Document Frequency `TF-IDF`
 
-- Numerical statistic that is intended to reflect **how important a word is** to a document in a collection or corpus
+Numerical statistic that is intended to reflect **how important a word is** to a document in a collection or corpus
+
 - `T.F`  No of rep of words in setence/No of words in sentence
 - `IDF` No of sentences / No of sentences containing words
 
@@ -201,6 +205,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 cv = TfidfVectorizer()
 X = cv.fit_transform(counters).toarray()
 ```
+
+<br>
 
 ### 3 | Stemming & Lemmatisation
 
