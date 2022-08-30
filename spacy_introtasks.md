@@ -148,4 +148,20 @@ man poss possession modifier
 's case case marking
 theory dobj direct object
 ```
+
+```python
+# Visualize the dependency parse
+from spacy import displacy
+from pathlib import Path
+
+svg = displacy.render(example_question_tokens, 
+                      style='dep',
+                      jupyter=False, 
+                      options={'distance': 90})
+
+output_path = Path("dependency_plot.svg")
+output_path.open("w", encoding="utf-8").write(svg)
+```
+
+![](https://raw.githubusercontent.com/shtrausslearning/nlp/7f4a929e1f586547cf1183618ef70c1a7c89e993/data/dependency_plot.svg)
     
