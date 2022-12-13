@@ -1,6 +1,7 @@
 import spacy
 import pandas as pd
 import plotly.express as px
+from nltk.corpus import stopwords
 import string 
 
 # Load statistical model
@@ -37,8 +38,6 @@ for text in lst_documents:
     
 # remove from nested list
 lst_docs_punct = [list(filter(lambda x: x not in string.punctuation, lst_tokens)) for lst_tokens in lst_docs]
-
-from nltk.corpus import stopwords
 
 # remove stop words
 stop_words = stopwords.words('english')
