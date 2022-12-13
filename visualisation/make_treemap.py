@@ -1,6 +1,7 @@
 import spacy
 import pandas as pd
 import plotly.express as px
+import string 
 
 # Load statistical model
 nlp = spacy.load('en_core_web_sm')
@@ -32,18 +33,32 @@ for text in lst_documents:
     doc = nlp(text_split)                      # tokenise string document
     lst_docs.append([token.text for token in doc])  # add tokenised document to list
     
+''' Adjust Documents '''
+    
+# remove from nested list
+lst_docs_punct = [list(filter(lambda x: x not in string.punctuation, lst_tokens)) for lst_tokens in lst_docs]
+
+from nltk.corpus import stopwords
+
+# remove stop words
+stop_words = stopwords.words('english')
+lst_docs_stop = [[y for y in x if y not in stop_words] for x in lst_docs_punct]
+    
+''' Make Treemap'''  
+    
 # combine lists into one list
-result = list(sum(lst_docs, []))
+result = list(sum(lst_docs_stop, []))
 ldf = pd.Series(result).value_counts().to_frame()
 ldf.columns = ['count']
 ldf.reset_index(inplace=True)
-
 
 # Plot a Treemap
 fig = px.treemap(ldf,
                  values = 'count',
                  color='count',
                  color_continuous_scale='RdBu_r',
-                 path=[px.Constant("all"),'count','index'])
+                 path=[px.Constant("all"),'count','index'],
+                 branchvalues="total",)
 fig.update_layout(title='Text Value Counts')
+fig.update_coloraxes(showscale=False)
 fig.show()
