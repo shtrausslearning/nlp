@@ -19,25 +19,24 @@ the vibration of the strings in string theory, and Howard's oscillation between 
 
 '''
 
-# load statistical model
+# Load statistical model
 nlp = spacy.load('en_core_web_sm')
 
-# list of documents (just string text)
+# List of documents (just string text)
 lst_documents = [text,text]
 
-# tokenise list of documents
+# Tokenise list of documents
 lst_issue = []
 for text in lst_documents:
     doc = nlp(text)
     tokens = [token.text for token in doc]
     lst_issue.append(tokens)
     
-# combine lists
+# Combine lists
 all = list(chain(*lst_issue))  
 text = " ".join(word for word in all)
 
-''' Make Word Cloud '''
-
+# Make word cloud
 plt.figure(figsize=(20, 15))
 word_cloud1 = WordCloud(collocations = True, background_color = 'white',
                         width = 2000, height = 1080).generate(text)
