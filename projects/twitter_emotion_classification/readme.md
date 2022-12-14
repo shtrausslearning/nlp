@@ -74,12 +74,11 @@ Kaggle notebook workflow
 
 `twitter_emotion_classification/` <br>
 <br>
-&nbsp; &nbsp;  |_ readme.md (general summary) <br>
-&nbsp; &nbsp;  |_ twitter-emotion-classification.ipynb (main kaggle notebook) <br>
-&nbsp; &nbsp;  |_ fine_tune-twitter-emotion-classification.ipynb (distilbert new customer review sentiments)
+&nbsp; &nbsp;  |_ `readme.md` (general summary) <br>
+&nbsp; &nbsp;  |_ `twitter-emotion-classification.ipynb` (main kaggle notebook) <br>
+&nbsp; &nbsp;  |_ `fine_tune-twitter-emotion-classification.ipynb` (distilbert new customer review sentiments)
 
 <br>
-
 
 ### Main Takeaways 📤
 
@@ -102,24 +101,23 @@ Confusion Matrix Data for the two models:
 
 <br>
 
-II. The `DistilBERT` is quite confident in its predictions to classify new twitter data
+II. The `DistilBERT` is generally quite confident in its predictions to classify new twitter data if critical words are spelled correctly
 
 ***
 
-Unseen general `tweet` sentiment classified by `transformer` as **joy** (label 1) 
+Unseen general `tweet` sentiment classifications
 
-> 'I watched a movie last night, it was quite brilliant'
+- We can see that model is quite sensitive to specific words as seen by the last 3 example
+- If we misspell **surprised**, the model switches from **surpised** to **joy** (nevertheless both are positive sentiments)
 
-```python
-
-[{'label': 'LABEL_0', 'score': 0.004893782548606396},
- {'label': 'LABEL_1', 'score': 0.9663578867912292},
- {'label': 'LABEL_2', 'score': 0.003938842564821243},
- {'label': 'LABEL_3', 'score': 0.00875843595713377},
- {'label': 'LABEL_4', 'score': 0.004418900702148676},
- {'label': 'LABEL_5', 'score': 0.011632120236754417}]
-
-```
+| Tweet | Prediction | Probability |
+| - | - | - |
+| I was pleased by the reception I received, the massage was great  | `joy` | 0.989 | 
+| The new film was quite mediocre, the acting was terrible and the plot was quite boring. | `sadness` | 0.986 | 
+| I was not quite sure about doing the procedure, but it turned out better than I thougt | `joy` | 0.957 |
+| I'm surprised by how much they improved the quality of the interior | `surprised` | 0.921 | 
+| I'm **surpised** by how much they improved the quality of the interior | `joy` | 0.982 | 
+| I'm surprised by **howmuch** they improved the qulity of the interior" | `surprised` | 0.9337 | 
 
 
 
