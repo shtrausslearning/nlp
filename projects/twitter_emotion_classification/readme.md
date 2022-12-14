@@ -16,13 +16,13 @@
 
 ### Key Terms ❓
 
-`Sentiment analysis`
+`Sentiment analysis` | **[Section 5](https://www.kaggle.com/code/shtrausslearning/natural-language-processing#5-%7C-Sentiment-Analysis)**
 
 >  Identify & classify the sentiments/tones that are expressed in the text source. social media posts are often useful in generating a vast amount of sentiment data upon analysis, which is useful in understanding the opinion of the people about a variety of topics
 
-`Tokenisation`
+`Tokenisation` | **[Section I](https://www.kaggle.com/code/shtrausslearning/natural-language-processing)**
 
->  Process of breaking up a sequence of text into pieces such as words, keywords, phrases, symbols and other elements called tokens, several types of techniques exist; `character`, `sentence`, `word` & `subword` tokenisation - Check **[Section I](https://www.kaggle.com/code/shtrausslearning/natural-language-processing)**
+>  Process of breaking up a sequence of text into pieces such as words, keywords, phrases, symbols and other elements called tokens, several types of techniques exist; `character`, `sentence`, `word` & `subword` tokenisation
 
 ### Kaggle Notebook 📖
 
