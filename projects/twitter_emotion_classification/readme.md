@@ -20,7 +20,7 @@
 
 >  Identify & classify the sentiments/tones that are expressed in the text source. social media posts are often useful in generating a vast amount of sentiment data upon analysis, which is useful in understanding the opinion of the people about a variety of topics
 
-`Tokenisation` | **[Section I](https://www.kaggle.com/code/shtrausslearning/natural-language-processing)**
+`Tokenisation` | **[Section 1](https://www.kaggle.com/code/shtrausslearning/natural-language-processing)**
 
 >  Process of breaking up a sequence of text into pieces such as words, keywords, phrases, symbols and other elements called tokens, several types of techniques exist; `character`, `sentence`, `word` & `subword` tokenisation
 
@@ -36,8 +36,27 @@ Kaggle offer a very neat `ipynb` render, if you'd like to read the notebook on K
 - Aside from the standard approach to `validation`, we'll apply the models on some recent `tweet` examples
 
 ### Target Labels 🏷️
+
 Muliclass classification
 - `surprise` `love` `fear` `anger` `sadness` `joy`
+
+### Project Pipeline 📑
+
+Kaggle notebook workflow
+
+- `1` Generating Dataset
+- `2` Exploratory Data Analysis
+- `3` Tokenisation
+- `4` Pretrained Embedding Model
+- `5` Fine-Tuning Transformers
+- `6` Model Error Analysis
+
+### GitHub Folder Contents 📁
+
+GitHub 
+
+
+
 
 
 
