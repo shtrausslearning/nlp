@@ -6,6 +6,8 @@
 
 `Sentiment` `Multiclass` `Emotion` `Classification` `NLP` `HuggingFace` `Transformers`
 
+<br>
+
 ### Project Background 📥
 
 - The emergence of social media networks/platforms has allowed people to writing posts, sharing photos and videos
@@ -13,6 +15,8 @@
 - Twitter has 330 million monthly active users and 500 million tweets sent each day, which makes it an invaluable tool in ML/DL applications
 - Understanding the `sentiment` (tone) of tweets is important for a variety of reasons: `business marketing`, `political views`, `behavior analysis`, just to mention a few
 - `Emotions` are important in `Sentiment` analysis (not only `positive` & `negative`) as it gives a more detail about a person's opinion about a `topic` or `product`
+
+<br>
 
 ### Key Terms ❓
 
@@ -24,21 +28,33 @@
 
 >  Process of breaking up a sequence of text into pieces such as words, keywords, phrases, symbols and other elements called tokens, several types of techniques exist; `character`, `sentence`, `word` & `subword` tokenisation
 
+`Embedding` | **[Section 4](https://www.kaggle.com/code/shtrausslearning/natural-language-processing#3-%7C-Advanced-Feature-Generation)**
+
+> An embedding is the mapping of a discrete — categorical — variable or text to a vector of continuous numbers in vecor form 
+
+<br>
+
 ### Kaggle Notebook 📖
 
 Kaggle offer a very neat `ipynb` render, if you'd like to read the notebook on Kaggle, links are provided below:
 
 - **[Twitter Emotion Classification](https://www.kaggle.com/code/shtrausslearning/twitter-emotion-classification)**
 
+<br>
+
 ### Project Aim 🎯 
 
 - We need to build a model based sentiment analysis tool that will be able to automatically identify emotional states (eg. anger, joy) that people express about your company's product on twitter
 - Aside from the standard approach to `validation`, we'll apply the models on some recent `tweet` examples
 
+<br>
+
 ### Target Labels 🏷️
 
 Muliclass classification
 - `surprise` `love` `fear` `anger` `sadness` `joy`
+
+<br>
 
 ### Project Pipeline 📑
 
@@ -50,6 +66,8 @@ Kaggle notebook workflow
 - `4` Pretrained Embedding Model
 - `5` Fine-Tuning Transformers
 - `6` Model Error Analysis
+
+<br>
 
 ### GitHub Folder Contents 📁
 
