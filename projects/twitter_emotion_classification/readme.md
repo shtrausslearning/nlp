@@ -20,15 +20,15 @@
 
 ### Key Terms ❓
 
-`Sentiment analysis` | **[Section 5](https://www.kaggle.com/code/shtrausslearning/natural-language-processing#5-%7C-Sentiment-Analysis)**
+`Sentiment analysis` | **[NPL Section 5](https://www.kaggle.com/code/shtrausslearning/natural-language-processing#5-%7C-Sentiment-Analysis)**
 
 >  Identify & classify the sentiments/tones that are expressed in the text source. social media posts are often useful in generating a vast amount of sentiment data upon analysis, which is useful in understanding the opinion of the people about a variety of topics
 
-`Tokenisation` | **[Section 1](https://www.kaggle.com/code/shtrausslearning/natural-language-processing)**
+`Tokenisation` | **[NPL Section 1](https://www.kaggle.com/code/shtrausslearning/natural-language-processing)**
 
 >  Process of breaking up a sequence of text into pieces such as words, keywords, phrases, symbols and other elements called tokens, several types of techniques exist; `character`, `sentence`, `word` & `subword` tokenisation
 
-`Embedding` | **[Section 4](https://www.kaggle.com/code/shtrausslearning/natural-language-processing#3-%7C-Advanced-Feature-Generation)**
+`Embedding` | **[NPL Section 4](https://www.kaggle.com/code/shtrausslearning/natural-language-processing#3-%7C-Advanced-Feature-Generation)**
 
 > An embedding is the mapping of a discrete — categorical — variable or text to a vector of continuous numbers in vecor form 
 
@@ -39,13 +39,14 @@
 Kaggle offer a very neat `ipynb` render, if you'd like to read the notebook on Kaggle, links are provided below:
 
 - **[Twitter Emotion Classification](https://www.kaggle.com/code/shtrausslearning/twitter-emotion-classification)**
+- **[distilbert-classifier-emotion model weights](https://www.kaggle.com/datasets/shtrausslearning/distilbertclassifieremotion)**
 
 <br>
 
 ### Project Aim 🎯 
 
 - We need to build a model based sentiment analysis tool that will be able to automatically identify emotional states (eg. anger, joy) that people express about your company's product on twitter
-- Aside from the standard approach to `validation`, we'll apply the models on some recent `tweet` examples
+- Aside from the standard approach to `validation`, we'll apply the models on some recent `tweet` examples & see if there are any pitfalls in the model
 
 <br>
 
@@ -71,8 +72,11 @@ Kaggle notebook workflow
 
 ### GitHub Folder Contents 📁
 
-
-
+`twitter_emotion_classification/` <br>
+<br>
+&nbsp; &nbsp;  |_ readme.md (general summary) <br>
+&nbsp; &nbsp;  |_ twitter-emotion-classification.ipynb (main kaggle notebook) <br>
+&nbsp; &nbsp;  |_ fine_tune-twitter-emotion-classification.ipynb (distilbert new customer review sentiments)
 
 <br>
 
