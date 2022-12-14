@@ -98,11 +98,11 @@ Confusion Matrix Data for the two models:
 
 <br>
 
-II. The **DistilBERT** is quite confident in its predictions to classify new twitter data
+II. The `DistilBERT` is quite confident in its predictions to classify new twitter data
 
 ***
 
-Unseen `tweet` sentiment classified by `transformer` as **joy** (label 1) 
+Unseen general `tweet` sentiment classified by `transformer` as **joy** (label 1) 
 
 > 'I watched a movie last night, it was quite brilliant'
 
