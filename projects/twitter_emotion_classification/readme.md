@@ -6,8 +6,6 @@
 
 `Sentiment` `Multiclass` `Emotion` `Classification` `NLP` `HuggingFace` `Transformers`
 
-<br>
-
 ### Project Background 📥
 
 - The emergence of social media networks/platforms has allowed people to writing posts, sharing photos and videos
@@ -16,21 +14,15 @@
 - Understanding the `sentiment` (tone) of tweets is important for a variety of reasons: `business marketing`, `political views`, `behavior analysis`, just to mention a few
 - `Emotions` are important in `Sentiment` analysis (not only `positive` & `negative`) as it gives a more detail about a person's opinion about a `topic` or `product`
 
-<br>
-
 ### Key Terms ❓
 
 > `Sentiment analysis` - identify & classify the sentiments/tones that are expressed in the text source. social media posts are often useful in generating a vast amount of sentiment data upon analysis, which is useful in understanding the opinion of the people about a variety of topics
-
-<br>
 
 ### Kaggle Notebook 📖
 
 Kaggle offer a very neat `ipynb` render, if you'd like to read the notebook on Kaggle, links are provided below:
 
 - **[Twitter Emotion Classification](https://www.kaggle.com/code/shtrausslearning/twitter-emotion-classification)**
-
-<br>
 
 ### Project Aim 🎯 
 
