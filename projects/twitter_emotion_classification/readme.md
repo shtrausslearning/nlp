@@ -16,7 +16,13 @@
 
 ### Key Terms ❓
 
-> `Sentiment analysis` - identify & classify the sentiments/tones that are expressed in the text source. social media posts are often useful in generating a vast amount of sentiment data upon analysis, which is useful in understanding the opinion of the people about a variety of topics
+`Sentiment analysis`
+
+>  Identify & classify the sentiments/tones that are expressed in the text source. social media posts are often useful in generating a vast amount of sentiment data upon analysis, which is useful in understanding the opinion of the people about a variety of topics
+
+`Tokenisation`
+
+>  Process of breaking up a sequence of text into pieces such as words, keywords, phrases, symbols and other elements called tokens, several types of techniques exist; `character`, `sentence`, `word` & `subword` tokenisation - Check **[Section I](https://www.kaggle.com/code/shtrausslearning/natural-language-processing)**
 
 ### Kaggle Notebook 📖
 
@@ -28,3 +34,11 @@ Kaggle offer a very neat `ipynb` render, if you'd like to read the notebook on K
 
 - We need to build a model based sentiment analysis tool that will be able to automatically identify emotional states (eg. anger, joy) that people express about your company's product on twitter
 - Aside from the standard approach to `validation`, we'll apply the models on some recent `tweet` examples
+
+### Target Labels 🏷️
+Muliclass classification
+- `surprise` `love` `fear` `anger` `sadness` `joy`
+
+
+
+
