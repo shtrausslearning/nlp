@@ -117,7 +117,7 @@ Unseen general `tweet` sentiment classifications
 | I was not quite sure about doing the procedure, but it turned out better than I thougt | `joy` | 0.957 |
 | I'm surprised by how much they improved the quality of the interior | `surprised` | 0.921 | 
 | I'm **surpised** by how much they improved the quality of the interior | `joy` | 0.982 | 
-| I'm surprised by **howmuch** they improved the qulity of the interior" | `surprised` | 0.9337 | 
+| I'm surprised by **howmuch** they improved the qulity of the interior | `surprised` | 0.9337 | 
 
 
 
