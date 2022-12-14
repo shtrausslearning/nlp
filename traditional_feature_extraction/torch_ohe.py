@@ -10,6 +10,11 @@ encoded_text = tokenizer(text)
 print(encoded_text['input_ids'])
 print(encoded_text['attention_mask'],'\n')
 
+print('')
+print(f'Vocab size: {tokenizer.vocab_size}')
+print(f'Max length: {tokenizer.model_max_length}')
+print(f'Tokeniser model input names: {tokenizer.model_input_names}')
+
 # generate token dictionary
 print('token dictionary')
 token2id = {ch: idx for idx,ch in enumerate(sorted(set(tokens)))}
