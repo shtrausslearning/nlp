@@ -109,6 +109,7 @@ Unseen general `tweet` sentiment classifications
 
 - We can see that model is quite sensitive to specific words as seen by the last 3 example
 - If we misspell **surprised**, the model switches from **surpised** to **joy** (nevertheless both are positive sentiments)
+- If non critical words are mispelled, eg. `howmuch`, the sentiment prediction doesn't change
 
 | Tweet | Prediction | Probability |
 | - | - | - |
