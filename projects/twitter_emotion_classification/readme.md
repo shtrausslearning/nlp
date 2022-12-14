@@ -1,7 +1,14 @@
 
 ![](https://i.imgur.com/pb2ocRH.png)
 
-### Project Background
+
+### Project Keywords 📒
+
+`Sentiment` `Multiclass` `Emotion` `Classification` `NLP` `HuggingFace` `Transformers`
+
+<br>
+
+### Project Background 📥
 
 - The emergence of social media networks/platforms has allowed people to writing posts, sharing photos and videos
 - One of those social medial networks is `Twitter`; it is one of the most popular social media platforms in the world
@@ -11,19 +18,13 @@
 
 <br>
 
-### Project Keywords
-
-`Sentiment` `Multiclass` `Emotion` `Classification` `NLP` `HuggingFace` `Transformers`
-
-<br>
-
 ### Key Terms ❓
 
 > `Sentiment analysis` refers to identifying as well as classifying the sentiments that are expressed in the text source. Tweets are often useful in generating a vast amount of sentiment data upon analysis. These data are useful in understanding the opinion of the people about a variety of topics.
 
 <br>
 
-### Kaggle Notebook 
+### Kaggle Notebook 📖
 
 Kaggle offer a very neat `ipynb` render, if you'd like to read the notebook on Kaggle, links are provided below:
 
