@@ -30,6 +30,9 @@ print('Raw Documents:')
 print(raw_text)
 print(len(raw_text),'words')
 
+# ['Leonard', 'and', 'Amy', 'have', 'fun', 'recreating', 'experiments', 'from', 'when', 'they', 'were', 'growing', 'up,', 'boring', 'Penny,', 'so', 'she', 'eats', 'with', 'Sheldon', 'as', 'he', 'mulls', 'over', 'his', 'scientific', 'studies.Penny', 'helps', 'him', 'realize', 'that', 'his', 'study', 'of', 'dark', 'matter', 'is', 'his', 'rebound', 'science', 'from', 'string', 'theory,', 'which', 'Sheldon', 'admits', 'he', 'never', 'truly', 'disregarded,', 'but', 'explaining', 'string', 'theory', 'to', 'her', 'inspires', 'Sheldon,', 'helping', 'him', 'discover', 'a', 'potential', 'breakthrough', 'in', 'the', 'field.']
+# 67 words
+
 '''
 
 Prepare Data for CBOW model
@@ -68,6 +71,14 @@ class prepare:
         self.data = data
         
 cfg = prepare()
+
+# Input Data:
+# --------------------------------
+# Vocabulary Size: 60
+# Context Size: 2
+# Embedding Vector Size: 20
+# Model Training Epochs: 40
+# Model Learning Rate: 0.001
 
 ''' 
 
