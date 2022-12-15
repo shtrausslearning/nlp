@@ -40,7 +40,7 @@ def extract_hidden_states(batch):
     with torch.no_grad():
         last_hidden_state = model(**inputs).last_hidden_state
         
-    # Return vector for [CLS] token
+    # Return vector for [CLS] token (common practice)
     return {"hidden_state": last_hidden_state[:,0].cpu().numpy()}
 
 # Extract last hidden states (faster w/ GPU)
