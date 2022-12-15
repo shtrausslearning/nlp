@@ -44,10 +44,10 @@ def extract_hidden_states(batch):
     return {"hidden_state": last_hidden_state[:,0].cpu().numpy()}
 
 # Extract last hidden states (faster w/ GPU)
-emotions_hidden = tokenised_dataset_corpus.map(extract_hidden_states, batched=True)
-emotions_hidden.column_names
-print(emotions_hidden['hidden_state'])
-print(emotions_hidden['hidden_state'].size())
+dataset_corpus_hidden = tokenised_dataset_corpus.map(extract_hidden_states, batched=True)
+dataset_corpus_hidden.column_names
+print(dataset_corpus_hidden['hidden_state'])
+print(dataset_corpus_hidden['hidden_state'].size())
 
 # tensor([[-0.3574, -0.3052, -0.1603,  ...,  0.0195,  0.3460,  0.2879],
 #        [-0.2919, -0.2997, -0.3504,  ...,  0.1250,  0.4126,  0.3579]])
