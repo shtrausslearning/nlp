@@ -1,3 +1,6 @@
+# List
+corpus = ["After Sheldon and Leonard spend two months repairing Sheldon's DNA molecule model, everyone prepares to fly to Sweden for the Nobel Prize award ceremony.",
+            "Howard and Bernadette nervously leave their kids for the first time with Stuart and Denise, while Raj leaves his dog with Bert."]
 
 from transformers import AutoTokenizer
 
