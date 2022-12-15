@@ -22,7 +22,6 @@ ft = Features({'text': Value('string'),
 
 # Convert a single DataFrame to a Dataset
 dataset_corpus = Dataset.from_pandas(df_corpus,features=ft)
-dataset_corpus
 
 # Batch Tokenisation Function
 def tokenise(batch):
@@ -36,7 +35,6 @@ print(tokenised_dataset_corpus.column_names)
 # Change format to torch for trainng (input_ids -> tensor)
 tokenised_dataset_corpus.set_format("torch",
                                     columns=["input_ids", "attention_mask", "ep"])
-tokenised_dataset_corpus
 
 # Function to extract model hidden state
 def extract_hidden_states(batch):
