@@ -22,6 +22,12 @@ ft = Features({'text': Value('string'),
 # Convert a single DataFrame to a Dataset
 dataset_corpus = Dataset.from_pandas(df_corpus,features=ft)
 
+from transformers import AutoTokenizer
+
+# Load parameters of the tokeniser
+model_ckpt = "distilbert-base-uncased"
+tokenizer = AutoTokenizer.from_pretrained(model_ckpt)
+
 # Batch Tokenisation Function
 def tokenise(batch):
     return tokenizer(batch["text"], padding=True, truncation=True)
