@@ -1,5 +1,9 @@
 
-''' Converting DataFrame to Dataset '''
+''' 
+
+Converting DataFrame to Dataset 
+
+'''
 # Have some dataframe containing text & labels
 # data isn't necessarily compatible, just demonstration
 
@@ -45,4 +49,16 @@ testdts = testdts.class_encode_column("label")
 # Pandas indicies not reset ie. __index_level_0__ additional column
 corpus = DatasetDict({"train" : traindts , "validation" : testdts })
 corpus['train']
+
+'''
+
+Change representation of Dataset to DataFrame
+
+'''
+# working with Dataset, we may need to convert the data to DataFrames (plots etc)
+
+corpus.set_format(type="pandas")
+
+# When done 
+corpus.reset_format()
 
