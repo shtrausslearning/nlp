@@ -58,6 +58,13 @@ Change representation of Dataset to DataFrame
 # working with Dataset, we may need to convert the data to DataFrames (plots etc)
 
 corpus.set_format(type="pandas")
+ldf = corpus["train"][:]
+
+# Add label data to dataframe
+def label_int2str(row):
+    return corpus["train"].features["label"].int2str(row)
+
+ldf["label_name"] = ldf["label"].apply(label_int2str)
 
 # When done 
 corpus.reset_format()
