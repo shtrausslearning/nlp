@@ -12,7 +12,6 @@
 <b><span style='color:#F1A424'>Consumer Feedback</span></b>
 - **<span style='color:#FFC300'>Consumer feedback</span>** is an important part of day to day financial business operations
 - Companies offering products must be able to know what their consumers think of their products
-
     - Eg. positive & negative feedback & can be obtained from a number of sources (eg. twitter)
 - In this case, we obtain data from a **[database](https://www.consumerfinance.gov/data-research/consumer-complaints/)**, which registers consumers feedback of financial products
 - Customers have specific `issue` on a number of `topics` they want want the company to address 
