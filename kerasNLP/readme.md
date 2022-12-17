@@ -13,7 +13,7 @@
 For <code>tokenisation</code>, we have the following options, calling from (<code>keras_nlp.tokenizers</code>)
 
 - [<code>Tokenizer</code>](https://keras.io/api/keras_nlp/tokenizers/tokenizer/) base class
-- [<code>WordPieceTokenizer</code>](https://keras.io/api/keras_nlp/tokenizers/word_piece_tokenizer/)
+- [<code>WordPieceTokenizer</code>](https://keras.io/api/keras_nlp/tokenizers/word_piece_tokenizer/) ([example](https://github.com/shtrausslearning/nlp/blob/main/kerasNLP/wordpiecetokeniser_example.ipynb))
 - SentencePieceTokenizer
 - ByteTokenizer
 - UnicodeCharacterTokenizer
@@ -23,7 +23,7 @@ For <code>tokenisation</code>, we have the following options, calling from (<cod
 When creating a transformer model, we have the following <code>layers</code> available to us from (<code>keras_nlp.layers</code>)
 
 - [<code>TransformerEncoder</code>](https://keras.io/api/keras_nlp/layers/transformer_encoder/)
-- [<code>TransformerDecoder</code>](https://keras.io/api/keras_nlp/layers/transformer_decoder/) ([example](https://github.com/shtrausslearning/nlp/blob/main/kerasNLP/wordpiecetokeniser_example.ipynb))
+- [<code>TransformerDecoder</code>](https://keras.io/api/keras_nlp/layers/transformer_decoder/)
 - FNetEncoder
 - PositionEmbedding
 - SinePositionEncoding
