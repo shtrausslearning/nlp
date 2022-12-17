@@ -9,8 +9,8 @@ model = tf.keras.Sequential([
 ])
 
 model.compile(optimizer='adam',
-          loss='mse',
-          metrics=['mae'])
+              loss='mse',
+              metrics=['mae'])
 
 # generate some big input datasets, bigger than 2GB
 data = np.random.random((1024*1024*8, 32))
@@ -24,5 +24,8 @@ train_dataset = train_dataset.batch(32).repeat()
 val_dataset = tf.data.Dataset.from_tensor_slices((val_data, val_labels))
 val_dataset = val_dataset.batch(32).repeat()
 
-model.fit(train_dataset, epochs=10, steps_per_epoch=30,
-      validation_data=val_dataset, validation_steps=3)
+model.fit(train_dataset, 
+          epochs=10, 
+          steps_per_epoch=30,
+          validation_data=val_dataset, 
+          validation_steps=3)
