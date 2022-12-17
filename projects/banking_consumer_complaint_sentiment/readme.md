@@ -38,6 +38,5 @@
 - In this project, we'll be utilising **<span style='color:#FFC300'>machine learning</span>**, to create a model(s) that will be able to **<span style='color:#FFC300'>classify the type of complaint</mark>** (as we did above) (by both `product` & `issue`)
 - Such a model(s) can be useful for a company to quickly understand the **type of complaint** (What is the issue?) & which **product** it is related to, after whcih they can appoint a specific **financial expert** that will be able to solve the problem 
 - Our approach will include **<span style='color:#FFC300'>separate models</span>**, that will be in charge of classifying data on different subsets of data
-
-  - The **first model** (**<span style='color:#FFC300'>M1</span>**) will be in charge of classifying a  **<mark style="background-color:#FFC300;color:white;border-radius:5px;opacity:1.0">product</mark>** based on the customer's input complaint (`text`)
-  - The **second model** (**<span style='color:#FFC300'>M2</span>**) will be in charge of classifying the particular **<mark style="background-color:#FFC300;color:white;border-radius:5px;opacity:1.0">issue</mark>** to which the complaint belongs to (`text`)
+  - The **first model** (`M1`) will be in charge of classifying a  **<mark style="background-color:#FFC300;color:white;border-radius:5px;opacity:1.0">product</mark>** based on the customer's input complaint (`text`)
+  - The **second model** (`M2`) will be in charge of classifying the particular **<mark style="background-color:#FFC300;color:white;border-radius:5px;opacity:1.0">issue</mark>** to which the complaint belongs to (`text`)
