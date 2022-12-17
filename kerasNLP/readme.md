@@ -1,5 +1,5 @@
 
-![](https://keras.io/img/logo-small.png)
+### Keras NLP
 
 - <code>KerasNLP</code> is a toolbox of modular building blocks (layers, metrics, etc.) that NLP engineers can leverage to develop production-grade, state-of-the-art training and inference pipelines for common NLP workflows.
 - In this section, we'll look at examples of the class implementation in NPL workflows
