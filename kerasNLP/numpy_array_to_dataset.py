@@ -1,3 +1,10 @@
+'''
+
+Utilising from_tensor_slices
+
+'''
+
+
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras import layers
