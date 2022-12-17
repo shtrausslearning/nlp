@@ -40,3 +40,12 @@
 - Our approach will include **<span style='color:#FFC300'>separate models</span>**, that will be in charge of classifying data on different subsets of data
   - The **first model** (`M1`) will be in charge of classifying a  **<mark style="background-color:#FFC300;color:white;border-radius:5px;opacity:1.0">product</mark>** based on the customer's input complaint (`text`)
   - The **second model** (`M2`) will be in charge of classifying the particular **<mark style="background-color:#FFC300;color:white;border-radius:5px;opacity:1.0">issue</mark>** to which the complaint belongs to (`text`)
+
+<br>
+
+### Kaggle Notebook 📖
+
+Kaggle offer a very neat `ipynb` render, if you'd like to read the notebook on Kaggle, links are provided below:
+
+- **[Banking Consumer Complaints Analysis](https://www.kaggle.com/code/shtrausslearning/banking-consumer-complaints-analysis)**
+- **[Hidden State Data - for LogisticRegression Model](https://www.kaggle.com/datasets/shtrausslearning/hiddenstatedata)**
