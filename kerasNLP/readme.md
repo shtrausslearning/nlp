@@ -28,7 +28,7 @@ When creating a transformer model, we have the following <code>layers</code> ava
 
 - [<code>TransformerEncoder</code>](https://keras.io/api/keras_nlp/layers/transformer_encoder/)
 - [<code>TransformerDecoder</code>](https://keras.io/api/keras_nlp/layers/transformer_decoder/)
-- FNetEncoder
+- [<code>FNetEncoder</code>](https://keras.io/api/keras_nlp/layers/fnet_encoder/)
 - PositionEmbedding
 - SinePositionEncoding
 - TokenAndPositionEmbedding
