@@ -1,8 +1,8 @@
 ### Keras NLP
 
-- We utilise <code>WordPieceTokenizer</code> to **tokenise**
+- We utilise <code>WordPieceTokenizer</code> to **tokenise**, which is a `subword` tokenisation method
 
-```
+```python
 sentences = ["The quick brown fox jumped.", 
              "The fox slept."]
 ```
@@ -20,10 +20,6 @@ from keras_nlp.tokenizers import WordPieceTokenizer
 
 # Tokenize some inputs with a binary label
 vocab = ["[UNK]", "the", "qu", "##ick", "br", "##own", "fox", "."]
-
-# Input Sentence
-sentences = ["The quick brown fox jumped.", 
-             "The fox slept."]
 
 # Wordpiece Tokeniser
 tokenizer = WordPieceTokenizer(vocabulary=vocab,   # vocabulary
