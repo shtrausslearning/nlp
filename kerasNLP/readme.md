@@ -1,4 +1,8 @@
 
+## Keras/Tensorflow for NLP
+
+Folder with NLP contents (including keras_nlp)
+
 ### Keras NLP
 
 - <code>KerasNLP</code> is a toolbox of modular building blocks (layers, metrics, etc.) that NLP engineers can leverage to develop production-grade, state-of-the-art training and inference pipelines for common NLP workflows.
