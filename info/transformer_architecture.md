@@ -21,5 +21,22 @@ Example:
 - English to German Sequence to Sequence problem
 - Decoder has alredy predicted `Die` `Zeit`, predicting next token 
  - next step: 	`Die` `Zeit` + `encoder` outputs -> `fliegt`
- - next step: `Di e` `Zeit` `fliegt` + `encoder` outputs -> `[EOS]` 
+ - next step: `Die` `Zeit` `fliegt` + `encoder` outputs -> `[EOS]` 
  - Repeated until `[EOS]` or until max length reched
+
+Three groups of `transformers`
+
+Encoder Only
+- Convert seq into numerical 
+- Suited for text classification, NER
+- BERT, DistilBERT, ROBERTa
+- Output depends on both left and right contexts (tokens before and after) -> Bidirectional attention
+
+Decoder Only
+- Given a seq (eg. Thank you, I had ...), model iteratively predicts the most probable next word
+- GPT
+- Output depends only on left context (tokens before) -> autoregressive attention
+
+Encoder-Decoder
+- Mapping of sequence into another sequence
+- BART, T5
