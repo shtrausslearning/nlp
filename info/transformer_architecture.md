@@ -16,3 +16,10 @@ Some things that categorise `Transformers`:
 - `Encoder` output passed to each `decoder` layer, `decoder` then generates a prediction for most probable `token` to come next in the sequence
 	- Output of this step, fed back into the `decoder` to generate the next token 
 	- Process is repeated until it predicts **[EOS]** token
+
+Example: 
+- English to German Sequence to Sequence problem
+- Decoder has alredy predicted `Die` `Zeit`, predicting next token 
+ - next step: 	`Die` `Zeit` + `encoder` outputs -> `fliegt`
+ - next step: `Di e` `Zeit` `fliegt` + `encoder` outputs -> `[EOS]` 
+ - Repeated until `[EOS]` or until max length reched
