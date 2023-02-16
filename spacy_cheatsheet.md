@@ -57,6 +57,10 @@ Upon defining `nlp()`, we have access to:
  ```
  
  #### 2.2 | Lemmatised text
+ 
+- Lemmatisation is a process of reducing inflected words to their base forms
+- It is used to reduce the complexity of natural language processing by converting words into their dictionary form
+- This helps computers to understand the meaning of a sentence more accurately
 
 ```python
 [token.lemma_ for token in doc]
