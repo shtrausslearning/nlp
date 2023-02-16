@@ -1,6 +1,8 @@
 
 ## SpaCy library
 
+Spacy is a library for advanced natural language processing in Python. It features state-of-the-art speed and accuracy, a concise API, and excellent documentation. It enables users to quickly and accurately create linguistic annotations for text, such as part-of-speech tagging, dependency parsing, named entity recognition, and more. Spacy is widely used in industry for applications such as information extraction, question answering, summarization, and more.
+
 ### 1 | Defining statistical model & input
 
 Load statistical model [`.load(model)`](https://spacy.io/usage/models)
@@ -31,6 +33,10 @@ Upon defining `nlp()`, we have access to:
 - `.noun_chunks` Base noun phrases
 
 #### 2.1 | Tokenised text
+
+- Tokenizer text is a process of breaking down a text string into individual words, phrases, symbols, or other meaningful elements called tokens
+- Tokenization is an important step in natural language processing (NLP) when analyzing text data
+- Tokenization helps to identify the structure of a sentence, and it also helps to identify the parts of speech for each word
 
 ```python
 [token.text for token in doc]
@@ -71,6 +77,12 @@ Upon defining `nlp()`, we have access to:
  ```
  
  #### 2.3 | Parts-of-Speech (POS)
+ 
+- Parts of speech in natural language processing (NLP) is a process of classifying words into their parts of speech, such as noun, verb, adjective, adverb ...
+- It is used to analyse the structure of sentences and to identify relationships between words
+- This helps computers to understand the meaning of a sentence and to interpret the context of a conversation
+ 
+ <br>
  
  - We have access to `coarser` and `finer` methods
  - `POS` tagging is used to assign tags to words, such as `nouns`, `verbs` etc
