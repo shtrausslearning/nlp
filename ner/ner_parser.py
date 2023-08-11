@@ -86,5 +86,10 @@ class Parser:
     def get_label(self, id_: int):
         return self.get_tag_label(id_)
     
+import pandas as pd    
+
 parser = Parser()
-parser(train_dataset["utt"][0], train_dataset["annot_utt"][0])
+df = pd.read_csv('annot.csv')   # read dataframe
+tags = parser(df["question"][0], df["annotated"][0])
+print(tags)
+# ['O', 'O', 'O', 'O', 'O', 'B-OBJECT', 'O']
