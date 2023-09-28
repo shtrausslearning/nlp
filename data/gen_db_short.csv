@@ -370,6 +370,16 @@ print('Best hyperparameters: ', study.best_params)
 print('Best score: ', study.best_value)
 </code>"
 
+user,"I have created an objective function, what do I do next?"
+bot,"a little context would help, do you mean in optuna?"
+user,"yes"
+bot,"After you have defined an objective function, create a study object and pass the objective function to the optimize method:
+
+<code>
+study = optuna.create_study(direction='minimize')
+study.optimize(objective, n_trials=30)
+</code>"
+
 
 #
 #

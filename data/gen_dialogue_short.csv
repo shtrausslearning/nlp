@@ -64,7 +64,6 @@ bot,"**db_opt0**"
 
 user,"how do I use optuna?"
 bot,"To use Optuna, you need to follow these steps:
-
 **db_opt1**
 
 Do you need me to show an example?"
@@ -73,11 +72,9 @@ bot,"**db_opt2**"
 
 user,"how do I use optuna?"
 bot,"To use Optuna, you need to follow these steps:
-
 **db_opt1**"
 user,"can you show me an example"
 bot,"Certainly, here is an example:
-
 **db_opt2**"
 
 user,"what is the difference between optuna and gridsearchcv?"
@@ -92,17 +89,14 @@ bot,"[GridSearchCV] is a brute-force method that explores the entire hyperparame
 
 user,"show me an example of how to use optuna with GradientBoostingRegression"
 bot,"Here's an example:
-
 **db_opt5**"
 
 user,"can you give me an example of how to use optuna with GradientBoostingClassifier"
 bot,"Sure, here is an example:
-
 **db_opt4**"
 
 user,"show me an example of how to use optuna with LogisticRegression"
 bot,"Sure, here's an example:
-
 **db_opt3**"
 
 user,"why would I want to use optuna?"
@@ -116,18 +110,15 @@ bot,"Optuna and GridSearchCV are both hyperparameter tuning approaches, however 
 
 user,"how do I use optuna in my project?"
 bot,"To use Optuna, you need to follow these steps:
-
 **db_opt1**"
 
 user,"can you give me an example of both optuna and gridsearchcv?"
 bot,"Sure here are the two approaches:
 
 [Optuna]
-
 **db_opt6**
 
 [GridSeachCV]
-
 **db_gs0**
 "
 
