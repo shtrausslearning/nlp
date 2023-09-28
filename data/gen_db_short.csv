@@ -24,6 +24,7 @@ clf.fit(X_train, y_train)
 accuracy = clf.score(X_test, y_test)
 print('Accuracy:', accuracy)
 </code>"
+
 db_cb1,"
 <code>
 from catboost import CatBoostRegressor
@@ -67,12 +68,9 @@ classifier.fit(X_train, y_train)
 y_pred = classifier.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print('Accuracy:', accuracy)
-</code>
-"
+</code>"
 
-db_cb3,"
-none
-"
+db_cb3,"none"
 db_cb4,"
 - <b>learning_rate</b>: The learning rate determines the step size at each iteration while moving toward a minimum of the loss function. Lower  values can improve accuracy, but require more iterations. 
 - <b>depth</b>: The depth of the decision tree used in the model. Increasing the depth can improve accuracy, but also increases the risk of overfitting. 
@@ -151,8 +149,50 @@ study = optuna.create_study(direction='minimize')
 study.optimize(objective, n_trials=30)
 print('Best hyperparameters:', study.best_params)
 print('Best RMSE:', study.best_value)
-</code>
-"
+</code>"
+
+db_opt1,"[Define your objective function] : This is the function that takes in the hyperparameters as input and returns a scalar value that represents the performance of the model.
+
+[Define the hyperparameter search space] : This is the range of values that Optuna will explore for each hyperparameter. You can define this using various distributions such as uniform, log-uniform, categorical, etc.
+
+[Create a study object]: This is the main object that controls the optimization process. You can specify the optimization algorithm and other parameters here.
+
+[Run the optimization loop]: In this loop, Optuna will suggest new hyperparameters to evaluate based on the previous results. You need to evaluate the performance of the model with each set of hyperparameters and report the result to Optuna.
+
+[Retrieve the best hyperparameters]: Once the optimisation is complete, you can retrieve the best set of hyperparameters using the study.best_params attribute."
+
+db_opt2,"
+<code>
+import optuna
+from sklearn.datasets import load_iris
+from sklearn.svm import SVC
+from sklearn.model_selection import cross_val_score
+
+# create objective function
+def objective(trial):
+    
+    # define the hyperparameter search space
+    C = trial.suggest_loguniform('C', 1e-5, 1e5)
+    gamma = trial.suggest_loguniform('gamma', 1e-5, 1e5)
+
+    # create a SVM model with the hyperparameters
+    clf = SVC(C=C, gamma=gamma)
+
+    # evaluate the model using cross-validation & return mean value
+    iris = load_iris()
+    score = cross_val_score(clf, iris.data, iris.target, cv=5).mean()
+
+    # Report the result to Optuna
+    return score
+
+# create a study object and run the optimization loop
+study = optuna.create_study(direction='maximize')
+study.optimize(objective, n_trials=100)
+
+# retrieve the best hyperparameters
+best_params = study.best_params
+print('Best hyperparameters:', best_params)
+</code>"
 
 #
 #

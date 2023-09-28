@@ -45,9 +45,7 @@ bot,"Sure, here are the parameters for the CatBoostRegressor:
 user,"how do I use catboost in my machine learning project?"
 bot,"CatBoost can be used for both classification and regression, which are you interested in?"
 user,"classification"
-bot,"
-**db_cb5**
-"
+bot,"**db_cb5**"
 
 #
 #
@@ -63,6 +61,12 @@ user,"give me an example of optuna"
 bot,"**db_opt0**"
 user,"show me an example of optuna?"
 bot,"**db_opt0**"
+user,"how do I use optuna?"
+bot,"To use Optuna, you need to follow these steps:
+
+**db_opt1**"
+user,"can you give me an example of how do use optuna?"
+
 
 #
 #
@@ -78,5 +82,4 @@ Here is an example of how to load a CSV file using PyTorch's Dataset:
 
 The next step would be to create a DataLoader, should I show you?"
 user,"yes"
-bot,"
-**db_pt1**"
+bot,"**db_pt1**"
