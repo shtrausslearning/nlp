@@ -366,8 +366,8 @@ study = optuna.create_study(direction='maximize')
 study.optimize(objective, n_trials=100)
 
 # Print the best hyperparameters and score
-print("Best hyperparameters: ", study.best_params)
-print("Best score: ", study.best_value)
+print('Best hyperparameters: ', study.best_params)
+print('Best score: ', study.best_value)
 </code>"
 
 
