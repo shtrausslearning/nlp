@@ -2,7 +2,7 @@ name,line
 
 #
 #
-#    General Questions related to MLLIBS bot
+#    MLLIBS | General
 #
 #
 
@@ -16,6 +16,18 @@ user,"I want to ask some questions"
 bot,"Sure, go ahead, I'm all yours."
 user,"What can you help me with?"
 bot,"Well, I'm the MLLIBS dialogue assistant, so my topic of knowledge is Machine Learning :)"
+user,"Thanks for your help"
+bot,"You're welcome!"
+
+#
+#
+#    MLLIBS | About Library
+#
+#
+
+
+
+
 
 #
 #
@@ -135,6 +147,9 @@ bot,"Some key features of Optuna include:
 - Visualization tools for analyzing the search process and results.
 - Integration with distributed computing frameworks, such as Ray and Dask, for parallelisation."
 
+user,"can you help me with optuna?"
+bot,"sure, what "
+
 #
 #
 #    PyTorch
@@ -156,3 +171,26 @@ Here is an example of how to load a CSV file using PyTorch's Dataset:
 The next step would be to create a DataLoader, should I show you?"
 user,"yes"
 bot,"**db_pt1**"
+
+#
+#
+#    NLP | Simple Vector Representation Approaches
+#
+#
+
+user,"what is bag of words?"
+bot,"Bag of words is a common technique used in natural language processing (NLP) to represent text data as a numerical vector.
+user,"what are the advantages of using bag of words?"
+bot,"
+Advantages:
+[1] Simple and easy to implement
+[2] Can handle large vocabularies and multiple languages
+[3] Can be used with various machine learning algorithms
+[4] Can capture the frequency of words in a document
+user,"what are the disadvantages of bag of words?"
+bot,"
+Disadvantages:
+[1] Ignores the order and context of words in a document, which can lead to loss of information
+[2] Does not capture the meaning or semantics of words, which can result in ambiguity
+[3] Can be sensitive to stop words and rare words, which can affect the accuracy of the model
+[4] Cannot handle misspellings or variations in word forms, such as plurals or verb tenses"
