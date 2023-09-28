@@ -46,17 +46,17 @@ db_cb3,"
 none
 "
 db_cb4,"
-<b>learning_rate</b>: The learning rate determines the step size at each iteration while moving toward a minimum of the loss function. Lower  values can improve accuracy, but require more iterations. <br>
-<b>depth</b>: The depth of the decision tree used in the model. Increasing the depth can improve accuracy, but also increases the risk of overfitting. <br>
-<b>l2_leaf_reg</b>: The L2 regularization coefficient. Increasing this value can help prevent overfitting. <br>
-<b>iterations</b>: The number of iterations to run during training. Increasing this value can improve accuracy, but also increases training time.
-<b>random_strength</b>: The amount of randomness to use when selecting splits in the decision tree. Higher values can increase the model's 
-<b>border_count</b>: The number of splits to consider when building a decision tree. Increasing this value can improve accuracy, but also increases training time' <br>
-<b>loss_function</b>: The loss function to optimize during training. For regression tasks, common options include MAE (mean absolute error), RMSE (root mean squared error), and Quantile (for quantile regression). <br>
-<b>task_type</b>: The type of task to perform, either CPU or GPU. Using a GPU can significantly speed up training time. <br>
-<b>boosting_type</b>: The type of boosting to use, either Plain or Ordered. The Ordered option can be useful for datasets with categorical features. <br>
-<b>colsample_bylevel</b>: The fraction of features to use at each level of the decision tree. <br>
-<b>min_data_in_leaf</b>: The minimum number of samples required in each leaf node of the decision tree. Increasing this value can help prevent overfitting."
+- <b>learning_rate</b>: The learning rate determines the step size at each iteration while moving toward a minimum of the loss function. Lower  values can improve accuracy, but require more iterations. 
+- <b>depth</b>: The depth of the decision tree used in the model. Increasing the depth can improve accuracy, but also increases the risk of overfitting. 
+- <b>l2_leaf_reg</b>: The L2 regularization coefficient. Increasing this value can help prevent overfitting. 
+- <b>iterations</b>: The number of iterations to run during training. Increasing this value can improve accuracy, but also increases training time.
+- <b>random_strength</b>: The amount of randomness to use when selecting splits in the decision tree. Higher values can increase the model's 
+- <b>border_count</b>: The number of splits to consider when building a decision tree. Increasing this value can improve accuracy, but also increases training time'
+- <b>loss_function</b>: The loss function to optimize during training. For regression tasks, common options include MAE (mean absolute error), RMSE (root mean squared error), and Quantile (for quantile regression).
+- <b>task_type</b>: The type of task to perform, either CPU or GPU. Using a GPU can significantly speed up training time. 
+- <b>boosting_type</b>: The type of boosting to use, either Plain or Ordered. The Ordered option can be useful for datasets with categorical features. 
+- <b>colsample_bylevel</b>: The fraction of features to use at each level of the decision tree.
+- <b>min_data_in_leaf</b>: The minimum number of samples required in each leaf node of the decision tree. Increasing this value can help prevent overfitting."
 
 db_cb5,"
 Here are some steps that can help you get started:
