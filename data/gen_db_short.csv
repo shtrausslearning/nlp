@@ -42,6 +42,34 @@ regressor.fit(X_train, y_train)
 rmse = np.sqrt(mean_squared_error(y_test, regressor.predict(X_test)))
 print('RMSE:', rmse)
 </code>"
+
+db_cb2,"
+<code>
+from catboost import CatBoostClassifier
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
+# Load the iris dataset
+iris = load_iris()
+X, y = iris.data, iris.target
+
+# Split the dataset into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Initialize the classifier
+classifier = CatBoostClassifier(loss_function='MultiClass')
+
+# Train the classifier
+classifier.fit(X_train, y_train)
+
+# Evaluate the classifier on the test data
+y_pred = classifier.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+print('Accuracy:', accuracy)
+</code>
+"
+
 db_cb3,"
 none
 "
