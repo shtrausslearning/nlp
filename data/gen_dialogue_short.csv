@@ -55,7 +55,28 @@ bot,"
 #
 #
 
+user,"what is optuna?"
+bot,"Optuna is a hyperparameter optimization framework for machine learning. Optuna uses Bayesian optimization to search for the optimal hyperparameters by iteratively exploring the hyperparameter space and evaluating the performance of the model with different hyperparameters. You can use the library with various machine learning frameworks such as scikit-learn and PyTorch"
 user,"how do I use CatBoost with optuna?"
 bot,"**db_opt0**"
 user,"give me an example of optuna"
 bot,"**db_opt0**"
+user,"show me an example of optuna?"
+bot,"**db_opt0**"
+
+#
+#
+#    PyTorch
+#
+#
+
+user,"how to convert a csv to pytorch dataset?"
+bot,"
+Here is an example of how to load a CSV file using PyTorch's Dataset:
+
+**db_pt0**
+
+The next step would be to create a DataLoader, should I show you?"
+user,"yes"
+bot,"
+**db_pt1**"

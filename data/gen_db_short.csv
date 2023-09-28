@@ -153,3 +153,46 @@ print('Best hyperparameters:', study.best_params)
 print('Best RMSE:', study.best_value)
 </code>
 "
+
+#
+#
+#  PyTorch | Loading Data
+#
+#
+
+db_pt0,"
+<code>
+import pandas as pd
+import torch
+from torch.utils.data import Dataset, DataLoader
+
+# Define a custom dataset class
+class MyDataset(Dataset):
+    def __init__(self, csv_file):
+        self.data = pd.read_csv(csv_file)
+    
+    def __len__(self):
+        return len(self.data)
+    
+    def __getitem__(self, idx):
+        row = self.data.iloc[idx]
+        x = torch.tensor(row[:-1].values, dtype=torch.float32)
+        y = torch.tensor(row[-1], dtype=torch.long)
+        return x, y
+
+# Load the CSV file into a dataset
+dataset = MyDataset('my_data.csv')
+</code>",
+db_pt1,"
+<code>
+# Create a data loader for batching and shuffling the data
+batch_size = 32
+shuffle = True
+dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)
+
+# Iterate over the data loader to access batches of data
+for batch in dataloader:
+    x_batch, y_batch = batch
+    print('Input batch shape:', x_batch.shape)
+    print('Output batch shape:', y_batch.shape)
+</code>"
