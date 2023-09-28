@@ -1,0 +1,127 @@
+id,data
+
+#
+#
+#    CatBoost Database
+#
+#
+
+db_cb0,"
+<code>
+from catboost import CatBoostClassifier
+
+# Load the dataset
+X_train, y_train = load_data('train.csv')
+X_test, y_test = load_data('test.csv')
+
+# Initialize the classifier
+clf = CatBoostClassifier()
+
+# Train the classifier
+clf.fit(X_train, y_train)
+
+# Evaluate the classifier on the test data
+accuracy = clf.score(X_test, y_test)
+print('Accuracy:', accuracy)
+</code>"
+db_cb1,"
+<code>
+from catboost import CatBoostRegressor
+
+# Load the dataset
+X_train, y_train = load_data('train.csv')
+X_test, y_test = load_data('test.csv')
+
+# Initialize the regressor
+regressor = CatBoostRegressor()
+
+# Train the regressor
+regressor.fit(X_train, y_train)
+
+# Evaluate the regressor on the test data
+rmse = np.sqrt(mean_squared_error(y_test, regressor.predict(X_test)))
+print('RMSE:', rmse)
+</code>"
+db_cb3,"
+none
+"
+db_cb4,"
+<b>learning_rate</b>: The learning rate determines the step size at each iteration while moving toward a minimum of the loss function. Lower  values can improve accuracy, but require more iterations. <br>
+<b>depth</b>: The depth of the decision tree used in the model. Increasing the depth can improve accuracy, but also increases the risk of overfitting. <br>
+<b>l2_leaf_reg</b>: The L2 regularization coefficient. Increasing this value can help prevent overfitting. <br>
+<b>iterations</b>: The number of iterations to run during training. Increasing this value can improve accuracy, but also increases training time.
+<b>random_strength</b>: The amount of randomness to use when selecting splits in the decision tree. Higher values can increase the model's 
+<b>border_count</b>: The number of splits to consider when building a decision tree. Increasing this value can improve accuracy, but also increases training time' <br>
+<b>loss_function</b>: The loss function to optimize during training. For regression tasks, common options include MAE (mean absolute error), RMSE (root mean squared error), and Quantile (for quantile regression). <br>
+<b>task_type</b>: The type of task to perform, either CPU or GPU. Using a GPU can significantly speed up training time. <br>
+<b>boosting_type</b>: The type of boosting to use, either Plain or Ordered. The Ordered option can be useful for datasets with categorical features. <br>
+<b>colsample_bylevel</b>: The fraction of features to use at each level of the decision tree. <br>
+<b>min_data_in_leaf</b>: The minimum number of samples required in each leaf node of the decision tree. Increasing this value can help prevent overfitting."
+
+db_cb5,"
+Here are some steps that can help you get started:
+
+[1] <b>Install CatBoost</b>: Install CatBoost if you already haven't in your terminal/cell
+
+pip install catboost
+
+[2] <b>Import CatBoost</b>:
+
+from catboost import CatBoostClassifier
+
+[3] <b>Prepare your data</b>: Before training your model, you need to prepare your data, such as cleaning, preprocessing, splitting your data into subsets and encoding categorical variables if you have any
+
+[4] <b>Train your model</b>: Once you have prepared your data, you can train your model using the <code>CatBoostClassifier()</code> function. Specify hyperparameters such as learning rate, depth, and number of iterations to tune your model. 
+
+Here is an example of how you can train a CatBoost classifier:
+
+<code>
+model = CatBoostClassifier(iterations=1000,
+                           learning_rate=0.1,
+                           depth=6,
+                           loss_function='Logloss',
+                           verbose=True)
+model.fit(X_train, y_train, cat_features=categorical_features_indices)
+</code>
+
+[5] <b>Evaluate your model</b>: After training your model, you can evaluate its performance on the testing set using metrics such as accuracy, precision, recall, and F1 score.
+
+[6] <b>Use your model for predictions</b>: Once you are satisfied with the performance of your model, you can use it for making predictions on new data using the predict() function.
+
+y_pred = model.predict(X_test)
+"
+
+#
+#
+#    Optuna
+#
+#
+
+db_opt0,"
+<code>
+import catboost as cb
+from sklearn.metrics import mean_squared_error
+import optuna
+
+def objective(trial):
+    params = {
+        'iterations': 1000,
+        'learning_rate': trial.suggest_float('learning_rate', 1e-3, 0.1, log=True),
+        'depth': trial.suggest_int('depth', 1, 10),
+        'subsample': trial.suggest_float('subsample', 0.05, 1.0),
+        'colsample_bylevel': trial.suggest_float('colsample_bylevel', 0.05, 1.0),
+        'min_data_in_leaf': trial.suggest_int('min_data_in_leaf', 1, 100),
+    }
+
+    model = cb.CatBoostRegressor(**params, silent=True)
+    model.fit(X_train, y_train)
+    predictions = model.predict(X_val)
+    rmse = mean_squared_error(y_val, predictions, squared=False)
+    return rmse
+
+study = optuna.create_study(direction='minimize')
+study.optimize(objective, n_trials=30)
+print('Best hyperparameters:', study.best_params)
+print('Best RMSE:', study.best_value)
+</code>
+"

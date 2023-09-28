@@ -1,0 +1,61 @@
+name,line
+
+#
+#
+#    General Questions related to MLLIBS bot
+#
+#
+
+user,"Hello"
+bot,"Hello, how may I help you? I'll be your assistant for today"
+user,"I need some help"
+bot,"Sure, I'm here to help. Do you have any questions?"
+user,"Can you pease help me"
+bot,"I'll do my best to answer your questions. I'm listening."
+user,"I want to ask some questions"
+bot,"Sure, go ahead, I'm all yours."
+user,"What can you help me with?"
+bot,"Well, I'm the MLLIBS dialogue assistant, so my topic of knowledge is Machine Learning :)"
+
+#
+#
+#    CatBoost Related Questions
+#
+#
+
+user,"give me an example of catboost classifier"
+bot,"Sure, here's an example:
+**db_cb0**"
+user,"give me an example of catboost regressor"
+bot,"Here's an example for the Regressor:
+**db_cb1**"
+user,"give me an example of using catboost for multiclass classification"
+bot,"Here's an example of using CatBoost for Multiclass Classification:
+**db_cb2**"
+user,"show an example of multiclass classification using catboost classifier"
+bot,"Here's an example of using CatBoost for Multiclass Classification:
+**db_cb2**"
+user,"what are the hyperparameters of catboost classifier?"
+bot,"Here are the hyperparameter that can be used with CatBoostClassifier:
+**db_cb3**"
+user,"what are the hyperparameters of catboost regressor?"
+bot,"Sure, here are the parameters for the CatBoostRegressor:
+**db_cb4**"
+
+user,"how do I use catboost in my machine learning project?"
+bot,"CatBoost can be used for both classification and regression, which are you interested in?"
+user,"classification"
+bot,"
+**db_cb5**
+"
+
+#
+#
+#    Optuna
+#
+#
+
+user,"how do I use CatBoost with optuna?"
+bot,"**db_opt0**"
+user,"give me an example of optuna"
+bot,"**db_opt0**"
