@@ -179,14 +179,14 @@ bot,"**db_pt1**"
 #
 
 user,"what is bag of words?"
-bot,"Bag of words is a common technique used in natural language processing (NLP) to represent text data as a numerical vector.
+bot,"Bag of words is a common technique used in natural language processing (NLP) to represent text data as a numerical vector."
 user,"what are the advantages of using bag of words?"
 bot,"
 Advantages:
 [1] Simple and easy to implement
 [2] Can handle large vocabularies and multiple languages
 [3] Can be used with various machine learning algorithms
-[4] Can capture the frequency of words in a document
+[4] Can capture the frequency of words in a document"
 user,"what are the disadvantages of bag of words?"
 bot,"
 Disadvantages:
