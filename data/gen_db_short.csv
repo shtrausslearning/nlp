@@ -182,7 +182,8 @@ class MyDataset(Dataset):
 
 # Load the CSV file into a dataset
 dataset = MyDataset('my_data.csv')
-</code>",
+</code>"
+
 db_pt1,"
 <code>
 # Create a data loader for batching and shuffling the data
