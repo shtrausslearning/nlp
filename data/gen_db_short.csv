@@ -1,6 +1,22 @@
 id,data
 
 #
+#    Python | 
+#
+
+db_pyt0,"
+1. strip() - removes leading and trailing whitespace from a string
+2. replace() - replaces a substring with another substring
+3. lower() - converts all characters in a string to lowercase
+4. upper() - converts all characters in a string to uppercase
+5. split() - splits a string into a list of substrings based on a delimiter
+6. join() - joins a list of strings into a single string using a specified delimiter
+7. isalpha() - checks if a string contains only alphabetic characters
+8. isnumeric() - checks if a string contains only numeric characters
+9. isalnum() - checks if a string contains only alphanumeric characters
+10. isspace() - checks if a string contains only whitespace characters"
+
+#
 #
 #    GridSearchCV
 #
@@ -144,8 +160,33 @@ model.fit(X_train, y_train, cat_features=categorical_features_indices)
 
 [6] <b>Use your model for predictions</b>: Once you are satisfied with the performance of your model, you can use it for making predictions on new data using the predict() function.
 
-y_pred = model.predict(X_test)
-"
+y_pred = model.predict(X_test)"
+
+db_cb6,"
+<code>
+import pandas as pd
+from catboost import CatBoostClassifier
+
+# Load dataset
+data = pd.read_csv('dataset.csv')
+
+# Split into features and target variable
+X = data.drop('target', axis=1)
+y = data['target']
+
+# Define categorical features
+cat_features = ['feature1', 'feature2', 'feature3']
+
+# Create CatBoost classifier with categorical features
+clf = CatBoostClassifier(cat_features=cat_features)
+
+# Fit the model
+clf.fit(X, y)
+
+# Make predictions on new data
+new_data = pd.read_csv('new_data.csv')
+predictions = clf.predict(new_data)
+</code>"
 
 #
 #
@@ -380,7 +421,6 @@ study = optuna.create_study(direction='minimize')
 study.optimize(objective, n_trials=30)
 </code>"
 
-
 #
 #
 #  PyTorch | Loading Data
@@ -424,3 +464,340 @@ for batch in dataloader:
     print('Input batch shape:', x_batch.shape)
     print('Output batch shape:', y_batch.shape)
 </code>"
+
+#
+#
+#  PySpark | Functions & Data Type
+#
+#
+
+db_ps0,"
+You can import the following data types from <code>pyspark.sql.types</code>:
+
+    [BinaryType] : Binary data
+    [BooleanType] : Boolean values
+    [ByteType] : A byte value
+    [DateType] : A datetime value
+    [DoubleType] : A floating-point double value
+    [IntegerType] : An integer value
+    [LongType] : A long integer value
+    [NullType] : A null value
+    [ShortType] : A short integer value
+    [StringType] : A text string
+    [TimestampType] : A timestamp value (typically in seconds from 1/1/1970)
+    [UnknownType] : A value of unidentified type
+"
+db_ps1,"
+<code>
+from pyspark.sql.types import StructTypes
+
+schema = StructType() \
+      .add('PassengerId',IntegerType(),True) \
+      .add('Name',StringType(),True) \
+      .add('Fare',DoubleType(),True) \
+      .add('Decommisioned',BooleanType(),True)
+</code>"
+db_ps2,"
+<code>
+from pyspark.sql.functions import col
+
+# create a PySpark DataFrame
+data = [('Alice', 25), ('Bob', 30), ('Charlie', 35)]
+df = spark.createDataFrame(data, ['name', "age"])
+
+# use withColumn to add a new column
+df_with_city = df.withColumn('city', col("name").substr(1,3))
+
+# show the resulting DataFrame
+df_with_city.show()
+</code>
+"
+db_ps3,"
+<code>
+# create a DataFrame
+data = [('John Doe', 25), ('Jane Smith', 30), ('Charlie Brown', 35)]
+df = spark.createDataFrame(data, ['name', 'age'])
+
+# use substr to extract a substring
+df = df.withColumn('first_name', df['name'].substr(1, 4))
+
+# show the resulting DataFrame
+df.show()
+</code>"
+db_ps4,"
+Here are some commonly used options:
+- [header] : Whether the first line of the CSV file should be treated as a header row (default: False).
+- [inferSchema] : Whether to infer the data types of each column from the content of the CSV file (default: False)
+- [delimiter] : The delimiter used to separate fields in the CSV file (default: ,).
+- [quote]: The character used to quote fields that contain special characters (default: '')
+- [escape]: The character used to escape special characters within quoted fields (default: \)
+- [nullValue] : The string that represents null values in the CSV file (default: empty string)
+- [nanValue] : The string that represents NaN values in the CSV file (default: 'NaN')"
+
+db_ps5,"
+<code>
+from pyspark.sql.types import StructType, StructField, StringType, IntegerType
+
+schema = StructType([
+    StructField('name', StringType(), True),
+    StructField('age', IntegerType(), True),
+    StructField('city', StringType(), True)
+])
+
+df = spark.read.csv('data.csv', schema=schema)
+</code>"
+db_ps6,"
+<code>
+# create a DataFrame
+data = [('Alice', 25), ('Bob', 30), ('Charlie', 35), ('Alice', 25)]
+df = spark.createDataFrame(data, ['name', 'age'])
+
+# use distinct to get unique rows
+distinct_df = df.distinct()
+
+# show the resulting DataFrame
+distinct_df.show()
+</code>"
+db_ps7,"
+<code>select()</code> : This function is used to select specific columns from a DataFrame
+<code>filter()</code> : This function is used to filter rows based on a condition
+<code>groupBy()</code> : This function is used to group the DataFrame by one or more columns
+<code>agg()</code> : This function is used to perform aggregate functions on the grouped DataFrame
+<code>join()</code> : This function is used to join two DataFrames based on a common column
+<code>orderBy()</code> : This function is used to sort the DataFrame based on one or more columns
+<code>distinct()</code> : This function is used to remove duplicate rows from the DataFrame
+<code>count()</code> : This function is used to count the number of rows in the DataFrame
+<code>show()</code> : This function is used to display the contents of the DataFrame in a tabular format
+<code>write()</code> : This function is used to write the DataFrame to an external storage system such as HDFS or S3"
+
+db_ps8,"
+<code>avg()</code> : Returns the average value of a column
+<code>sum()</code> : Returns the sum of a column
+<code>min()</code> : Returns the minimum value of a column
+<code>max()</code> : Returns the maximum value of a column
+<code>count()</code> : Returns the number of non-null values in a column
+<code>variance()</code> : Returns the variance of a column
+<code>stddev()</code> : Returns the standard deviation of a column
+<code>corr()</code> : Returns the correlation between two columns
+<code>covar_pop()</code> : Returns the population covariance between two columns
+<code>covar_samp()</code> : Returns the sample covariance between two columns"
+
+db_ps9,"
+- <code>agg</code> : Used for aggregate operations on a DataFrame or GroupedData object
+- <code>col</code> : Used to reference a column in a DataFrame
+- <code>count</code> : Used to count the number of non-null values in a column or DataFrame
+- <code>distinct</code> : Used to return distinct values in a column or DataFrame
+- <code>filter</code> : Used to filter rows in a DataFrame based on a condition
+- <code>groupBy</code> : Used to group rows in a DataFrame by one or more columns
+- <code>join</code> : Used to join two DataFrames based on a common column or set of columns
+- <code>lit</code> : Used to create a literal value that can be added as a new column to a DataFrame
+- <code>select</code> : Used to select specific columns from a DataFrame
+- <code>sum</code> : Used to calculate the sum of values in a column or DataFrame"
+
+db_ps10,"
+<code>
+from pyspark.sql.functions import sum,avg,stddev,variance,min,max
+
+df.select(sum('column')).show() # column sum
+df.select(avg('column')).show() # column average
+df.select(stddev('column')).show() # column standard deviation
+df.select(variance('column')).show() # column variance
+df.select(min('column')).show() # column minimum
+df.select(max('column')).show() # column maximum
+</code>
+
+db_ps11,"
+# select specific columns
+<code>df.select('column1', 'column2')</code>
+
+# filter rows based on condition
+<code>df.select('*').filter(df.column1 > 10)</code>
+
+# select distinct values
+<code>df.select('column1').distinct()</code>
+
+# sorting data
+<code>df.select('*').orderBy(df.column1.desc())</code>
+
+# Limiting the number of rows returned
+<code>df.select('*').limit(10)</code>"
+
+db_ps12,"
+<code>
+from pyspark.sql import SparkSession
+from pyspark.sql import functions as f
+
+# create spark session
+spark = SparkSession.builder\
+                    .appName('name')\
+                    .getOrCreate()"
+</code>"
+
+db_ps13,"
+<code>
+# Count the number of missing values in each column
+missing_values = df.select([col(c).isNull().sum().alias(c) for c in df.columns])
+missing_values.show()
+</code>",
+
+db_ps14,"
+<code>
+# Count the number of missing values in each row
+missing_values = df.select([col(c).isNull().cast('int').alias(c) for c in df.columns])
+missing_values = missing_values.withColumn('missing_count', sum(missing_values[col_name] for col_name in missing_values.columns))
+</code>"
+
+db_ps15,"
+<code>
+from pyspark.sql.functions import col
+
+# Load data into a PySpark DataFrame
+df = spark.read.csv("path/to/data.csv", header=True)
+
+# Set the threshold for missing values
+threshold = 10
+
+# Count the number of missing values in each row
+missing_values = df.select([col(c).isNull().cast("int").alias(c) for c in df.columns])
+missing_values = missing_values.withColumn("missing_count", sum(missing_values[col_name] for col_name in missing_values.columns))
+
+# Remove rows with missing values above the threshold
+df_clean = df.filter(missing_values["missing_count"] <= threshold)
+</code>
+"
+
+db_ps16,"
+<code>
+from pyspark.sql.functions import col
+
+# Load data into a PySpark DataFrame
+df = spark.read.csv('data.csv', header=True)
+
+# show the number of missing values in each column
+missing_values = df.select([col(c).isNull().sum().alias(c) for c in df.columns])
+missing_values.show()
+
+# Remove rows with missing values
+df_clean = df.dropna()
+</code>"
+
+
+#
+#  PySpark | Cheatsheet 
+# 
+
+db_pscs0,"
+<code>
+people.createOrReplaceTempView('people')
+spark.sql(
+    '''
+    SELECT *
+    FROM people
+        INNER JOIN places
+            ON people.city = LOWER(places.location)
+    '''
+).show() 
+</code>"
+
+db_pscs1,"
+df = df_1.join(df_2, on=['key'], how='inner') 
+df = df_1.join(df_2, df_1.key < df_2.key, how='inner') # inner w/ condition
+df = df_1.join(df_2, on=['key'], how='outer')
+df = df_1.join(df_2, on=['key'], how='left')
+df = df_1.join(df_2, on=['key'], how='right')
+df = df_1.join(df_2, on=['key'], how='left_semi')
+df = df_1.join(df_2, on=['key], how='left_anti')"
+
+db_pscs2,"
+<code>
+df.sort('goals', ascending=True).collect()
+df.sort(df.goals.asc()).collect()
+df.orderBy(['goals'], ascending = [0,1]).collect()
+</code>"
+
+db_pscs3,"
+<code>
+df.groupby('players').count().show()
+df.groupby('players').agg(spark_max('goals'), spark_min('goals'), spark_sum('goals').alias('total_goal_num')).show()
+</code>"
+
+db_pscs4,"
+<code>
+# Select using a when-otherwise clause:
+df.select('goals', f.when(df.goals == 0, 'boring').otherwise('interesting'))
+
+# Select using like:
+df.select('sport', df.sport.like('basketball'))
+
+# Select using between:
+df.select(df.goals.between(1, 3))
+
+# Select using startswith or endswith:
+df.select('sports', df.players.startwith('B'))
+df.select(df.players.endswith('s'))
+
+# select a substring
+df.select(df.players.substr(1, 4).alias('nickname'))
+</code>"
+
+db_pscs5,"
+<code>
+# Select a single column
+df.select('basketball')
+
+# Select multiple columns:
+df.select('basketball', 'football')
+
+# Select a filtered version of a column:
+df.select(df['goals'] >= 2)
+
+# Select a modified version of a column:
+df.select(df['goals'] + 1)
+</code>"
+
+db_pscs6,"
+<code>
+import pyspark.sql.functions as f
+
+# Add columns with Spark native functions
+new_df = df.withColumn('column_3_multiplied', 3 * f.col('column_3_original'))
+</code>"
+
+db_pscs7,"
+<code>
+import pyspark.sql.functions as f
+from psyspark.sql.types import *
+
+# user defined function
+def example_func(filter_value):
+    if values >= 5:
+        return 'enough free spots'
+    else:
+        return 'not enough free spots'
+
+my_udf = f.udf(example_func, StringType())
+
+cinema_tickets = cinema.withColumn('free_spots', my_udf('spots') )
+</code>"
+
+db_pscs8,"
+<code>
+population = [ ('Croatia', 4_058_000), ('Oregon', 4_218_000 ) ]
+
+cols = ['state', 'population']
+
+df = spark.createDataFrame(data=population, schema=cols)
+</code>"
+
+db_pscs9,"
+<code>
+population = [ ('Croatia', 4_058_000), ('Oregon', 4_218_000 ) ]
+
+pop_schema = StructType([
+    StructField('state', StringType(), True),   
+    StructField('population', IntegerType(), True)])
+
+df = spark.createDataFrame(data=population, schema=pop_schema)
+</code>"
+
+
