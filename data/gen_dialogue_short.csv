@@ -225,7 +225,7 @@ tvs = TrainValidationSplit(estimator=lr,
 
 Parameters that need to be passed are: <code>estimator</code>, <code>estimatorParamMaps</code>, <code>evaluator</code> & <code>trainRatio</code>"
 user,"what the evaluator?"
-bot,"An evaluator is an object that is used to evaluate the performance of a machine learning model. It takes the predicted values and the actual values as input and produces a metric that quantifies how well the model is performing. For binary classification use <code>BinaryClassificationEvaluator</code>, <code>MulticlassClassificationEvaluator</code> <code>RegressionEvaluator</code>, imported from <code>pyspark.ml.evaluation</code>
+bot,"An evaluator is an object that is used to evaluate the performance of a machine learning model. It takes the predicted values and the actual values as input and produces a metric that quantifies how well the model is performing. For binary classification use <code>BinaryClassificationEvaluator</code>, <code>MulticlassClassificationEvaluator</code> <code>RegressionEvaluator</code>, imported from <code>pyspark.ml.evaluation</code>"
 user,"what is an estimator?"
 bot,"An estimator is the same as the model, for example: <code>lr = LogisticRegression()</code>"
 user,"what is estimatorParamMaps?"
@@ -238,13 +238,6 @@ paramGrid = ParamGridBuilder() \
     .addGrid(lr.elasticNetParam, [0.0,0.5,1.0]) \
     .build()
 </code>"
-
-The most commonly used metric for classification problems is the area under the receiver operating characteristic (ROC) curve, which measures the trade-off between sensitivity and specificity. For regression problems, the most commonly used metric is the root mean squared error (RMSE), which measures the difference between the predicted and actual values."
-
-
-
-user,"how do I create a validation subset in pyspark?"
-bot,"There are two approaches you can "
 
 user,"I want to validate my dataset in pyspark"
 bot,"There are two approaches that you can use [randomSplit] or [CrossValidator], which of these interest you?"
@@ -328,7 +321,7 @@ bot,"[TrainValidationSplit] and [randomSplit] are both methods for splitting a d
 
 [randomSplit] on the other hand, is a simple method for splitting a dataset into training and testing sets. It randomly divides the dataset into two parts based on a given set of weights. This method is useful for general machine learning tasks where hyperparameter tuning is not necessary.
 
-In summary, TrainValidationSplit is used for hyperparameter tuning and model selection, while randomSplit is used for general machine learning tasks."
+In summary, TrainValidationSplit is used for hyperparameter tuning and model selection, while randomSplit is used for general machine learning tasks"
 
 user,"are there any differences between TrainValidationSplit and randomSplit?"
 bot,"There is a slight difference, TrainValidationSplit is used for hyperparameter tuning and model selection, while randomSplit is used for general machine learning tasks"
@@ -341,11 +334,6 @@ bot,"TrainValidationSplit and CrossValidator are both methods for hyperparameter
 [CrossValidator] performs a kfold cross-validation by splitting the dataset into k equal parts. It trains multiple models on k-1 parts of the dataset with different hyperparameters and evaluates the performance on the remaining part. This process is repeated k times, with each part serving as the validation set once. The model with the best average performance across all k folds is then selected as the final model.
 
 In summary, TrainValidationSplit is a simple method for hyperparameter tuning that splits the dataset into a training set and a validation set, while CrossValidator is used for hyperparameter tuning and model selection through k-fold cross-validation."
-
-
-
-
-
 
 #
 # PySpark | Preprocessing Data Cleaning / Removing Data
@@ -387,7 +375,6 @@ user,"give me an example of how to query a pyspark dataframe"
 bot,"**db_ps19**"
 user,"how do I query my spark dataframe?"
 bot,"**db_ps19**"
-
 
 # 
 # PySpark | Cheatsheet
