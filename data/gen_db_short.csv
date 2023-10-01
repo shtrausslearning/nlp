@@ -891,6 +891,88 @@ print('AUC:', auc)
 </code>"
 
 #
+#    PySpark | Machine Learning Classification
+# 
+
+db_psmlc0,"<code>
+from pyspark.sql import SparkSession
+from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.classification import MultilayerPerceptronClassifier
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+
+# Create a Spark session
+spark = SparkSession.builder.appName('MLPExample').getOrCreate()
+
+# Load the dataset as a DataFrame
+data = spark.read.format('csv').option('header', 'true').option('inferSchema', 'true').load('dataset.csv')
+
+# Select the input features and the target variable
+feature_cols = ['feature1', 'feature2', 'feature3']
+assembler = VectorAssembler(inputCols=feature_cols, outputCol='features')
+data = assembler.transform(data)
+data = data.select('features', 'target')
+
+# Split the dataset into training and testing sets
+train_data, test_data = data.randomSplit([0.7,0.3], seed=123)
+
+# Define the MLP model
+layers = [len(feature_cols), 5,4,3]  # (Input layer, hidden layers, output layer)
+mlp = MultilayerPerceptronClassifier(featuresCol="features", labelCol='target', maxIter=100, layers=layers)
+
+# Train the MLP model
+model = mlp.fit(train_data)
+
+# Make predictions on the testing set
+predictions = model.transform(test_data)
+
+# Evaluate the performance of the model
+evaluator = MulticlassClassificationEvaluator(predictionCol='prediction', labelCol='target', metricName='accuracy')
+accuracy = evaluator.evaluate(predictions)
+print('Accuracy:', accuracy)
+
+# Stop the Spark session
+spark.stop()
+</code>"
+
+db_psmlc1,"
+<code>
+from pyspark.sql import SparkSession
+from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.classification import LinearSVC
+
+# Create a Spark session
+spark = SparkSession.builder.appName('SVMExample').getOrCreate()
+
+# Load the dataset as a DataFrame
+data = spark.read.format('csv').option('header', 'true').option('inferSchema','true').load('dataset.csv')
+
+# Select the input features and the target variable
+feature_cols = ['feature1', 'feature2', 'feature3']
+assembler = VectorAssembler(inputCols=feature_cols, outputCol='features')
+data = assembler.transform(data)
+data = data.select('features', 'target')
+
+# Split the dataset into training and testing sets
+train_data, test_data = data.randomSplit([0.7,0.3], seed=123)
+
+# Train an SVM model
+svm = LinearSVC(featuresCol='features', labelCol='target')
+model = svm.fit(train_data)
+
+# Make predictions on the testing set
+predictions = model.transform(test_data)
+
+# Evaluate the performance of the model
+from pyspark.ml.evaluation import BinaryClassificationEvaluator
+evaluator = BinaryClassificationEvaluator(rawPredictionCol='rawPrediction')
+auc = evaluator.evaluate(predictions)
+print('AUC:', auc)
+
+# Stop the Spark session
+spark.stop()
+</code>"
+
+#
 #  PySpark | Data Splitting Methods
 # 
 

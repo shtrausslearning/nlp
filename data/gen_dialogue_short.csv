@@ -336,7 +336,31 @@ bot,"TrainValidationSplit and CrossValidator are both methods for hyperparameter
 In summary, TrainValidationSplit is a simple method for hyperparameter tuning that splits the dataset into a training set and a validation set, while CrossValidator is used for hyperparameter tuning and model selection through k-fold cross-validation."
 
 #
-# PySpark | Preprocessing Data Cleaning / Removing Data
+#    PySpark | Machine Learning Classification
+# 
+
+user,"which library contains classification models?"
+bot,"You can import machine learning models from <code>spark.ml.classification</code>"
+user,"what classification models are available in pyspark?"
+bot,"Here are the available models you can import from <code>pyspark.ml.classification</code>:
+1. Logistic Regression (<code>LogisticRegression</code>)
+2. Decision Trees (<code>DecisionTreeClassifier</code>)
+3. Random Forest (<code>RandomForestClassifier</code>)
+4. Gradient-Boosted Trees (<code>GBTClassifier</code>)
+5. Naive Bayes (<code>NaiveBayes</code>)
+6. Support Vector Machines (<code>LinearSVC</code>)
+7. Multilayer Perceptron (<code>MultilayerPerceptronClassifier</code>)"
+
+user,"show me an example of mulilayer perceptron classifier in pyspark"
+bot,"**db_psmlc0**"
+user,"show me an example of support vector machines in pyspark"
+bot,"**db_psmlc1**"
+
+
+
+
+#
+#   PySpark | Preprocessing Data Cleaning / Removing Data
 # 
 
 user,"give me an example of how I can clean data with pyspark?"
@@ -360,7 +384,7 @@ We can remove missing values from a PySpark DataFrame using a threshold:
 **db_ps15**"
 
 #
-# PySpark SQL queries
+#    PySpark SQL queries
 #
 
 user,"can I query a pyspark dataframe?"
