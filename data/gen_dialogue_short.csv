@@ -275,7 +275,7 @@ bot,"Here's some information about the two:
 user,"what methods can I use to split a pyspark dataframe?"
 bot,"There are two methods you can use [randomSplit] or [CrossValidator], should I provide some examples of the two?"
 user,"yes"
-bot"Here's an example of <code>randomSplit</code>
+bot,"Here's an example of <code>randomSplit</code>
 
 **db_psdsm3**
 
