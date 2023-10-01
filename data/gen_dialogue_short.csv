@@ -222,8 +222,7 @@ bot,"**db_pscs0**"
 user,"how do I perform joins in pyspark?"
 bot,"Here are some examples of pyspark dataframe joins:
 
-**db_pscs1**
-"
+**db_pscs1**"
 user,"which join methods are supported in pyspark dataframe join?"
 bot,"inner, cross, outer, full, fullouter, full_outer, left, leftouter, left_outer, right, rightouter, right_outer, semi, leftsemi, left_semi, anti, leftanti and left_anti are all supported"
 
@@ -305,6 +304,10 @@ bot,"
 PySpark provides a machine learning API: <code>MLlib</code> that supports various ML algorithms like:
 
 **db_psiq0**"
+
+#
+#  PySpark | Start a machine learning project
+# 
 
 user,"give me an example of a machine learning project in pyspark"
 bot,"One example of a machine learning project in PySpark could be building a model to predict customer churn for a telecommunications company. The dataset could include information about customer demographics, usage patterns, and service plans. 
