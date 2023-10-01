@@ -274,12 +274,15 @@ bot,"<code>df.toPandas()</code>"
 
 user,"how do I load a text file into pyspark?"
 bot,"Here's how you can load a text file:
+
 <code>df = spark.read.text('names.txt')</code>"
 user,"how do I load a json file into pyspark?"
 bot,"Here's how you can load a JSON file into PySpark:
+
 <code>df = spark.read.json('fruits.json', format='json')"
 user,"how do I load a parquet file into pyspark?"
 bot,"Here's how you can load a Parquet file into PySpark:
+
 <code>df = spark.read.load('stock_prices.parquet')</code>"
 
 user,"how do I create a pyspark dataframe from a list of tuples?"
@@ -296,11 +299,6 @@ If you want to specify <code>StructField</code>:
 
 user,"What is pyspark UDF?"
 bot,"UDF stands for User Defined Functions. In PySpark, UDF can be created by creating a python function and wrapping it with PySpark SQL’s <code>udf()</code> method and using it on the DataFrame or SQL. These are generally created when we do not have the functionalities supported in PySpark’s library and we have to use our own logic on the data. UDFs can be reused on any number of SQL expressions or DataFrames."
-
-user,"what is pyspark streaming?"
-bot,"PySpark Streaming is scalable, fault-tolerant, high throughput based processing streaming system that supports streaming as well as batch loads for supporting real-time data from data sources like TCP Socket, S3, Kafka, Twitter, file system folders etc. The processed data can be sent to live dashboards, Kafka, databases, HDFS etc."
-user,"how do I stream using TPC protocol?"
-bot,"To perform Streaming from the TCP socket, we can use the readStream.format('socket') method of Spark session object for reading data from TCP socket and providing the streaming source host and port as options as shown in the code below:"
 
 user,"Does PySpark provide a machine learning API?"
 bot,"
