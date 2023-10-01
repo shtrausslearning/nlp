@@ -851,7 +851,7 @@ cols = ['gender', 'age', 'total_day_minutes', 'total_eve_minutes', 'total_night_
         'total_intl_minutes', 'customer_service_calls', 'international_plan', 'voice_mail_plan']
 assembler = VectorAssembler(inputCols=cols, outputCol='features')
 data = assembler.transform(data)
-data = data.select("features", "churn")
+data = data.select('features', 'churn')
 
 # encode categorical variables
 indexers = [StringIndexer(inputCol=col, outputCol=col+'_index') for col in ['international_plan', 'voice_mail_plan']]
