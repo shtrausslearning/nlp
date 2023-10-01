@@ -53,7 +53,7 @@ user,"how do I setup a pyspark session locally?"
 bot,"Here's a code that sets up pyspark locally:
 **db_ps12**"
 user,"pyspark start session locally example"
-bot,"Here an example:"
+bot,"Here an example:
 **db_ps12**"
 user,"what would I need to do to start a spark session?"
 bot,"I'll provide you with an example:
