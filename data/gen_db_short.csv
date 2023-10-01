@@ -694,9 +694,8 @@ db_ps18,"
 <code>
 from pyspark.sql.functions import expr
 
-display(df.select('id', expr('lower(name) as little_name')))
-</code>
-"
+df.select('id', expr('lower(name) as little_name'))
+</code>"
 
 #
 #  PySpark | Cheatsheet 
@@ -713,6 +712,26 @@ spark.sql(
             ON people.city = LOWER(places.location)
     '''
 ).show() 
+</code>"
+
+db_ps19,"
+<code>
+from pyspark.sql import SparkSession
+
+# create a SparkSession
+spark = SparkSession.builder.appName('SQLQueries').getOrCreate()
+
+# load the dataset
+data = spark.read.csv('telecom_churn.csv', header=True, inferSchema=True)
+
+# register the DataFrame as a temporary table
+data.createOrReplaceTempView('telecom_churn')
+
+# run a SQL query
+result = spark.sql('SELECT gender, avg(total_day_minutes) as avg_day_minutes FROM telecom_churn GROUP BY gender')
+
+# show the result
+result.show()
 </code>"
 
 db_pscs1,"

@@ -27,6 +27,17 @@ user,"how do I remove a file?"
 bot,"To remove a file, you can use <code>os.remove('file_path')</code>"
 
 #
+#   Pandas | missing data
+#
+
+user,"how do I show missing data in pandas?"
+bot,"here are some examples of how to show missing rows:
+<code>
+data.loc[data.isnull().any(axis=1)]
+data[data.isnull().any(axis=1)]
+</code>"
+
+#
 #    Python String | Cleaning
 #
 
@@ -201,16 +212,16 @@ We can remove missing values from a PySpark DataFrame using a threshold:
 # PySpark SQL queries
 #
 
+user,"can I query a pyspark dataframe?"
+bot,"Yes, you can use SQL to extract relevant data from a pyspark dataframe by creating a table view using <code>dataframe.createOrReplaceTempView('table_name') and using <code>spark.sql('query')</code>"
+user,"can I convert a dataframe to an sql table?"
+bot,"Yes you can, here's an example:
+**db_ps19**"
 user,"how do I run SQL queries using pyspark dataframe?"
-bot,"Spark DataFrames provide a number of options to combine SQL with Python.
-The <code>selectExpr()</code> method allows you to specify each column as a SQL query, such as in the following example:"
-
-<code>display(df.selectExpr('id', 'upper(name) as big_name'))</code>
-
-You can import the <code>expr()</code> function from <code>pyspark.sql.functions</code> to use SQL syntax anywhere a column would be specified, as in the following example:
-
-**db_ps18**"
-
+bot,"Here's an example:
+**db_ps19**"
+user,"give me an example of how to query a pyspark dataframe"
+bot,"**db_ps19**"
 
 # 
 # PySpark | Cheatsheet
@@ -306,7 +317,7 @@ PySpark provides a machine learning API: <code>MLlib</code> that supports variou
 **db_psiq0**"
 
 #
-#  PySpark | Start a machine learning project
+#  PySpark | Start a machine learning
 # 
 
 user,"give me an example of a machine learning project in pyspark"
