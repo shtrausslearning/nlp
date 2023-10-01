@@ -890,4 +890,82 @@ auc = evaluator.evaluate(predictions)
 print('AUC:', auc)
 </code>"
 
+#
+# PySpark | Data Splitting Methods
+# 
+
+db_psdsm1,"
+<code>randomSplit()</code> method splits the data randomly into two or more datasets based on the weights provided. It is a PySpark DataFrame method. If we provide weights as [0.7,0.3], it will split the data into two datasets with 70%/30% of the data respectively
+
+<code>CrossValidator</code> on the hand is a technique in PySpark for tuning hyperparameters of machine learning models. It is a method for selecting the best set of hyperparameters by training and evaluating the model on multiple subsets of the data. <code>CrossValidator</code> works by splitting the data into several subsets, or 'folds', and training the model on each fold while using the remaining folds for validation. This process is repeated for each combination of hyperparameters in a grid search, and the best combination is selected based on the performance metric specified by the evaluator. Its a method that needs to be called from  <code>pyspark.ml.tuning</code> and used with <code>ParamGridBuilder</code>"
+
+db_psdsm3,"<code>
+from pyspark.sql.functions import col
+from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.classification import LogisticRegression
+from pyspark.ml.evaluation import BinaryClassificationEvaluator
+
+# Load the dataset
+data = spark.read.csv('data.csv', header=True, inferSchema=True)
+
+# Select the features and label columns
+features = VectorAssembler(inputCols=['col1', 'col2', 'col3'], outputCol='features')
+data = features.transform(data).select(col('features'), col('label'))
+
+# Split the data into training and testing sets
+train_data, test_data = data.randomSplit([0.7,0.3], seed=42)
+
+# Train a logistic regression model on the training data
+lr = LogisticRegression()
+model = lr.fit(train_data)
+
+# Evaluate the model on the testing data
+predictions = model.transform(test_data)
+evaluator = BinaryClassificationEvaluator()
+auc = evaluator.evaluate(predictions)
+print('AUC:', auc)
+</code>"
+
+db_psdsm4,"
+from pyspark.ml.classification import LogisticRegression
+from pyspark.ml.evaluation import BinaryClassificationEvaluator
+from pyspark.ml.tuning import ParamGridBuilder, CrossValidator
+from pyspark.ml.feature import VectorAssembler
+
+# Load dataset
+data = spark.read.csv('data.csv', header=True, inferSchema=True)
+
+# Split dataset into training and test sets
+(trainingData, testData) = data.randomSplit([0.7, 0.3])
+
+# Define feature columns
+feature_cols = data.columns[:-1]
+
+# Assemble feature vectors
+assembler = VectorAssembler(inputCols=feature_cols, outputCol='features')
+trainingData = assembler.transform(trainingData)
+testData = assembler.transform(testData)
+
+# Define logistic regression model
+lr = LogisticRegression()
+
+# Define grid of hyperparameters to search over
+paramGrid = ParamGridBuilder() \
+    .addGrid(lr.regParam, [0.01, 0.1, 1.0]) \
+    .addGrid(lr.elasticNetParam, [0.0, 0.5, 1.0]) \
+    .build()
+
+# Define evaluator for binary classification
+evaluator = BinaryClassificationEvaluator()
+
+# Define cross validator with 5 folds
+cv = CrossValidator(estimator=lr, estimatorParamMaps=paramGrid, evaluator=evaluator, numFolds=5)
+
+# Fit cross validator to training data
+cvModel = cv.fit(trainingData)
+
+# Evaluate model on test data
+predictions = cvModel.transform(testData)
+auc = evaluator.evaluate(predictions)
+print('AUC on test data: ', auc)"
 

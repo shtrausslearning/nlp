@@ -168,21 +168,77 @@ user,"what preprocessing can I do with pyspark?"
 bot,"
 There are several preprocessing tasks you can perform with PySpark:
 
-1. Data Cleaning: You can remove or replace missing values, remove duplicates, and correct inconsistent data
+[Data Cleaning] You can remove or replace missing values, remove duplicates, and correct inconsistent data
 
-2. Data Transformation: You can transform data by applying functions, filtering data, and creating new columns
+[Data Transformation] You can transform data by applying functions, filtering data, and creating new columns
 
-3. Feature Engineering: You can create new features from existing ones, such as extracting date and time information from a timestamp column
+[Feature Engineering] You can create new features from existing ones, such as extracting date and time information from a timestamp column
 
-4. Scaling and Normalisation: You can scale and normalize numerical features to ensure they have similar ranges and distributions
+[Scaling and Normalisation] You can scale and normalize numerical features to ensure they have similar ranges and distributions
 
-5. Encoding Categorical Variables: You can encode categorical variables into numerical values using techniques such as one-hot encoding or label encoding
+[Encoding Categorical Variables] You can encode categorical variables into numerical values using techniques such as one-hot encoding or label encoding
 
-6. Sampling and Splitting: You can sample data to create smaller datasets for testing and validation, and split data into training, validation, and testing sets for machine learning models
+[Sampling and Splitting] You can sample data to create smaller datasets for testing and validation, and split data into training, validation, and testing sets for machine learning models
 
-7. Aggregation and Grouping: You can aggregate data by grouping it based on certain columns and calculating summary statistics such as mean, median, or count
+[Aggregation and Grouping] You can aggregate data by grouping it based on certain columns and calculating summary statistics such as mean, median, or count
 
-8. Joining and Merging: You can join multiple datasets based on common columns or merge them based on specific criteria"
+[Joining and Merging] You can join multiple datasets based on common columns or merge them based on specific criteria"
+
+#
+#    PySpark | Data Splitting Methods
+# 
+
+user,"what dataframe splitting methods exist in pypsark?"
+bot,"There are two main dataset splitting methods in a PySpark DataFrame:
+
+**db_psdsm1**"
+user,"what methods can I use to split a spark dataframe?"
+bot,"**db_psdsm1**"
+user,"which methods can I used to split a dataframe in pyspark?"
+bot,"**db_psdsm1**"
+user,"how can I split a spark dataframe into subsets?"
+bot,"You can use the following approaches:
+**db_psdsm1**"
+
+user,"show me an example of pyspark randomSplit"
+bot,"Sure, here's an example of <code>randomSplit</code> in PySpark:
+**db_psdsm3**"
+user,"show me an example of pyspark crossvalidation"
+bot,"Sure, here's an example of the <code>CrossValidator</code>:
+**db_psdsm4**"
+user,"show me an example of CrossValidator"
+bot,"Here's an example of PySpark <code>CrossValidator</code>:
+**db_psdsm4**"
+
+user,"how do I create a validation subset in pyspark?"
+bot,"There are two approaches you can "
+
+user,"I want to validate my dataset in pyspark"
+bot,"There are two approaches that you can use [randomSplit] or [CrossValidator], which of these interest you?"
+user,"randomSplit"
+bot,"Here's an example of <code>randomSplit</code>:
+**db_psdsm3**"
+
+user,"I want to validate my dataset in pyspark"
+bot,"There are two approaches that you can use [randomSplit] or [CrossValidator], which of these interest you?"
+user,"CrossValidator"
+bot,"Here's an example of <code>CrossValidator</code>:
+**db_psdsm4**"
+
+user,"I want to validate my dataset in pyspark"
+bot,"There are two approaches that you can use [randomSplit] or [CrossValidator], which of these interest you?"
+user,"What is the difference between the two?"
+bot,"**db_psdsm1**"
+user,"can you show me an example of CrossValidator?"
+
+user,"I want to validate my dataset in pyspark"
+bot,"There are two approaches that you can use [randomSplit] or [CrossValidator], which of these interest you?"
+user,"What is the difference between the two?"
+bot,"The two methods vary, here's some clarification:
+**db_psdsm1**"
+user,"can you show me an example of randomSplit?"
+bot,"Here's an example of <code>randomSplit</code>:
+**db_psdsm3**"
 
 #
 # PySpark | Preprocessing Data Cleaning / Removing Data
@@ -222,6 +278,9 @@ bot,"Here's an example:
 **db_ps19**"
 user,"give me an example of how to query a pyspark dataframe"
 bot,"**db_ps19**"
+user,"how do I query my spark dataframe?"
+bot,"**db_ps19**"
+
 
 # 
 # PySpark | Cheatsheet
