@@ -420,9 +420,7 @@ study.optimize(objective, n_trials=30)
 </code>"
 
 #
-#
 #  PyTorch | Loading Data
-#
 #
 
 db_pt0,"
@@ -690,7 +688,7 @@ db_ps17,"
 6. <code>escape</code> : The character used to escape special characters in the CSV file
 7. <code>comment</code> : The character used to indicate comments in the CSV file
 8. <code>mode</code> : The mode for handling corrupt records. Possible values are 'PERMISSIVE', 'DROPMALFORMED', and 'FAILFAST'
-9. <code>columnNameOfCorruptRecord</code>: The name of the column to store corrupt records when using 'PERMISSIVE' mode
+9. <code>columnNameOfCorruptRecord</code>: The name of the column to store corrupt records when using 'PERMISSIVE' mode"
 
 db_ps18,"
 <code>
