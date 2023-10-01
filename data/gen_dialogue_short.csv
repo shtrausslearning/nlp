@@ -209,6 +209,39 @@ bot,"Sure, here's an example of the <code>CrossValidator</code>:
 user,"show me an example of CrossValidator"
 bot,"Here's an example of PySpark <code>CrossValidator</code>:
 **db_psdsm4**"
+user,"show me an example of TrainValidationSplit"
+bot,"Sure, here's an example:
+**db_psdsm6**"
+
+user,"what parameters should I pass to TrainValidationSplit?"
+bot,"Here's an example:
+
+<code>
+tvs = TrainValidationSplit(estimator=lr,
+                           estimatorParamMaps=paramGrid,
+                           evaluator=evaluator,
+                           trainRatio=0.8)
+</code>
+
+Parameters that need to be passed are: <code>estimator</code>, <code>estimatorParamMaps</code>, <code>evaluator</code> & <code>trainRatio</code>"
+user,"what the evaluator?"
+bot,"An evaluator is an object that is used to evaluate the performance of a machine learning model. It takes the predicted values and the actual values as input and produces a metric that quantifies how well the model is performing. For binary classification use <code>BinaryClassificationEvaluator</code>, <code>MulticlassClassificationEvaluator</code> <code>RegressionEvaluator</code>, imported from <code>pyspark.ml.evaluation</code>
+user,"what is an estimator?"
+bot,"An estimator is the same as the model, for example: <code>lr = LogisticRegression()</code>"
+user,"what is estimatorParamMaps?"
+bot,"It's the hyperparameter grid you wish use in the cross validation, for example:
+
+<code>
+# Define hyperparameter grid
+paramGrid = ParamGridBuilder() \
+    .addGrid(lr.regParam, [0.01,0.1,1]) \
+    .addGrid(lr.elasticNetParam, [0.0,0.5,1.0]) \
+    .build()
+</code>"
+
+The most commonly used metric for classification problems is the area under the receiver operating characteristic (ROC) curve, which measures the trade-off between sensitivity and specificity. For regression problems, the most commonly used metric is the root mean squared error (RMSE), which measures the difference between the predicted and actual values."
+
+
 
 user,"how do I create a validation subset in pyspark?"
 bot,"There are two approaches you can "
@@ -239,6 +272,80 @@ bot,"The two methods vary, here's some clarification:
 user,"can you show me an example of randomSplit?"
 bot,"Here's an example of <code>randomSplit</code>:
 **db_psdsm3**"
+
+user,"what methods can I use to split a pyspark dataframe?"
+bot,"There are two methods you can use [randomSplit] or [CrossValidator], should I tell you more about them?"
+user,"yes"
+bot,"Here's some information about the two:
+**db_psdsm1**"
+
+user,"what methods can I use to split a pyspark dataframe?"
+bot,"There are two methods you can use [randomSplit] or [CrossValidator], should I provide some examples of the two?"
+user,"yes"
+bot"Here's an example of <code>randomSplit</code>
+
+**db_psdsm3**
+
+And here's an example of <code>CrossValidator</code>"
+
+user,"what is the equivalent of GridSearchCV in pyspark?"
+bot,"To use cross validation, you'll need to use the <code>CrossValidator</code>, which is found in <code>pyspark.ml.tuning</code>, a parameter grid needs to be created using <code>ParamGridBuilder</code>, which is also imported from there. Do you need me to provide an example of <code>CrossValidator</code>?"
+user,"yes"
+bot,"Sure here's an example:
+**db_psdsm4**"
+
+user,"How do I create a grid parameter for CrossValidator?"
+bot,"Here's an example:
+
+<code>
+# Define grid of hyperparameters to search over
+paramGrid = ParamGridBuilder() \
+    .addGrid(lr.regParam, [0.01,0.1,1.0]) \
+    .addGrid(lr.elasticNetParam, [0.0,0.5,1.0]) \
+    .build()
+ </code>"
+
+user,"how do I use cross validation in pyspark?"
+bot,"To use cross validation in PySpark, you can follow these steps:
+**db_psdsm5**"
+
+user,"does pyspark offer the ability to do cross validation?"
+bot,"Yes, PySpark has a module to do cross validation using PySpark DataFrames in the <code>pyspark.ml.tuning</code> module"
+
+user,"what is pyspark.ml.tuning?"
+bot,"<code>pyspark.ml.tuning</code> is a module in PySpark that provides classes for hyperparameter tuning, including <code>CrossValidator</code> and <code>ParamGridBuilder</code>. These classes allow you to search over a grid of hyperparameters and evaluate the performance of each combination using cross validation. This can help you find the best set of hyperparameters for your machine learning model"
+user,"what is located in pyspark.ml.tuning?"
+bot,"<code>pyspark.ml.tuning</code> is a module in PySpark that provides classes for hyperparameter tuning, including <code>CrossValidator</code> and <code>ParamGridBuilder</code>. These classes allow you to search over a grid of hyperparameters and evaluate the performance of each combination using cross validation. This can help you find the best set of hyperparameters for your machine learning model"
+
+user,"how do I use pyspark crossvalidator with paramgridbuilder?"
+bot,"Follow this example:
+**db_psdsm4**"
+
+user,"what is the difference between TrainValidationSplit and randomSplit?"
+bot,"[TrainValidationSplit] and [randomSplit] are both methods for splitting a dataset into training and testing sets, but they differ in their approach and purpose
+
+[TrainValidationSplit] is used for hyperparameter tuning and model selection. It splits the dataset into a training set and a validation set, and then trains multiple models on the training set with different hyperparameters. The model with the best performance on the validation set is then selected as the final model. This process helps to prevent overfitting and ensures that the model performs well on unseen data.
+
+[randomSplit] on the other hand, is a simple method for splitting a dataset into training and testing sets. It randomly divides the dataset into two parts based on a given set of weights. This method is useful for general machine learning tasks where hyperparameter tuning is not necessary.
+
+In summary, TrainValidationSplit is used for hyperparameter tuning and model selection, while randomSplit is used for general machine learning tasks."
+
+user,"are there any differences between TrainValidationSplit and randomSplit?"
+bot,"There is a slight difference, TrainValidationSplit is used for hyperparameter tuning and model selection, while randomSplit is used for general machine learning tasks"
+
+user,"what is the difference between trainvalidationsplit and crossvalidator?"
+bot,"TrainValidationSplit and CrossValidator are both methods for hyperparameter tuning and model selection, but they differ in their approach and purpose.
+
+[TrainValidationSplit] is a simple method for hyperparameter tuning that splits the dataset into a training set and a validation set. It trains multiple models on the training set with different hyperparameters and evaluates their performance on the validation set. The model with the best performance on the validation set is then selected as the final model.
+
+[CrossValidator] performs a kfold cross-validation by splitting the dataset into k equal parts. It trains multiple models on k-1 parts of the dataset with different hyperparameters and evaluates the performance on the remaining part. This process is repeated k times, with each part serving as the validation set once. The model with the best average performance across all k folds is then selected as the final model.
+
+In summary, TrainValidationSplit is a simple method for hyperparameter tuning that splits the dataset into a training set and a validation set, while CrossValidator is used for hyperparameter tuning and model selection through k-fold cross-validation."
+
+
+
+
+
 
 #
 # PySpark | Preprocessing Data Cleaning / Removing Data
@@ -273,7 +380,7 @@ bot,"Yes, you can use SQL to extract relevant data from a pyspark dataframe by c
 user,"can I convert a dataframe to an sql table?"
 bot,"Yes you can, here's an example:
 **db_ps19**"
-user,"how do I run SQL queries using pyspark dataframe?"
+user,"how do I run sql queries using pyspark dataframe?"
 bot,"Here's an example:
 **db_ps19**"
 user,"give me an example of how to query a pyspark dataframe"
@@ -376,7 +483,7 @@ PySpark provides a machine learning API: <code>MLlib</code> that supports variou
 **db_psiq0**"
 
 #
-#  PySpark | Start a machine learning
+#  PySpark | Start a machine learning project
 # 
 
 user,"give me an example of a machine learning project in pyspark"

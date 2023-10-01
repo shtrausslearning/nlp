@@ -891,7 +891,7 @@ print('AUC:', auc)
 </code>"
 
 #
-# PySpark | Data Splitting Methods
+#  PySpark | Data Splitting Methods
 # 
 
 db_psdsm1,"
@@ -969,3 +969,87 @@ predictions = cvModel.transform(testData)
 auc = evaluator.evaluate(predictions)
 print('AUC on test data: ', auc)"
 
+db_psdsm5,"
+[1] Import the necessary libraries:
+
+from pyspark.ml.tuning import CrossValidator, ParamGridBuilder
+from pyspark.ml.evaluation import RegressionEvaluator
+
+[2] Define your model and its parameters:
+
+python
+from pyspark.ml.regression import LinearRegression
+
+lr = LinearRegression(maxIter=10)
+
+
+[3] Define the parameter grid to search over:
+
+python
+paramGrid = ParamGridBuilder() \
+    .addGrid(lr.regParam, [0.1, 0.01]) \
+    .addGrid(lr.fitIntercept, [False, True]) \
+    .addGrid(lr.elasticNetParam, [0.0, 0.5, 1.0]) \
+    .build()
+
+[4] Define the evaluator to use:
+
+evaluator = RegressionEvaluator(metricName='rmse', labelCol='label',
+                                predictionCol='prediction')
+
+[5] Create a cross validator object:
+
+cv = CrossValidator(estimator=lr, estimatorParamMaps=paramGrid, evaluator=evaluator, numFolds=5)
+
+[6] Fit the cross validator to your data:
+
+cv_model = cv.fit(trainingData)
+
+[7] Use the best model from the cross validation to make predictions:
+
+predictions = cv_model.transform(testData)"
+
+db_psdsm6,"
+<code>
+from pyspark.ml.classification import LogisticRegression
+from pyspark.ml.evaluation import BinaryClassificationEvaluator
+from pyspark.ml.tuning import ParamGridBuilder, TrainValidationSplit
+from pyspark.ml.feature import VectorAssembler
+
+# Load data
+data = spark.read.csv('data.csv', header=True, inferSchema=True)
+
+# Prepare data for modeling
+assembler = VectorAssembler(inputCols=['feature_1', 'feature_2', 'feature_3'], outputCol='features')
+data = assembler.transform(data).select('features', 'label')
+
+# Define model
+lr = LogisticRegression()
+
+# Define hyperparameter grid
+paramGrid = ParamGridBuilder() \
+    .addGrid(lr.regParam, [0.01,0.1,1]) \
+    .addGrid(lr.elasticNetParam, [0.0,0.5,1.0]) \
+    .build()
+
+# Split data into training and validation sets
+train, validation = data.randomSplit([0.8,0.2], seed=42)
+
+# Define evaluator
+evaluator = BinaryClassificationEvaluator()
+
+# Define TrainValidationSplit
+tvs = TrainValidationSplit(estimator=lr,
+                           estimatorParamMaps=paramGrid,
+                           evaluator=evaluator,
+                           trainRatio=0.8)
+
+# Fit models and select best one
+model = tvs.fit(train)
+bestModel = model.bestModel
+
+# Evaluate best model on validation set
+predictions = bestModel.transform(validation)
+auc = evaluator.evaluate(predictions)
+print('Area under ROC curve (AUC) on validation set: {}'.format(auc))
+</code>"
