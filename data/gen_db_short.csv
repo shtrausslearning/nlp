@@ -876,7 +876,7 @@ for indexer in indexers:
     data = indexer.fit(data).transform(data)
 
 # split the dataset into training and testing sets
-train, test = data.randomSplit([0.7, 0.3], seed=123)
+train, test = data.randomSplit([0.7,0.3], seed=123)
 
 # build a logistic regression model
 lr = LogisticRegression(featuresCol='features', labelCol='churn')
@@ -917,7 +917,7 @@ train_data, test_data = data.randomSplit([0.7,0.3], seed=123)
 
 # Define the MLP model
 layers = [len(feature_cols), 5,4,3]  # (Input layer, hidden layers, output layer)
-mlp = MultilayerPerceptronClassifier(featuresCol="features", labelCol='target', maxIter=100, layers=layers)
+mlp = MultilayerPerceptronClassifier(featuresCol='features', labelCol='target', maxIter=100, layers=layers)
 
 # Train the MLP model
 model = mlp.fit(train_data)
@@ -1063,7 +1063,6 @@ python
 from pyspark.ml.regression import LinearRegression
 
 lr = LinearRegression(maxIter=10)
-
 
 [3] Define the parameter grid to search over:
 
