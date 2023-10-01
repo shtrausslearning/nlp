@@ -624,8 +624,7 @@ db_ps11,"
 # Limiting the number of rows returned
 <code>df.select('*').limit(10)</code>"
 
-db_ps12,"
-<code>
+db_ps12,"<code>
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as f
 
@@ -682,6 +681,24 @@ missing_values.show()
 df_clean = df.dropna()
 </code>"
 
+db_ps17,"
+1. <code>path</code> : The path to the CSV file
+2. <code>header</code> : A boolean value indicating whether the CSV file has a header row
+3. <code>inferSchema</code>: A boolean value indicating whether PySpark should infer the schema of the DataFrame from the CSV file
+4. <code>sep</code> : The separator character used in the CSV file
+5. <code>quote</code> : The character used to quote fields in the CSV file
+6. <code>escape</code> : The character used to escape special characters in the CSV file
+7. <code>comment</code> : The character used to indicate comments in the CSV file
+8. <code>mode</code> : The mode for handling corrupt records. Possible values are 'PERMISSIVE', 'DROPMALFORMED', and 'FAILFAST'
+9. <code>columnNameOfCorruptRecord</code>: The name of the column to store corrupt records when using 'PERMISSIVE' mode
+
+db_ps18,"
+<code>
+from pyspark.sql.functions import expr
+
+display(df.select('id', expr('lower(name) as little_name')))
+</code>
+"
 
 #
 #  PySpark | Cheatsheet 
@@ -799,6 +816,61 @@ pop_schema = StructType([
     StructField('population', IntegerType(), True)])
 
 df = spark.createDataFrame(data=population, schema=pop_schema)
+</code>"
+
+db_psiq0,"
+<code>mllib.classification</code> : This supports different methods for binary or multiclass classification and regression analysis like Random Forest, Decision Tree, Naive Bayes etc
+
+<code>mllib.clustering</code> : This is used for solving clustering problems that aim in grouping entities subsets with one another depending on similarity
+
+<code>mllib.fpm</code> : FPM stands for Frequent Pattern Matching. This library is used to mine frequent items, subsequences or other structures that are used for analyzing large datasets
+
+<code>mllib.linalg</code> : This is used for solving problems on linear algebra
+
+<code>mllib.recommendation</code> − This is used for collaborative filtering and in recommender systems
+
+<code>spark.mllib</code> : This is used for supporting model-based collaborative filtering where small latent factors are identified using the Alternating Least Squares (ALS) algorithm which is used for predicting missing entries
+
+<code>mllib.regression</code> − This is used for solving problems using regression algorithms that find relationships and variable dependencies"
+
+db_psiq1,"
+<code>
+from pyspark.sql import SparkSession
+from pyspark.ml.feature import VectorAssembler, StringIndexer
+from pyspark.ml.classification import LogisticRegression
+from pyspark.ml.evaluation import BinaryClassificationEvaluator
+
+# create a SparkSession
+spark = SparkSession.builder.appName('CustomerChurnPrediction').getOrCreate()
+
+# load the dataset
+data = spark.read.csv('telecom_churn.csv', header=True, inferSchema=True)
+
+# select relevant features and label
+cols = ['gender', 'age', 'total_day_minutes', 'total_eve_minutes', 'total_night_minutes', 
+        'total_intl_minutes', 'customer_service_calls', 'international_plan', 'voice_mail_plan']
+assembler = VectorAssembler(inputCols=cols, outputCol='features')
+data = assembler.transform(data)
+data = data.select("features", "churn")
+
+# encode categorical variables
+indexers = [StringIndexer(inputCol=col, outputCol=col+'_index') for col in ['international_plan', 'voice_mail_plan']]
+for indexer in indexers:
+    data = indexer.fit(data).transform(data)
+
+# split the dataset into training and testing sets
+train, test = data.randomSplit([0.7, 0.3], seed=123)
+
+# build a logistic regression model
+lr = LogisticRegression(featuresCol='features', labelCol='churn')
+model = lr.fit(train)
+
+# evaluate the model on the testing set
+evaluator = BinaryClassificationEvaluator(labelCol='churn')
+predictions = model.transform(test)
+auc = evaluator.evaluate(predictions)
+
+print('AUC:', auc)
 </code>"
 
 

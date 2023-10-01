@@ -69,6 +69,11 @@ bot,"To read a a CSV in pyspark:
 user,"What are the function parameters?""
 bot,"**db_ps4**"
 
+user,"what are the parameters in pyspark read.csv?"
+bot,"The function takes several parameters, including:
+
+**db_ps17**
+
 user,"how do I read a csv with a custom schema in pyspark?"
 bot,"**db_ps5**"
 
@@ -192,6 +197,21 @@ We can remove missing values from a PySpark DataFrame using a threshold:
 
 **db_ps15**"
 
+#
+# PySpark SQL queries
+#
+
+user,"how do I run SQL queries using pyspark dataframe?"
+bot,"Spark DataFrames provide a number of options to combine SQL with Python.
+The <code>selectExpr()</code> method allows you to specify each column as a SQL query, such as in the following example:"
+
+<code>display(df.selectExpr('id', 'upper(name) as big_name'))</code>
+
+You can import the <code>expr()</code> function from <code>pyspark.sql.functions</code> to use SQL syntax anywhere a column would be specified, as in the following example:
+
+**db_ps18**"
+
+
 # 
 # PySpark | Cheatsheet
 # 
@@ -270,10 +290,33 @@ If you want to specify <code>StructField</code>:
 
 **db_pscs9**"
 
+#
+#  PySpark | Pyspark Interview Questions for Freshers
+# 
 
+user,"What is pyspark UDF?"
+bot,"UDF stands for User Defined Functions. In PySpark, UDF can be created by creating a python function and wrapping it with PySpark SQL’s <code>udf()</code> method and using it on the DataFrame or SQL. These are generally created when we do not have the functionalities supported in PySpark’s library and we have to use our own logic on the data. UDFs can be reused on any number of SQL expressions or DataFrames."
 
+user,"what is pyspark streaming?"
+PySpark Streaming is scalable, fault-tolerant, high throughput based processing streaming system that supports streaming as well as batch loads for supporting real-time data from data sources like TCP Socket, S3, Kafka, Twitter, file system folders etc. The processed data can be sent to live dashboards, Kafka, databases, HDFS etc."
+user,"how do I stream using TPC protocol?"
+bot,"To perform Streaming from the TCP socket, we can use the readStream.format('socket') method of Spark session object for reading data from TCP socket and providing the streaming source host and port as options as shown in the code below:"
 
+user,"Does PySpark provide a machine learning API?"
+bot,"
+PySpark provides a machine learning API: <code>MLlib</code> that supports various ML algorithms like:
 
+**db_psiq0**
 
+user,"give me an example of a machine learning project in pyspark"
+bot,"One example of a machine learning project in PySpark could be building a model to predict customer churn for a telecommunications company. The dataset could include information about customer demographics, usage patterns, and service plans. 
 
+The project would involve preprocessing the data, selecting relevant features, and splitting the dataset into training and testing sets. Then, various machine learning algorithms in MLlib such as logistic regression, decision trees, and random forests could be used to train and evaluate the model's performance.
 
+Once a suitable model is built, it could be deployed to predict which customers are at risk of churning and take proactive measures to retain them. This could include targeted marketing campaigns or personalized offers to improve customer satisfaction and loyalty."
+user,"give me an example code for this project"
+bot,"Here is an example code to build a logistic regression model for customer churn prediction using PySpark:
+
+**db_psiq1**
+
+This code loads the telecom customer churn dataset, selects relevant features and label, encodes categorical variables, splits the dataset into training and testing sets, builds a logistic regression model, and evaluates its performance using the area under the ROC curve (AUC) metric."
