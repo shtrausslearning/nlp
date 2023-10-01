@@ -298,7 +298,7 @@ user,"What is pyspark UDF?"
 bot,"UDF stands for User Defined Functions. In PySpark, UDF can be created by creating a python function and wrapping it with PySpark SQL’s <code>udf()</code> method and using it on the DataFrame or SQL. These are generally created when we do not have the functionalities supported in PySpark’s library and we have to use our own logic on the data. UDFs can be reused on any number of SQL expressions or DataFrames."
 
 user,"what is pyspark streaming?"
-PySpark Streaming is scalable, fault-tolerant, high throughput based processing streaming system that supports streaming as well as batch loads for supporting real-time data from data sources like TCP Socket, S3, Kafka, Twitter, file system folders etc. The processed data can be sent to live dashboards, Kafka, databases, HDFS etc."
+bot,"PySpark Streaming is scalable, fault-tolerant, high throughput based processing streaming system that supports streaming as well as batch loads for supporting real-time data from data sources like TCP Socket, S3, Kafka, Twitter, file system folders etc. The processed data can be sent to live dashboards, Kafka, databases, HDFS etc."
 user,"how do I stream using TPC protocol?"
 bot,"To perform Streaming from the TCP socket, we can use the readStream.format('socket') method of Spark session object for reading data from TCP socket and providing the streaming source host and port as options as shown in the code below:"
 
@@ -306,7 +306,7 @@ user,"Does PySpark provide a machine learning API?"
 bot,"
 PySpark provides a machine learning API: <code>MLlib</code> that supports various ML algorithms like:
 
-**db_psiq0**
+**db_psiq0**"
 
 user,"give me an example of a machine learning project in pyspark"
 bot,"One example of a machine learning project in PySpark could be building a model to predict customer churn for a telecommunications company. The dataset could include information about customer demographics, usage patterns, and service plans. 
