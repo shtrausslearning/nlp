@@ -42,7 +42,7 @@ data[data.isnull().any(axis=1)]
 #
 
 user,"what are some python string commands?"
-bot,"db_pyt0
+bot,"db_pyt0"
 user,"how do I remove whitespaces from python string?"
 bot,"To remove whitespaces from a Python string, you can use the <code>strip()</code> method"
 
@@ -58,7 +58,6 @@ bot,"To remove whitespaces from a Python string, you can use the <code>strip()</
 
 user,"what is pyspark?"
 bot,"[PySpark] is the Python API for Apache Spark, whcih is a distributed computing framework used for big data processing and analytics. It enables users to work with large datasets in a distributed manner, making it ideal for handling big data workloads. PySpark provides a wide range of libraries and tools for data processing, machine learning, and graph processing, making it a popular choice for big data projects."
-
 user,"how do I install pyspark?"
 bot,"pip install pyspark"
 
@@ -87,13 +86,13 @@ bot,"I'll provide you with an example:
 user,"how do I read a csv in pyspark?"
 bot,"To read a a CSV in pyspark:
 <code>spark.read.csv('data.csv')</code>"
-user,"What are the function parameters?""
+user,"What are the function parameters?"
 bot,"**db_psld0**"
 
 user,"what are the parameters in pyspark read.csv?"
 bot,"The function takes several parameters, including:
 
-**db_psld1**
+**db_psld1**"
 
 user,"how do I read a csv with a custom schema in pyspark?"
 bot,"**db_psld2**"
@@ -116,7 +115,7 @@ bot,"**db_psdtyp0**"
 #
 
 user,"what is withColumn?"
-bot,"[withColumn] is a PySpark DataFrame method used to add a new column or replace an existing column in a Spark DataFrame. It takes two arguments: column name and the expression that defines the values of the new column."
+bot,"<code>withColumn</code> is a PySpark DataFrame method used to add a new column or replace an existing column in a Spark DataFrame. It takes two arguments: column name and the expression that defines the values of the new column."
 user,"what types of expressions are supported?"
 bot,"
 The expression can be a simple column reference, a mathematical operation, or a function applied to one or more columns. The withColumn method returns a new DataFrame with the added or replaced column. This method is commonly used in data transformation tasks where new columns need to be created based on existing columns or external data sources."
@@ -138,7 +137,7 @@ bot,"Here is an example which where we use <code>substr</code>:
 **db_ps2**"
 
 user,"what is StructType?"
-bot,"[StructType] is a class in PySpark that represents a schema for a structured data type. It is used to define the structure of a DataFrame or a column in a DataFrame. A StructType object consists of a list of StructField objects, each of which specifies the name and data type of a field in the structure. The data types that can be used in a StructType include primitive data types such as IntegerType and StringType, as well as complex data types such as ArrayType and MapType. StructType is an important tool in PySpark for ensuring that data is properly structured and organized for analysis.
+bot,"<code>StructType</code> is a class in PySpark that represents a schema for a structured data type. It is used to define the structure of a DataFrame or a column in a DataFrame. A StructType object consists of a list of StructField objects, each of which specifies the name and data type of a field in the structure. The data types that can be used in a StructType include primitive data types such as IntegerType and StringType, as well as complex data types such as ArrayType and MapType. StructType is an important tool in PySpark for ensuring that data is properly structured and organized for analysis."
 user,"give me an example of StructType"
 bot,"**db_ps1**"
 
@@ -179,8 +178,7 @@ bot,"
 7. How do you join two PySpark DataFrames together?
 8. What is the difference between a transformation and an action in PySpark?
 9. How do you write data from a PySpark DataFrame to a Parquet file?
-10. How do you optimize PySpark performance for large datasets?
-"
+10. How do you optimize PySpark performance for large datasets?"
 user,"shoe me some more interview questions"
 bot,"
 11. What is a broadcast variable in PySpark and when would you use it?
@@ -192,8 +190,7 @@ bot,"
 17. What is the purpose of a window function in PySpark and how do you use it?
 18. How do you perform SQL queries on a PySpark DataFrame using Spark SQL?
 19. What is the purpose of a checkpoint in PySpark and how do you set one up?
-20. How do you debug PySpark code and troubleshoot common issues?
-"
+20. How do you debug PySpark code and troubleshoot common issues?"
 user,"show me some more interview questions"
 bot,"
 21. How do you handle missing or null values in a PySpark DataFrame?
@@ -205,8 +202,7 @@ bot,"
 27. How do you work with graph data in PySpark using GraphFrames?
 28. How do you deploy PySpark applications to a cluster and manage resources?
 29. How do you monitor and tune PySpark applications for optimal performance?
-30. How do you work with different file formats and data sources in PySpark, such as Parquet, Avro, and JDBC?
-"
+30. How do you work with different file formats and data sources in PySpark, such as Parquet, Avro, and JDBC?"
 user,"some more examples"
 bot,"
 31. How do you perform machine learning tasks in PySpark using MLlib?
@@ -218,8 +214,7 @@ bot,"
 37. How do you handle imbalanced datasets in PySpark when training machine learning models?
 38. How do you perform feature engineering in PySpark to prepare data for machine learning tasks?
 39. How do you work with geospatial data in PySpark using tools like GeoSpark?
-40. How do you implement a deep learning system in PySpark using tools like TensorFlow and Keras?
-"
+40. How do you implement a deep learning system in PySpark using tools like TensorFlow and Keras?"
 user,"some more examples"
 bot,"
 41. How do you perform hyperparameter tuning in PySpark using tools like GridSearchCV and CrossValidator?
@@ -252,21 +247,21 @@ bot,"To perform SQL queries on a PySpark DataFrame using Spark SQL, you can use 
 
 <code>
 from pyspark.sql import SparkSession
-spark = SparkSession.builder.appName("PySparkSQL").getOrCreate()
+spark = SparkSession.builder.appName('PySparkSQL').getOrCreate()
 </code>
 
 2. Read the data into a DataFrame:
 
-<code>df = spark.read.format("csv").option("header", "true").load("data.csv")</code>
+<code>df = spark.read.format('csv').option('header', 'true').load('data.csv')</code>
 
 3. Create a temporary view of the DataFrame:
 
-<code>df.createOrReplaceTempView("data_table")</code>
+<code>df.createOrReplaceTempView('data_table')</code>
 
 4. Execute SQL queries on the DataFrame:
 
 <code>
-query = "SELECT * FROM data_table WHERE age > 25"
+query = 'SELECT * FROM data_table WHERE age > 25'
 result = spark.sql(query)
 </code>
 
@@ -341,7 +336,7 @@ bot,"Here's an example of how to use <code>withColumn</code>:
 user,"show me an example of cast with pyspark dataframe"
 bot,"Here's an example of using <code>cast</code>:
 
-**db_psfb14**
+**db_psfb14**"
 
 user,"what are some important pyspark sql functions?"
 bot,"Some important PySpark SQL functions include:
@@ -379,14 +374,14 @@ Some other commonly used PySpark DataFrame methods are:
 
 **db_psfb20**"
 user,"show me an example of dropduplicates in pyspark"
-bot,"Suppose we have a PySpark DataFrame named "salesData" with columns "product", "region", and "sales". We want to remove duplicate rows based on the combination of "product" and "region" columns. We can use the dropDuplicates() method as follows:
+bot,"Suppose we have a PySpark DataFrame named 'salesData' with columns 'product', 'region', and 'sales'. We want to remove duplicate rows based on the combination of 'product' and 'region' columns. We can use the <code>dropDuplicates()</code> method as follows:
 
 **db_psfb21**
 
-As we can see, the resulting DataFrame has only unique combinations of "product" and "region" columns. The row with "Product A" and "Region 1" with sales value of 150 has been removed as it was a duplicate."
+As we can see, the resulting DataFrame has only unique combinations of 'product' and 'region' columns. The row with 'Product A' and 'Region 1' with sales value of 150 has been removed as it was a duplicate."
 
 user,"show me an example of fillna in pyspark"
-bot,"Suppose we have a PySpark DataFrame named "employeeData" with columns "name", "age", and "salary". We want to fill any missing values in the "age" column with the average age of all employees. We can use the <code>fillna()</code>, as shown below:
+bot,"Suppose we have a PySpark DataFrame named 'employeeData' with columns 'name', 'age', and 'salary'. We want to fill any missing values in the 'age' column with the average age of all employees. We can use the <code>fillna()</code>, as shown below:
 
 **db_psfb22**"
 
@@ -444,14 +439,14 @@ user,"how do I change the column name in pyspark"
 bot,"To rename an existing column use <code>withColumnRenamed()</code> function on PySpark DataFrame:
 
 <code>
-df.withColumnRenamed("gender","sex") \
+df.withColumnRenamed('gender','sex') \
   .show(truncate=False) 
 </code>"
 
 user,"how do I drop a column in pyspark?"
 bot,"Use the <code>drop</code> function to drop a specific column from the PySpark DataFrame:
 
-<code>df.drop("salary").show()</code>"
+<code>df.drop('salary').show()</code>"
 
 user,"what is the pyspark filter function?"
 bot,"PySpark <code>filter()</code> function is used to filter the rows from RDD/DataFrame based on the given condition or SQL expression, you can also use <code>where()</code> clause instead of the <code>filter()</code> if you are coming from an SQL background, both these functions operate exactly the same."
@@ -485,14 +480,14 @@ Using starts with, ends with, contains:
 
 Using like, rlike:
 
-**db_psbe10**",
+**db_psbe10**"
 
 user,"how do I filter and select columns in pyspark?"
 bot,"To select columns using the <code>filter</code> function you can try two approaches:
 
 Select the dataframe columns directly:
 
-**db_psbe4**"
+**db_psbe4**
 
 Using <code>col()</code>:
 
@@ -513,12 +508,10 @@ bot,"If you have SQL background you must be familiar with <code>like</code> and 
 **db_psbe10**"
 
 user,"what is a pyspark UDF?"
-bot,"PySpark UDF (User Defined Function) is the most useful feature of Spark SQL & DataFrame that is used to extend the PySpark build in capabilities. UDFs are expensive operations hence use them only you have no choice and when essential. 
+bot,"PySpark UDF (User Defined Function) is the most useful feature of Spark SQL & DataFrame that is used to extend the PySpark build in capabilities. UDFs are expensive operations hence use them only you have no choice and when essential."
 
 user,"what is a pyspark user defined functions"
-bot,"UDF’s (User Defined Functions). If you are coming from SQL background, UDF’s are nothing new to you as most of the traditional RDBMS databases support User Defined Functions, these functions need to register in the database library and use them on SQL as regular functions.
-
-PySpark UDF’s are similar to UDF on traditional databases. In PySpark, you create a function in a Python syntax and wrap it with PySpark SQL <code>udf()</code> or register it as udf and use it on DataFrame and SQL respectively."
+bot,"UDF’s (User Defined Functions). If you are coming from SQL background, UDF’s are nothing new to you as most of the traditional RDBMS databases support User Defined Functions, these functions need to register in the database library and use them on SQL as regular functions. PySpark UDF’s are similar to UDF on traditional databases. In PySpark, you create a function in a Python syntax and wrap it with PySpark SQL <code>udf()</code> or register it as udf and use it on DataFrame and SQL respectively."
 
 user,"why do we need UDF?"
 bot,"UDFs are used to extend the functions of the framework and re-use these functions on multiple DataFrame’s. For example, you wanted to convert every first letter of a word in a name string to a capital case; PySpark build-in features don’t have this function hence you can create it a UDF and reuse this as needed on many Data Frames. UDF’s are once created they can be re-used on several DataFrame’s and SQL expressions.Before you create any UDF, do your research to check if the similar function you wanted is already available in Spark SQL Functions. PySpark SQL provides several predefined common functions and many more new functions are added with every release. hence, It is best to check before you reinventing the wheel. When you creating UDF’s you need to design them very carefully otherwise you will come across optimization & performance issues."
@@ -533,7 +526,7 @@ Now let's create a UDF and show an example:
 **db_psbe12**"
 
 user,"show do I use groupby in pyspark?"
-bot,"Let's use this PySpark DataFrame as an example:"
+bot,"Let's use this PySpark DataFrame as an example:
 **db_psbe13**
 
 Here are some examples:
@@ -551,7 +544,7 @@ bot,"Here is an example of using window functions in PySpark to calculate the ru
 
 **db_pswf0**
 
-We create a DataFrame with two columns: "id" and "value". We then define a window specification w that orders the rows by the "id" column and includes all rows from the beginning of the window up to and including the current row. We apply the sum function as a window function to the "value" column using sum(col("value")).over(w) to calculate the running total."
+We create a DataFrame with two columns: 'id' and 'value'. We then define a window specification w that orders the rows by the 'id' column and includes all rows from the beginning of the window up to and including the current row. We apply the sum function as a window function to the 'value' column using sum(col('value')).over(w) to calculate the running total."
 
 user,"how do I use window functions in pyspark?"
 bot,"To use window functions in PySpark, you need to import the <code>Window</code> and <code>functions</code> modules from the <code>pyspark.sql.window</code> and <code>pyspark.sql.functions</code> packages, respectively. Then, you can define a window specification using the <code>Window</code> class and apply window functions to columns in your DataFrame using the <code>over()</code> method.
@@ -617,19 +610,18 @@ bot,"The benefit of using UDFs is that you are be able to make use of them withi
 **db_psudf2**"
 
 user,"what is a pandas UDF?"
-bot,"A pandas UDF (User-Defined Function) is a way to apply a custom function to a pandas DataFrame or Series using PySpark. It allows users to write Python functions that can be used with Spark's DataFrame API. This can be useful for performing complex data transformations or calculations on large datasets. It uses Apache Arrow to transfer data and pandas to work with the data. Pandas UDFs allow vectorized operations that can increase performance up to 100x compared to row-at-a-time Python UDFs
+bot,"A pandas UDF (User-Defined Function) is a way to apply a custom function to a pandas DataFrame or Series using PySpark. It allows users to write Python functions that can be used with Spark's DataFrame API. This can be useful for performing complex data transformations or calculations on large datasets. It uses Apache Arrow to transfer data and pandas to work with the data. Pandas UDFs allow vectorized operations that can increase performance up to 100x compared to row-at-a-time Python UDFs"
 
 user,"show me an example of a pandas UDF"
 bot,"Here is an example of a pandas UDF that calculates the mean of a column in a PySpark DataFrame:
 
 **db_psudf6**
 
-In this example, we define a pandas UDF called mean_udf that takes a pandas Series as input and returns a float. We then apply the UDF to a PySpark DataFrame by selecting the mean of the "a" column using <code>df.select(mean_udf(df["a"]))</code>"
+In this example, we define a pandas UDF called mean_udf that takes a pandas Series as input and returns a float. We then apply the UDF to a PySpark DataFrame by selecting the mean of the 'a' column using <code>df.select(mean_udf(df['a']))</code>"
 user,"show an example of pandas user defined function"
 bot,"Here's an example of pandas UDF:
 
 **db_psudf5**"
-
 
 ###############################################################################################
 #
@@ -729,13 +721,13 @@ bot,"Here's an example of <code>CrossValidator</code>:
 **db_psdsm4**"
 
 user,"I want to validate my dataset in pyspark"
-bot,"There are two approaches that you can use [randomSplit] or [CrossValidator], which of these interest you?"
+bot,"There are two approaches that you can use <code>randomSplit</code> or <code>CrossValidator</code>, which of these interest you?"
 user,"What is the difference between the two?"
 bot,"**db_psdsm1**"
 user,"can you show me an example of CrossValidator?"
 
 user,"I want to validate my dataset in pyspark"
-bot,"There are two approaches that you can use [randomSplit] or [CrossValidator], which of these interest you?"
+bot,"There are two approaches that you can use <code>randomSplit</code> or <code>CrossValidator</code>, which of these interest you?"
 user,"What is the difference between the two?"
 bot,"The two methods vary, here's some clarification:
 **db_psdsm1**"
@@ -806,9 +798,9 @@ bot,"There is a slight difference, TrainValidationSplit is used for hyperparamet
 user,"what is the difference between trainvalidationsplit and crossvalidator?"
 bot,"TrainValidationSplit and CrossValidator are both methods for hyperparameter tuning and model selection, but they differ in their approach and purpose.
 
-[TrainValidationSplit] is a simple method for hyperparameter tuning that splits the dataset into a training set and a validation set. It trains multiple models on the training set with different hyperparameters and evaluates their performance on the validation set. The model with the best performance on the validation set is then selected as the final model.
+<code>TrainValidationSplit</code> is a simple method for hyperparameter tuning that splits the dataset into a training set and a validation set. It trains multiple models on the training set with different hyperparameters and evaluates their performance on the validation set. The model with the best performance on the validation set is then selected as the final model.
 
-[CrossValidator] performs a kfold cross-validation by splitting the dataset into k equal parts. It trains multiple models on k-1 parts of the dataset with different hyperparameters and evaluates the performance on the remaining part. This process is repeated k times, with each part serving as the validation set once. The model with the best average performance across all k folds is then selected as the final model.
+<code>CrossValidator</code> performs a kfold cross-validation by splitting the dataset into k equal parts. It trains multiple models on k-1 parts of the dataset with different hyperparameters and evaluates the performance on the remaining part. This process is repeated k times, with each part serving as the validation set once. The model with the best average performance across all k folds is then selected as the final model.
 
 In summary, TrainValidationSplit is a simple method for hyperparameter tuning that splits the dataset into a training set and a validation set, while CrossValidator is used for hyperparameter tuning and model selection through k-fold cross-validation."
 
@@ -915,18 +907,18 @@ from pyspark.sql.functions import col
 
 # Define corpus of documents as Spark dataframe
 corpus = spark.createDataFrame([
-    (0, "The quick brown fox jumps over the lazy dog"),
-    (1, "The quick brown fox jumps over the quick dog"),
-    (2, "Dog is man's best friend"),
-    (3, "Dog and fox are both mammals")
-], ["id", "text"])
+    (0, 'The quick brown fox jumps over the lazy dog'),
+    (1, 'The quick brown fox jumps over the quick dog'),
+    (2, 'Dog is man's best friend),
+    (3, 'Dog and fox are both mammals')
+], ['id', 'text'])
 
 # Tokenize text column
-tokenizer = Tokenizer(inputCol="text", outputCol="words")
+tokenizer = Tokenizer(inputCol='text', outputCol='words')
 wordsData = tokenizer.transform(corpus)
 
 # Train Word2Vec model
-word2Vec = Word2Vec(vectorSize=3, minCount=0, inputCol="words", outputCol="result")
+word2Vec = Word2Vec(vectorSize=3, minCount=0, inputCol='words', outputCol='result')
 model = word2Vec.fit(wordsData)
 result = model.transform(wordsData)
 
@@ -947,7 +939,7 @@ bot,"To convert a corpus to features in PySpark, you can follow these steps:
 
 Do you need me to provide you with an example?"
 user,"yes"
-bot,"Sure, here's an example:"
+bot,"Sure, here's an example:
 
 **db_pscf4**"
 
@@ -968,7 +960,7 @@ bot,"Sure here's an example:
 **db_pscf8**"
 
 user,"does pyspark have the TfidfVectorizer method?"
-No, PySpark does not have a TfidfVectorizer method. Instead, it has the <code>HashingTF</code> and <code>IDF</code> methods to convert text data into TF-IDF representations.
+bot,"No, PySpark does not have a TfidfVectorizer method. Instead, it has the <code>HashingTF</code> and <code>IDF</code> methods to convert text data into TF-IDF representations.
 
 Should I show you an example?"
 bot,"yes please"
@@ -993,14 +985,13 @@ You can choose the method that best suits your specific use case and data charac
 # differences between methods
 
 user,"what is the difference between StringIndexer and VectorAssembler?"
-bot,"[StringIndexer] and [VectorAssembler] are both transformers in pyspark.ml, but have different purposes:
+bot,"<code>StringIndexer</code> and <code>VectorAssembler</code> are both transformers in pyspark.ml, but have different purposes:
 
-[StringIndexer] is used to convert a categorical variable (a string column) into a numerical variable (an integer column). It assigns a unique index to each category in the column, with the most frequent category getting index 0. This is useful because many machine learning algorithms require numerical input data.
+<code>StringIndexer</code> is used to convert a categorical variable (a string column) into a numerical variable (an integer column). It assigns a unique index to each category in the column, with the most frequent category getting index 0. This is useful because many machine learning algorithms require numerical input data.
 
-[VectorAssembler] is used to combine multiple input columns into a single vector column. It takes a list of input column names and creates a new column that contains a vector of all the values from those columns. This is useful when you want to combine multiple features into a single feature vector, which is often required by machine learning algorithms.
+<code>VectorAssembler</code> is used to combine multiple input columns into a single vector column. It takes a list of input column names and creates a new column that contains a vector of all the values from those columns. This is useful when you want to combine multiple features into a single feature vector, which is often required by machine learning algorithms.
 
-In summary, [StringIndexer] is used for converting categorical variables to numerical variables, while [VectorAssembler] is used for combining multiple input columns into a single feature vector."
-
+In summary, <code>StringIndexer</code> is used for converting categorical variables to numerical variables, while <code>VectorAssembler</code> is used for combining multiple input columns into a single feature vector."
 
 #
 #   PySpark | Preprocessing Data Cleaning / Removing Data
