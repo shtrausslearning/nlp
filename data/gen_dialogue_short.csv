@@ -417,14 +417,14 @@ bot,"By using PySpark <code>withColumn()</code> on a DataFrame, we can cast or c
 user,"how do I update a value of an existing column"
 bot,"PySpark <code>withColumn() function of DataFrame can also be used to change the value of an existing column. In order to change the value, pass an existing column name as a first argument and a value to be assigned as a second argument to the withColumn() function. Note that the second argument should be Column type:
 
-**db_psbe1**"
+**db_psbe1**
 
 This snippet multiplies the value of “salary” with 100 and updates the value back to “salary” column."
 
 user,"how do I create a column from an existing one"
 bot,"To add/create a new column, specify the first argument with a name you want your new column to be and use the second argument to assign a value by applying an operation on an existing column:
 
-**db_psbe2**"
+**db_psbe2**
 
 This snippet creates a new column “CopiedColumn” by multiplying “salary” column with value -1."
 
