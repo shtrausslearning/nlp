@@ -1,0 +1,16 @@
+# mllibs-docs
+
+# make file : make servedocs
+# open browser preview : mkdocs serve
+
+# mllibs
+
+# compile: python setup.py bdist_wheel --universal
+# install !pip install /path/
+
+pip uninstall mllibs -y && python setup.py bdist_wheel --universal && pip install dist/mllibs-0.2.0-py2.py3-none-any.whl
+
+pip uninstall mllibs -y && python setup.py bdist_wheel --universal && pip install dist/mllibs-0.2.0-py2.py3-none-any.whl && rm -rf build
+
+
+
